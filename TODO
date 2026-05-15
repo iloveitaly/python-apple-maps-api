@@ -1,5 +1,6 @@
 - [ ] geolocationautocomplete component needs to use frontend components, which should probably be either in a separate repo or we don't actually need anything special because of the mapkit?
   - [ ] Submit a PR against the dual location shad CN component to support Apple Maps. This should be a sort of optional thing or just another variant of the component.
+  - [ ] it may makes sense to just fork this repo and come up with another one https://github.com/iloveitaly/shadcn-radar-address-autocomplete
 - [ ] We should expose a simple function to create a sign token for the like what's done in `playground/**/web.vite.config.ts`
 - [ ] we don't need the `search_places` functionality right away
 	- [ ] the exact input param requirements (like country code, etc) can change
