@@ -128,6 +128,8 @@ def section(title: str) -> None:
 def main() -> None:
     token = get_access_token(get_auth_jwt())
 
+    # ex: autocomplete(token, q="street address",limitToCountries="US",resultTypeFilter="address")
+
     # 1. Autocomplete — shows completionUrl structure
     section("1. /v1/searchAutocomplete  q=\"1 Apple Park\"")
     ac_result = autocomplete(token, q=QUERY)
