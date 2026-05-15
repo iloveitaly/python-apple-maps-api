@@ -1,0 +1,22 @@
+set shell := ["zsh", "-ceuB", "-o", "pipefail"]
+set ignore-comments := true
+
+# Install all dependencies
+setup:
+	mise install
+	uv sync
+	cd web && pnpm install
+
+# Run the Apple Maps API test script (all 7 endpoints)
+run:
+	uv run python app/main.py
+
+# Start the React map frontend (http://localhost:5173)
+dev:
+	cd web && pnpm dev
+
+# Update all dependencies
+upgrade:
+	uv sync -U
+	cd web && pnpm update
+	mise upgrade

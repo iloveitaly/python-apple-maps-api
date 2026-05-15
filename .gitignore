@@ -134,3 +134,6 @@ dmypy.json
 
 # i like having temporary files specified locally vs globally
 tmp/
+
+
+apple_maps_key.p8
