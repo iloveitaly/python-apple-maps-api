@@ -1,3 +1,6 @@
+- [ ] We shouldn't require a user to reference a file for their token. We should instead allow them to specify this as an environment variable. Specifying a file won't work well with any cloud provider that has ephemeral storage, and the only alternative there would mean actually committing the key to the repository, which would also be bad.
+- [ ] We need a very clean way to automatically grab a new token when one expires. My instinct is that we should hold this in memory.
+- [ ] I don't want to pass a token into each function. I'd rather do something like a client which holds the token for the user and then you can simply call autocomplete with your address or whatever it might be directly on the client instead of having to manage the token directly.
 - [ ] geolocationautocomplete component needs to use frontend components, which should probably be either in a separate repo or we don't actually need anything special because of the mapkit?
   - [ ] Submit a PR against the dual location shad CN component to support Apple Maps. This should be a sort of optional thing or just another variant of the component.
   - [ ] it may makes sense to just fork this repo and come up with another one https://github.com/iloveitaly/shadcn-radar-address-autocomplete
