@@ -23,7 +23,7 @@ dev = [
 dev = [
     { name = "covdefaults", specifier = ">=2.3.0" },
     { name = "coverage", specifier = ">=7.13.4" },
-    { name = "pyright", extras = ["nodejs"], specifier = ">=1.1.408" },
+    { name = "pyright", extras = ["nodejs"], specifier = ">=1.1.409" },
     { name = "pytest", specifier = ">=8.3.4" },
     { name = "pytest-cov", specifier = ">=7.0.0" },
     { name = "ruff", specifier = ">=0.15.0" },
