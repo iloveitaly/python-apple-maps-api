@@ -102,6 +102,7 @@ class PoiCategory(StrEnum):
 
 class SearchResultType(StrEnum):
     """Result type filter for /v1/search."""
+
     poi = "poi"
     address = "address"
     physicalFeature = "physicalFeature"
@@ -110,6 +111,7 @@ class SearchResultType(StrEnum):
 
 class SearchACResultType(StrEnum):
     """Result type filter for /v1/searchAutocomplete."""
+
     poi = "poi"
     address = "address"
     physicalFeature = "physicalFeature"
@@ -241,7 +243,11 @@ class AutocompleteResult(BaseModel):
     @property
     def completionSubtitle(self) -> str | None:
         """Secondary display text (e.g. city, state)."""
-        return self.displayLines[1] if self.displayLines and len(self.displayLines) > 1 else None
+        return (
+            self.displayLines[1]
+            if self.displayLines and len(self.displayLines) > 1
+            else None
+        )
 
 
 class SearchAutocompleteResponse(BaseModel):

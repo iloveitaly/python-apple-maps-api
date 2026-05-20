@@ -74,13 +74,17 @@ class TestMapKitTokenIntegration:
         claims = jwt.decode(token, public_key, algorithms=["ES256"])
         assert "origin" not in claims
 
-    def test_origin_claim_included_when_set(self, credentials: dict[str, str], public_key):
+    def test_origin_claim_included_when_set(
+        self, credentials: dict[str, str], public_key
+    ):
         client = AppleMapsClient(**credentials, origin="https://example.com")
         token = client.create_mapkit_token()
         claims = jwt.decode(token, public_key, algorithms=["ES256"])
         assert claims["origin"] == "https://example.com"
 
-    def test_successive_calls_produce_different_tokens(self, credentials: dict[str, str]):
+    def test_successive_calls_produce_different_tokens(
+        self, credentials: dict[str, str]
+    ):
         client = AppleMapsClient(**credentials)
         t1 = client.create_mapkit_token()
         time.sleep(1)
