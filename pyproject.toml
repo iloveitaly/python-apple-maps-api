@@ -1,13 +1,23 @@
 [project]
 name = "apple-maps-api"
 version = "0.1.0"
-description = ""
-keywords = []
+description = "A modern Python client for the Apple Maps Server API with automatic JWT management and type safety"
+keywords = ["apple-maps", "geocoding", "search", "geolocation"]
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "httpx>=0.28.1",
+    "pydantic>=2.12.3",
+    "tenacity>=9.1.2",
+    "PyJWT[crypto]>=2.9.0",
+    "funcy>=2.0",
+]
+
 authors = [{ name = "Michael Bianco", email = "mike@mikebian.co" }]
 urls = { "Repository" = "https://github.com/iloveitaly/apple-maps-api" }
+
+[project.optional-dependencies]
+sentry = ["sentry-sdk>=2.0.0"]
 
 
 
@@ -27,6 +37,7 @@ dev = [
     "coverage>=7.13.4",
     "pytest-cov>=7.0.0",
     "covdefaults>=2.3.0",
+    "respx>=0.22.0",
 ]
 
 [tool.pyright]
