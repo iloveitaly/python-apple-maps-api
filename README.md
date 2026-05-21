@@ -52,6 +52,12 @@ results = client.geocode("1 Apple Park Way, Cupertino, CA")
 
 for place in results.results:
     print(f"{place.name}: {place.coordinate.latitude}, {place.coordinate.longitude}")
+
+# place.name                              => "1 Apple Park Way"
+# place.coordinate.latitude               => 37.334859
+# place.coordinate.longitude              => -122.0090403
+# place.formattedAddressLines             => ["1 Apple Park Way", "Cupertino, CA  95014", "United States"]
+# place.structuredAddress.locality        => "Cupertino"
 ```
 
 ### Reverse Geocoding
@@ -59,10 +65,14 @@ for place in results.results:
 Convert coordinates back to a structured address:
 
 ```python
-results = client.reverse_geocode(lat=37.3346, lon=-122.0090)
+results = client.reverse_geocode((37.3346, -122.0090))
 
 if results.results:
     print(results.results[0].formattedAddressLines)
+
+# place.formattedAddressLines      => ["Apple Park", "1 Apple Park Way", "Cupertino, CA  95014", "United States"]
+# place.structuredAddress.locality => "Cupertino"
+# place.structuredAddress.postCode => "95014"
 ```
 
 ### Place Search
@@ -70,10 +80,15 @@ if results.results:
 Search for points of interest near a location:
 
 ```python
-results = client.search("pizza", at="37.3346,-122.0090")
+results = client.search("pizza", near="37.3346,-122.0090")
 
 for place in results.results:
     print(f"{place.name} - {place.formattedAddressLines}")
+
+# results.results[0].name                  => "Pizza My Heart"
+# results.results[0].formattedAddressLines => ["19409 Stevens Creek Blvd", "Cupertino, CA  95014", "United States"]
+# results.results[1].name                  => "Mountain Mike's Pizza"
+# results.results[2].name                  => "Pizz'a Chicago"
 ```
 
 ### Address Autocomplete
@@ -81,10 +96,14 @@ for place in results.results:
 Provide search completions for a partial query:
 
 ```python
-results = client.autocomplete("1 Apple Park", at="37.3346,-122.0090")
+results = client.autocomplete("1 Apple Park", country_code="US")
 
 for completion in results.results:
-    print(completion.completionTitle)
+    print(completion.displayLines)
+
+# results.results[0].displayLines => ["1 Apple Park Way", "Cupertino, CA, United States"]
+# results.results[1].displayLines => ["1 Apple Hill Dr", "Natick, MA, United States"]
+# results.results[0].completionUrl => "/v1/search?q=1%20Apple%20Park%20Way..."
 ```
 
 ### Helper Functions
@@ -96,15 +115,119 @@ from apple_maps_api import geocode_postal_code, geocode_coordinates
 
 # Geocode a postal code
 result = geocode_postal_code(client, postal_code="95014", country="US")
-if result:
-    print(f"Coordinates: {result.lat}, {result.lon}")
-    print(f"City: {result.city}")
+# result.lat              => 37.2895111
+# result.lon              => -122.0811912
+# result.city             => "Cupertino"
+# result.state_code       => "CA"
+# result.postal_code      => "95014"
+# result.formatted_address => "Cupertino, CA  95014, United States"
 
 # Reverse geocode coordinates
 result = geocode_coordinates(client, lat=37.3346, lon=-122.0090)
-if result:
-    print(f"Postal Code: {result.postal_code}")
-    print(f"State: {result.state_code}")
+# result.address1          => "1 Apple Park Way"
+# result.postal_code       => "95014"
+# result.city              => "Cupertino"
+# result.state_code        => "CA"
+# result.formatted_address => "Apple Park, 1 Apple Park Way, Cupertino, CA  95014, United States"
+```
+
+## Example Payloads
+
+These examples show the real data shapes returned by the Apple Maps API for common operations.
+
+> **Note on city names:** Apple Maps uses its own administrative boundaries. The `city` field on `GeocodeResult` maps to `structuredAddress.locality`, which may differ from the colloquial city name. For example, postal code `90210` returns `city="Los Angeles"` even though the formatted address reads `"Beverly Hills"` — Beverly Hills is an independent city but Apple Maps assigns it to the LA locality.
+
+### Geocoding a postal code
+
+```python
+result = geocode_postal_code(client, postal_code="10001")
+# result.lat             => 40.7504876
+# result.lon             => -74.0025705
+# result.city            => "New York"
+# result.state_code      => "NY"
+# result.postal_code     => "10001"
+# result.formatted_address => "New York, NY  10001, United States"
+```
+
+```python
+result = geocode_postal_code(client, postal_code="90210")
+# result.lat             => 34.1025226
+# result.lon             => -118.4167959
+# result.city            => "Los Angeles"   # NOT "Beverly Hills"
+# result.state_code      => "CA"
+# result.postal_code     => "90210"
+# result.formatted_address => "Beverly Hills, CA  90210, United States"
+```
+
+### Reverse geocoding coordinates
+
+```python
+# Times Square, NYC
+result = geocode_coordinates(client, lat=40.7589, lon=-73.9851)
+# result.address1          => "1552–1568 Broadway"
+# result.postal_code       => "10036"
+# result.city              => "New York"
+# result.state_code        => "NY"
+# result.formatted_address => "Times Square, 1552–1568 Broadway, New York, NY  10036, United States"
+```
+
+### Raw `reverse_geocode` response — full `structuredAddress`
+
+Apple Park, Cupertino CA (`37.3346, -122.0090`):
+
+```python
+place = client.reverse_geocode((37.3346, -122.0090)).results[0]
+# place.name                                      => "Apple Park"
+# place.formattedAddressLines                     => ["Apple Park", "1 Apple Park Way", "Cupertino, CA  95014", "United States"]
+# place.structuredAddress.administrativeArea      => "California"
+# place.structuredAddress.administrativeAreaCode  => "CA"
+# place.structuredAddress.subAdministrativeArea   => None
+# place.structuredAddress.locality                => "Cupertino"
+# place.structuredAddress.subLocality             => None
+# place.structuredAddress.fullThoroughfare        => "1 Apple Park Way"
+# place.structuredAddress.thoroughfare            => "Apple Park Way"
+# place.structuredAddress.subThoroughfare         => "1"
+# place.structuredAddress.postCode                => "95014"
+# place.structuredAddress.areasOfInterest         => ["Apple Park"]
+# place.structuredAddress.dependentLocalities     => None
+```
+
+Times Square, NYC (`40.7589, -73.9851`):
+
+```python
+place = client.reverse_geocode((40.7589, -73.9851)).results[0]
+# place.name                                      => "Times Square"
+# place.formattedAddressLines                     => ["Times Square", "1552–1568 Broadway", "New York, NY  10036", "United States"]
+# place.structuredAddress.administrativeArea      => "New York"
+# place.structuredAddress.administrativeAreaCode  => "NY"
+# place.structuredAddress.subAdministrativeArea   => None
+# place.structuredAddress.locality                => "New York"
+# place.structuredAddress.subLocality             => "Manhattan"
+# place.structuredAddress.fullThoroughfare        => "1552–1568 Broadway"
+# place.structuredAddress.thoroughfare            => "Broadway"
+# place.structuredAddress.subThoroughfare         => "1552–1568"
+# place.structuredAddress.postCode                => "10036"
+# place.structuredAddress.areasOfInterest         => ["Times Square", "Manhattan"]
+# place.structuredAddress.dependentLocalities     => ["Broadway", "Times Square", "Theater District", "Midtown Manhattan", "Midtown", "North Hudson"]
+```
+
+Beverly Hills, CA (`34.1025226, -118.4167959`) — note `locality` vs formatted address mismatch:
+
+```python
+place = client.reverse_geocode((34.1025226, -118.4167959)).results[0]
+# place.name                                      => "1731 N Franklin Canyon Dr"
+# place.formattedAddressLines                     => ["1731 N Franklin Canyon Dr", "Beverly Hills, CA  90210", "United States"]
+# place.structuredAddress.administrativeArea      => "California"
+# place.structuredAddress.administrativeAreaCode  => "CA"
+# place.structuredAddress.subAdministrativeArea   => None
+# place.structuredAddress.locality                => "Los Angeles"   # NOT "Beverly Hills"
+# place.structuredAddress.subLocality             => "Beverly Crest"
+# place.structuredAddress.fullThoroughfare        => "1731 N Franklin Canyon Dr"
+# place.structuredAddress.thoroughfare            => "N Franklin Canyon Dr"
+# place.structuredAddress.subThoroughfare         => "1731"
+# place.structuredAddress.postCode                => "90210"
+# place.structuredAddress.areasOfInterest         => None
+# place.structuredAddress.dependentLocalities     => ["Beverly Crest"]
 ```
 
 ## API Reference
