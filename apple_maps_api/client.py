@@ -80,7 +80,7 @@ _retry_policy = retry(
 
 
 class GeocodeOptions(TypedDict, total=False):
-    country: str
+    limit_to_countries: str
     lang: str
     search_location: str
     search_region: str
@@ -95,7 +95,7 @@ class SearchOptions(TypedDict, total=False):
     near: str
     categories: str | Sequence[PoiCategory]
     exclude_categories: str | Sequence[PoiCategory]
-    country: str
+    limit_to_countries: str
     lang: str
     result_type_filter: str | Sequence[SearchResultType]
     search_region: str
@@ -109,7 +109,7 @@ class SearchOptions(TypedDict, total=False):
 
 class AutocompleteOptions(TypedDict, total=False):
     near: str | None
-    country_code: str | None
+    limit_to_countries: str | None
     lang: str | None
     result_type_filter: str | Sequence[SearchACResultType] | None
     include_poi_categories: str | Sequence[PoiCategory] | None
@@ -267,7 +267,7 @@ class AppleMapsClient:
         Maps to GET /v1/geocode.
 
         :param query: Address to geocode (e.g., "1 Apple Park Way").
-        :param country: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
+        :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
         :param lang: BCP 47 language code (default: "en-US").
         :param search_location: Lat/lng hint for search bias (e.g., "37.78,-122.42").
         :param search_region: Bounding box hint as "northLat,eastLng,southLat,westLng".
@@ -280,7 +280,7 @@ class AppleMapsClient:
             f.compact(
                 {
                     "q": query,
-                    "limitToCountries": kwargs.get("country"),
+                    "limitToCountries": kwargs.get("limit_to_countries"),
                     "lang": kwargs.get("lang"),
                     "searchLocation": kwargs.get("search_location"),
                     "searchRegion": kwargs.get("search_region"),
@@ -325,7 +325,7 @@ class AppleMapsClient:
         :param near: Location bias as "lat,lng" (maps to searchLocation).
         :param categories: Comma-separated POI categories to include (e.g., "MovieTheater").
         :param exclude_categories: Comma-separated POI categories to exclude.
-        :param country: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
+        :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
         :param lang: BCP 47 language code (default: "en-US").
         :param result_type_filter: Comma-separated result types (e.g., "Poi", "Address").
         :param search_region: Bounding box hint as "northLat,eastLng,southLat,westLng".
@@ -344,7 +344,7 @@ class AppleMapsClient:
             "searchLocation": kwargs.get("near"),
             "includePoiCategories": _csv(kwargs.get("categories")),
             "excludePoiCategories": _csv(kwargs.get("exclude_categories")),
-            "limitToCountries": kwargs.get("country"),
+            "limitToCountries": kwargs.get("limit_to_countries"),
             "lang": kwargs.get("lang"),
             "resultTypeFilter": _csv(kwargs.get("result_type_filter")),
             "searchRegion": kwargs.get("search_region"),
@@ -371,7 +371,7 @@ class AppleMapsClient:
 
         :param query: Partial address or place name to autocomplete.
         :param near: Location bias as "lat,lng" to prefer nearby results.
-        :param country_code: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
+        :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
         :param lang: BCP 47 language code (default: "en-US").
         :param result_type_filter: Comma-separated result types (e.g., "Address", "Poi").
         :param include_poi_categories: Comma-separated POI categories to include.
@@ -391,8 +391,7 @@ class AppleMapsClient:
                     "q": query,
                     "searchLocation": kwargs.get("near"),
                     # Note: Apple maps documentation says to use 'limitToCountries' param but it seems to work only with almost full address
-                    # so for time being we will use 'countryCode' param which seems to work better for autocomplete
-                    "countryCode": kwargs.get("country_code"),
+                    "limitToCountries": kwargs.get("limit_to_countries"),
                     "lang": kwargs.get("lang"),
                     "resultTypeFilter": _csv(kwargs.get("result_type_filter")),
                     "includePoiCategories": _csv(kwargs.get("include_poi_categories")),
