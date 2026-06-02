@@ -78,7 +78,7 @@ def geocode_postal_code(
         GeocodeResult with lat, lon, city, and state information.
         Returns None if geocoding fails.
     """
-    location_result = client.geocode(postal_code, country=country)
+    location_result = client.geocode(postal_code, limit_to_countries=country)
 
     if len(location_result.results) == 0:
         _log_geocode_event(
