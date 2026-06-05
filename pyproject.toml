@@ -17,7 +17,7 @@ authors = [{ name = "Michael Bianco", email = "mike@mikebian.co" }]
 urls = { "Repository" = "https://github.com/iloveitaly/apple-maps-api" }
 
 [project.optional-dependencies]
-sentry = ["sentry-sdk>=2.61.0"]
+sentry = ["sentry-sdk>=2.61.1"]
 
 
 
