@@ -85,7 +85,7 @@ class TestGeocode:
             return_value=httpx.Response(200, json=SAMPLE_GEOCODE_RESPONSE)
         )
 
-        apple_client.geocode("Apple Park", country="US", lang="en-US")
+        apple_client.geocode("Apple Park", limit_to_countries="US", lang="en-US")
 
         assert route.called
         request = route.calls.last.request
@@ -151,7 +151,7 @@ class TestSearch:
             query="coffee",
             near="37.334,-122.009",
             categories="Cafe",
-            country="US",
+            limit_to_countries="US",
         )
 
         assert route.called
@@ -189,13 +189,13 @@ class TestAutocomplete:
 
         apple_client.autocomplete(
             query="1 Apple",
-            country_code="US",
+            limit_to_countries="US",
             result_type_filter="Address",
         )
 
         assert route.called
         request = route.calls.last.request
-        assert "countryCode=US" in str(request.url)
+        assert "limitToCountries=US" in str(request.url)
         assert "resultTypeFilter=Address" in str(request.url)
 
     def test_autocomplete_empty_query(self, apple_client: AppleMapsClient):
