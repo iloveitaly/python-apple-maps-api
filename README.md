@@ -7,11 +7,9 @@
 
 A modern, type-safe Python client for the [Apple Maps Server API](https://developer.apple.com/documentation/applemapsserverapi).
 
-## Why This Library?
+There's no python library for the Apple Maps API. Maps is super cheap compared to all of the alternatives, so with AI I figured it wouldn't be too hard to build a client library.
 
-I've always found Apple's documentation for the Maps Server API a bit opaque, especially when it comes to JWT management. I built this library to handle the heavy lifting: signing tokens, automatic refreshes, and providing a clean, type-safe interface for geocoding and search.
-
-If you are building a server-side application that needs to interact with Apple's mapping services without the overhead of MapKit JS or a full mobile SDK, this is for you. It's built on top of Pydantic and `httpx`, so it's ready for modern Python workflows.
+The goal of this library is to provide similar functionality to the radar python client.
 
 ## Installation
 
@@ -93,7 +91,7 @@ for place in results.results:
 
 ### Address Autocomplete
 
-Provide search completions for a partial query:
+Provide search completions for a partial query and filter by country:
 
 ```python
 results = client.autocomplete("1 Apple Park", country_code="US")
