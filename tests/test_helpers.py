@@ -22,10 +22,11 @@ def apple_client(monkeypatch: pytest.MonkeyPatch) -> AppleMapsClient:
         key_id="KEY1234567",
         private_key=TEST_PRIVATE_KEY,
     )
-    monkeypatch.setattr(client, "_create_jwt", lambda: "test_jwt")
+    monkeypatch.setattr(client, "_create_jwt", lambda **kwargs: "test_jwt")
     return client
 
 
+# TODO is there a good reason we shouldn't make this a fixture? or at least mock across TestGeocodePostalCode
 def mock_token() -> respx.Route:
     return respx.get("https://maps-api.apple.com/v1/token").mock(
         return_value=httpx.Response(200, json=TOKEN_RESPONSE)

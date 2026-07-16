@@ -28,7 +28,7 @@ def apple_client(monkeypatch: pytest.MonkeyPatch) -> AppleMapsClient:
         key_id="KEY1234567",
         private_key=TEST_PRIVATE_KEY,
     )
-    monkeypatch.setattr(client, "_create_jwt", lambda: "test_jwt")
+    monkeypatch.setattr(client, "_create_jwt", lambda **kwargs: "test_jwt")
     return client
 
 
@@ -211,6 +211,32 @@ class TestSearch:
         assert "includePoiCategories=Cafe" in str(request.url)
         assert "limitToCountries=US" in str(request.url)
 
+    @respx.mock
+    def test_search_with_lat_lng(self, apple_client: AppleMapsClient):
+        mock_token()
+        route = respx.get("https://maps-api.apple.com/v1/search").mock(
+            return_value=httpx.Response(200, json=SAMPLE_SEARCH_RESPONSE)
+        )
+
+        apple_client.search(query="coffee", lat=37.334, lng=-122.009)
+
+        assert route.called
+        request = route.calls.last.request
+        assert "searchLocation=37.334" in str(request.url)
+        assert "-122.009" in str(request.url)
+
+    def test_search_near_and_lat_lng_mutually_exclusive(
+        self, apple_client: AppleMapsClient
+    ):
+        with pytest.raises(AssertionError, match="near or lat/lng"):
+            apple_client.search(
+                query="coffee", near="37.334,-122.009", lat=37.334, lng=-122.009
+            )
+
+    def test_search_lat_without_lng(self, apple_client: AppleMapsClient):
+        with pytest.raises(AssertionError, match="lat and lng must both"):
+            apple_client.search(query="coffee", lat=37.334)
+
     def test_search_empty_query(self, apple_client: AppleMapsClient):
         with pytest.raises(ValueError, match="query must be provided"):
             apple_client.search(query="")
@@ -247,6 +273,28 @@ class TestAutocomplete:
         request = route.calls.last.request
         assert "limitToCountries=US" in str(request.url)
         assert "resultTypeFilter=Address" in str(request.url)
+
+    @respx.mock
+    def test_autocomplete_with_lat_lng(self, apple_client: AppleMapsClient):
+        mock_token()
+        route = respx.get("https://maps-api.apple.com/v1/searchAutocomplete").mock(
+            return_value=httpx.Response(200, json=SAMPLE_AUTOCOMPLETE_RESPONSE)
+        )
+
+        apple_client.autocomplete(query="1 Apple", lat=37.334, lng=-122.009)
+
+        assert route.called
+        request = route.calls.last.request
+        assert "searchLocation=37.334" in str(request.url)
+        assert "-122.009" in str(request.url)
+
+    def test_autocomplete_near_and_lat_lng_mutually_exclusive(
+        self, apple_client: AppleMapsClient
+    ):
+        with pytest.raises(AssertionError, match="near or lat/lng"):
+            apple_client.autocomplete(
+                query="1 Apple", near="37.334,-122.009", lat=37.334, lng=-122.009
+            )
 
     def test_autocomplete_empty_query(self, apple_client: AppleMapsClient):
         with pytest.raises(ValueError, match="query must be provided"):
@@ -293,6 +341,38 @@ class TestAuthentication:
         # must be the raw JWT, not the exchanged access token
         assert token == "test_jwt"
         assert token_route.call_count == 0
+
+    def test_create_mapkit_token_default_ttl(self, monkeypatch: pytest.MonkeyPatch):
+        client = AppleMapsClient(
+            team_id="TEAM123456",
+            key_id="KEY1234567",
+            private_key=TEST_PRIVATE_KEY,
+        )
+        captured: dict[str, int] = {}
+
+        def capture_jwt(*, ttl_seconds: int = 0) -> str:
+            captured["ttl_seconds"] = ttl_seconds
+            return "test_jwt"
+
+        monkeypatch.setattr(client, "_create_jwt", capture_jwt)
+        client.create_mapkit_token()
+        assert captured["ttl_seconds"] == 60 * 60
+
+    def test_create_mapkit_token_custom_ttl(self, monkeypatch: pytest.MonkeyPatch):
+        client = AppleMapsClient(
+            team_id="TEAM123456",
+            key_id="KEY1234567",
+            private_key=TEST_PRIVATE_KEY,
+        )
+        captured: dict[str, int] = {}
+
+        def capture_jwt(*, ttl_seconds: int = 0) -> str:
+            captured["ttl_seconds"] = ttl_seconds
+            return "test_jwt"
+
+        monkeypatch.setattr(client, "_create_jwt", capture_jwt)
+        client.create_mapkit_token(ttl_seconds=2 * 60 * 60)
+        assert captured["ttl_seconds"] == 2 * 60 * 60
 
 
 class TestErrorHandling:

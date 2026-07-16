@@ -49,8 +49,31 @@ def _csv(value: str | Sequence | None) -> str | None:
     return ",".join(str(v) for v in value)
 
 
+def _search_location(
+    *,
+    near: str | None = None,
+    lat: float | None = None,
+    lng: float | None = None,
+) -> str | None:
+    """Resolve searchLocation from near="lat,lng" or separate lat/lng floats."""
+    if near is not None:
+        assert lat is None and lng is None, "pass near or lat/lng, not both"
+        return near
+
+    if lat is None and lng is None:
+        return None
+
+    assert lat is not None and lng is not None, "lat and lng must both be provided"
+    return f"{lat},{lng}"
+
+
 # shared timeout: 10s connect, 30s read
 _TIMEOUT = httpx.Timeout(connect=10, read=30, write=10, pool=10)
+
+# Auth JWT lifetime is client-chosen; Apple does not document a max for Maps Server API.
+# Access tokens from /v1/token are separately ~30 min (Apple-controlled).
+# https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api
+_DEFAULT_JWT_TTL_SECONDS = 60 * 60
 
 
 def _is_retryable_httpx_error(exception: BaseException) -> bool:
@@ -94,6 +117,8 @@ class ReverseGeocodeOptions(TypedDict, total=False):
 
 class SearchOptions(TypedDict, total=False):
     near: str
+    lat: float
+    lng: float
     categories: str | Sequence[PoiCategory]
     exclude_categories: str | Sequence[PoiCategory]
     limit_to_countries: str
@@ -110,6 +135,8 @@ class SearchOptions(TypedDict, total=False):
 
 class AutocompleteOptions(TypedDict, total=False):
     near: str | None
+    lat: float | None
+    lng: float | None
     limit_to_countries: str | None
     lang: str | None
     result_type_filter: str | Sequence[SearchACResultType] | None
@@ -203,23 +230,34 @@ class AppleMapsClient:
             origin=origin,
         )
 
-    def _create_jwt(self) -> str:
-        """Build a short-lived ES256-signed JWT used only to call /v1/token.
+    def _create_jwt(self, *, ttl_seconds: int = _DEFAULT_JWT_TTL_SECONDS) -> str:
+        """Build an ES256-signed JWT for MapKit JS or /v1/token exchange.
+
+        Header: alg=ES256, kid, typ=JWT. Payload: iss, iat, exp, optional origin.
+
+        Spec:
+        https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api
+
+        Vendored mirror (offline):
+        docs/apple_maps_documentation/developer.apple.com_documentation_applemapsserverapi_creating-and-using-tokens-with-maps-server-api.md
 
         This is the *auth JWT* — a credential proving we own the Maps private key.
-        Apple validates it and exchanges it for an *access token* (see _fetch_token).
-        It is never sent to the Maps API directly; it is never exposed to clients.
+        For Server API use it is exchanged for an *access token* (see _fetch_token).
+        For MapKit JS it is returned directly via create_mapkit_token().
         """
+        assert ttl_seconds > 0, "ttl_seconds must be positive"
+
         now = int(time.time())
         payload: dict[str, object] = {
             "iss": self.team_id,
             "iat": now,
-            "exp": now + 30 * 60,
+            "exp": now + ttl_seconds,
         }
 
         if self.origin:
             payload["origin"] = self.origin
 
+        # ES256 + kid required by Apple Maps token spec (link in docstring above)
         return jwt.encode(
             payload,
             self.private_key,
@@ -234,6 +272,8 @@ class AppleMapsClient:
         Calls GET /v1/token with the auth JWT in the Authorization header.
         Apple returns an *access token* (Bearer) valid for ~30 minutes that
         authorises all subsequent Maps API requests (geocode, search, etc.).
+
+        Spec: https://developer.apple.com/documentation/applemapsserverapi/-v1-token
         """
         response = httpx.get(
             f"{self.base_url}/v1/token",
@@ -249,11 +289,15 @@ class AppleMapsClient:
 
         Auth flow:
           1. _create_jwt()   → signs a fresh auth JWT with our ES256 private key
-          2. _fetch_token()  → POSTs it to /v1/token, gets back an access token
+          2. _fetch_token()  → GETs /v1/token, gets back an access token
           3. access token    → cached in-process; reused until 60 s before expiry
 
         The access token is what gets sent as `Authorization: Bearer` on every
         Maps API call. The auth JWT is a one-shot credential and is discarded.
+
+        Spec:
+        https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api
+        https://developer.apple.com/documentation/applemapsserverapi/-v1-token
         """
         if self._access_token and time.time() < self._token_expires_at - 60:
             return self._access_token
@@ -271,17 +315,28 @@ class AppleMapsClient:
         This is the *access token* (not the auth JWT) suitable for server-side
         API calls (geocode, search, etc.). It is NOT suitable for MapKit JS.
         Use `create_mapkit_token()` for browser-side MapKit JS initialization.
+
+        Spec: https://developer.apple.com/documentation/applemapsserverapi/-v1-token
         """
         return self._ensure_token()
 
-    def create_mapkit_token(self) -> str:
+    def create_mapkit_token(
+        self, *, ttl_seconds: int = _DEFAULT_JWT_TTL_SECONDS
+    ) -> str:
         """Return a signed JWT for MapKit JS browser initialization.
 
         MapKit JS requires the raw signed JWT, not the Server API access token.
         Pass this to the `authorizationCallback` done() function.
         If `origin` was set on the client, the token is restricted to that domain.
+
+        :param ttl_seconds: JWT lifetime in seconds (default: 1 hour).
+            Apple does not document a maximum for Maps tokens.
+
+        Spec:
+        https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api
+        https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js
         """
-        return self._create_jwt()
+        return self._create_jwt(ttl_seconds=ttl_seconds)
 
     @_retry_policy
     def _make_request(self, path: str, params: dict[str, str]) -> dict[str, object]:
@@ -362,6 +417,9 @@ class AppleMapsClient:
 
         :param query: Search query (e.g., "coffee", "Apple Park").
         :param near: Location bias as "lat,lng" (maps to searchLocation).
+            Mutually exclusive with lat/lng.
+        :param lat: Latitude for location bias (requires lng).
+        :param lng: Longitude for location bias (requires lat).
         :param categories: Comma-separated POI categories to include (e.g., "MovieTheater").
         :param exclude_categories: Comma-separated POI categories to exclude.
         :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
@@ -380,7 +438,11 @@ class AppleMapsClient:
 
         raw_params: dict[str, object] = {
             "q": query,
-            "searchLocation": kwargs.get("near"),
+            "searchLocation": _search_location(
+                near=kwargs.get("near"),
+                lat=kwargs.get("lat"),
+                lng=kwargs.get("lng"),
+            ),
             "includePoiCategories": _csv(kwargs.get("categories")),
             "excludePoiCategories": _csv(kwargs.get("exclude_categories")),
             "limitToCountries": kwargs.get("limit_to_countries"),
@@ -408,8 +470,15 @@ class AppleMapsClient:
 
         Maps to GET /v1/searchAutocomplete.
 
+        Result count is fixed by Apple; the API has no limit/maxResults parameter.
+        For more results, use search() (supports enable_pagination) or
+        search_completion() to expand a single autocomplete hit.
+
         :param query: Partial address or place name to autocomplete.
         :param near: Location bias as "lat,lng" to prefer nearby results.
+            Mutually exclusive with lat/lng.
+        :param lat: Latitude for location bias (requires lng).
+        :param lng: Longitude for location bias (requires lat).
         :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
         :param lang: BCP 47 language code (default: "en-US").
         :param result_type_filter: Comma-separated result types (e.g., "Address", "Poi").
@@ -428,7 +497,11 @@ class AppleMapsClient:
             f.compact(
                 {
                     "q": query,
-                    "searchLocation": kwargs.get("near"),
+                    "searchLocation": _search_location(
+                        near=kwargs.get("near"),
+                        lat=kwargs.get("lat"),
+                        lng=kwargs.get("lng"),
+                    ),
                     # Note: Apple maps documentation says to use 'limitToCountries' param but it seems to work only with almost full address
                     "limitToCountries": kwargs.get("limit_to_countries"),
                     "lang": kwargs.get("lang"),

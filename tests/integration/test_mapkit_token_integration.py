@@ -55,7 +55,14 @@ class TestMapKitTokenIntegration:
         claims = jwt.decode(token, public_key, algorithms=["ES256"])
         assert claims["iss"] == apple_client.team_id
         assert before <= claims["iat"] <= after
+        assert claims["exp"] - claims["iat"] == 60 * 60
         assert claims["exp"] > after
+
+    def test_custom_ttl(self, apple_client: AppleMapsClient, public_key):
+        ttl_seconds = 2 * 60 * 60
+        token = apple_client.create_mapkit_token(ttl_seconds=ttl_seconds)
+        claims = jwt.decode(token, public_key, algorithms=["ES256"])
+        assert claims["exp"] - claims["iat"] == ttl_seconds
 
     def test_no_origin_claim_by_default(self, apple_client: AppleMapsClient, public_key):
         token = apple_client.create_mapkit_token()
