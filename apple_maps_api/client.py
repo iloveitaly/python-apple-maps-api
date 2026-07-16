@@ -10,7 +10,7 @@ import logging
 import os
 import time
 from collections.abc import Sequence
-from typing import TypedDict, Unpack
+from typing import Required, TypedDict, Unpack, overload
 from urllib.parse import parse_qs, urlparse
 
 import funcy as f
@@ -115,10 +115,10 @@ class ReverseGeocodeOptions(TypedDict, total=False):
     lang: str
 
 
-class SearchOptions(TypedDict, total=False):
-    near: str
-    lat: float
-    lng: float
+# Location bias is optional, but when set must be exactly one of:
+#   near="lat,lng"  OR  lat=... + lng=...
+# Overloads below enforce that for pyright; runtime asserts in _search_location.
+class _SearchOptionsBase(TypedDict, total=False):
     categories: str | Sequence[PoiCategory]
     exclude_categories: str | Sequence[PoiCategory]
     limit_to_countries: str
@@ -133,20 +133,47 @@ class SearchOptions(TypedDict, total=False):
     exclude_address_categories: str | Sequence[AddressCategory]
 
 
-class AutocompleteOptions(TypedDict, total=False):
-    near: str | None
-    lat: float | None
-    lng: float | None
-    limit_to_countries: str | None
-    lang: str | None
-    result_type_filter: str | Sequence[SearchACResultType] | None
-    include_poi_categories: str | Sequence[PoiCategory] | None
-    exclude_poi_categories: str | Sequence[PoiCategory] | None
-    search_region: str | None
-    user_location: str | None
-    search_region_priority: str | None
-    include_address_categories: str | Sequence[AddressCategory] | None
-    exclude_address_categories: str | Sequence[AddressCategory] | None
+class SearchOptionsNear(_SearchOptionsBase, total=False):
+    near: Required[str]
+
+
+class SearchOptionsLatLng(_SearchOptionsBase, total=False):
+    lat: Required[float]
+    lng: Required[float]
+
+
+class SearchOptions(_SearchOptionsBase, total=False):
+    near: str
+    lat: float
+    lng: float
+
+
+class _AutocompleteOptionsBase(TypedDict, total=False):
+    limit_to_countries: str
+    lang: str
+    result_type_filter: str | Sequence[SearchACResultType]
+    include_poi_categories: str | Sequence[PoiCategory]
+    exclude_poi_categories: str | Sequence[PoiCategory]
+    search_region: str
+    user_location: str
+    search_region_priority: str
+    include_address_categories: str | Sequence[AddressCategory]
+    exclude_address_categories: str | Sequence[AddressCategory]
+
+
+class AutocompleteOptionsNear(_AutocompleteOptionsBase, total=False):
+    near: Required[str]
+
+
+class AutocompleteOptionsLatLng(_AutocompleteOptionsBase, total=False):
+    lat: Required[float]
+    lng: Required[float]
+
+
+class AutocompleteOptions(_AutocompleteOptionsBase, total=False):
+    near: str
+    lat: float
+    lng: float
 
 
 class AppleMapsClient:
@@ -410,16 +437,33 @@ class AppleMapsClient:
         raw = self._make_request("/v1/reverseGeocode", params)
         return PlaceResults.model_validate(raw)
 
+    @overload
+    def search(
+        self, query: str, **kwargs: Unpack[SearchOptionsNear]
+    ) -> SearchResponse: ...
+
+    @overload
+    def search(
+        self, query: str, **kwargs: Unpack[SearchOptionsLatLng]
+    ) -> SearchResponse: ...
+
+    @overload
+    def search(
+        self, query: str, **kwargs: Unpack[_SearchOptionsBase]
+    ) -> SearchResponse: ...
+
     def search(self, query: str, **kwargs: Unpack[SearchOptions]) -> SearchResponse:
         """Search for places by name or category.
 
         Maps to GET /v1/search.
 
+        Location bias (optional): pass ``near="lat,lng"`` *or* ``lat=`` + ``lng=``,
+        not both.
+
         :param query: Search query (e.g., "coffee", "Apple Park").
         :param near: Location bias as "lat,lng" (maps to searchLocation).
-            Mutually exclusive with lat/lng.
-        :param lat: Latitude for location bias (requires lng).
-        :param lng: Longitude for location bias (requires lat).
+        :param lat: Latitude for location bias (must pass with lng).
+        :param lng: Longitude for location bias (must pass with lat).
         :param categories: Comma-separated POI categories to include (e.g., "MovieTheater").
         :param exclude_categories: Comma-separated POI categories to exclude.
         :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
@@ -463,6 +507,21 @@ class AppleMapsClient:
         raw = self._make_request("/v1/search", params)
         return SearchResponse.model_validate(raw)
 
+    @overload
+    def autocomplete(
+        self, query: str, **kwargs: Unpack[AutocompleteOptionsNear]
+    ) -> SearchAutocompleteResponse: ...
+
+    @overload
+    def autocomplete(
+        self, query: str, **kwargs: Unpack[AutocompleteOptionsLatLng]
+    ) -> SearchAutocompleteResponse: ...
+
+    @overload
+    def autocomplete(
+        self, query: str, **kwargs: Unpack[_AutocompleteOptionsBase]
+    ) -> SearchAutocompleteResponse: ...
+
     def autocomplete(
         self, query: str, **kwargs: Unpack[AutocompleteOptions]
     ) -> SearchAutocompleteResponse:
@@ -470,15 +529,17 @@ class AppleMapsClient:
 
         Maps to GET /v1/searchAutocomplete.
 
+        Location bias (optional): pass ``near="lat,lng"`` *or* ``lat=`` + ``lng=``,
+        not both.
+
         Result count is fixed by Apple; the API has no limit/maxResults parameter.
         For more results, use search() (supports enable_pagination) or
         search_completion() to expand a single autocomplete hit.
 
         :param query: Partial address or place name to autocomplete.
         :param near: Location bias as "lat,lng" to prefer nearby results.
-            Mutually exclusive with lat/lng.
-        :param lat: Latitude for location bias (requires lng).
-        :param lng: Longitude for location bias (requires lat).
+        :param lat: Latitude for location bias (must pass with lng).
+        :param lng: Longitude for location bias (must pass with lat).
         :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
         :param lang: BCP 47 language code (default: "en-US").
         :param result_type_filter: Comma-separated result types (e.g., "Address", "Poi").
