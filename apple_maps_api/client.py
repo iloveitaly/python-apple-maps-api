@@ -7,6 +7,7 @@ authentication, automatic token management, and retry logic.
 """
 
 import logging
+import os
 import time
 from collections.abc import Sequence
 from typing import TypedDict, Unpack
@@ -163,6 +164,44 @@ class AppleMapsClient:
 
         self._access_token: str | None = None
         self._token_expires_at: float = 0.0
+
+    @classmethod
+    def from_env(cls) -> "AppleMapsClient":
+        """Construct a client from APPLE_MAPS_* environment variables.
+
+        Required:
+        - APPLE_MAPS_TEAM_ID
+        - APPLE_MAPS_KEY_ID
+        - APPLE_MAPS_P8_KEY
+
+        Optional:
+        - APPLE_MAPS_ORIGIN
+        """
+        team_id = os.environ.get("APPLE_MAPS_TEAM_ID", "")
+        key_id = os.environ.get("APPLE_MAPS_KEY_ID", "")
+        private_key = os.environ.get("APPLE_MAPS_P8_KEY", "")
+        origin = os.environ.get("APPLE_MAPS_ORIGIN") or None
+
+        missing = [
+            name
+            for name, value in (
+                ("APPLE_MAPS_TEAM_ID", team_id),
+                ("APPLE_MAPS_KEY_ID", key_id),
+                ("APPLE_MAPS_P8_KEY", private_key),
+            )
+            if not value
+        ]
+        if missing:
+            raise ValueError(
+                f"missing required environment variables: {', '.join(missing)}"
+            )
+
+        return cls(
+            team_id=team_id,
+            key_id=key_id,
+            private_key=private_key,
+            origin=origin,
+        )
 
     def _create_jwt(self) -> str:
         """Build a short-lived ES256-signed JWT used only to call /v1/token.

@@ -6,7 +6,6 @@ These tests require the following environment variables to be set:
 - APPLE_MAPS_P8_KEY
 """
 
-import os
 import time
 
 import jwt
@@ -17,20 +16,14 @@ from apple_maps_api import AppleMapsClient
 
 
 @pytest.fixture
-def credentials() -> dict[str, str]:
-    team_id = os.environ.get("APPLE_MAPS_TEAM_ID", "")
-    key_id = os.environ.get("APPLE_MAPS_KEY_ID", "")
-    private_key = os.environ.get("APPLE_MAPS_P8_KEY", "")
-
-    if not all([team_id, key_id, private_key]):
-        pytest.skip("Apple Maps env vars not set")
-
-    return {"team_id": team_id, "key_id": key_id, "private_key": private_key}
+def apple_client() -> AppleMapsClient:
+    return AppleMapsClient.from_env()
 
 
+# TODO can we document the purpose of this in a docstr?
 @pytest.fixture
-def public_key(credentials: dict[str, str]):
-    pem = credentials["private_key"].strip()
+def public_key(apple_client: AppleMapsClient):
+    pem = apple_client.private_key.strip()
     if not pem.startswith("-----BEGIN"):
         pem = f"-----BEGIN PRIVATE KEY-----\n{pem}\n-----END PRIVATE KEY-----"
     private_key_obj = load_pem_private_key(pem.encode(), password=None)
@@ -38,56 +31,55 @@ def public_key(credentials: dict[str, str]):
 
 
 class TestMapKitTokenIntegration:
-    def test_returns_three_part_jwt(self, credentials: dict[str, str]):
-        client = AppleMapsClient(**credentials)
-        token = client.create_mapkit_token()
+    def test_returns_three_part_jwt(self, apple_client: AppleMapsClient):
+        token = apple_client.create_mapkit_token()
         assert token.count(".") == 2
 
-    def test_header_alg_and_kid(self, credentials: dict[str, str]):
-        client = AppleMapsClient(**credentials)
-        token = client.create_mapkit_token()
+    def test_header_alg_and_kid(self, apple_client: AppleMapsClient):
+        token = apple_client.create_mapkit_token()
         header = jwt.get_unverified_header(token)
         assert header["alg"] == "ES256"
-        assert header["kid"] == credentials["key_id"]
+        assert header["kid"] == apple_client.key_id
 
-    def test_signature_valid(self, credentials: dict[str, str], public_key):
-        client = AppleMapsClient(**credentials)
-        token = client.create_mapkit_token()
+    def test_signature_valid(self, apple_client: AppleMapsClient, public_key):
+        token = apple_client.create_mapkit_token()
         # raises DecodeError / InvalidSignatureError if invalid
         claims = jwt.decode(token, public_key, algorithms=["ES256"])
-        assert claims["iss"] == credentials["team_id"]
+        assert claims["iss"] == apple_client.team_id
 
-    def test_claims_iss_iat_exp(self, credentials: dict[str, str], public_key):
+    def test_claims_iss_iat_exp(self, apple_client: AppleMapsClient, public_key):
         before = int(time.time())
-        client = AppleMapsClient(**credentials)
-        token = client.create_mapkit_token()
+        token = apple_client.create_mapkit_token()
         after = int(time.time())
 
         claims = jwt.decode(token, public_key, algorithms=["ES256"])
-        assert claims["iss"] == credentials["team_id"]
+        assert claims["iss"] == apple_client.team_id
         assert before <= claims["iat"] <= after
         assert claims["exp"] > after
 
-    def test_no_origin_claim_by_default(self, credentials: dict[str, str], public_key):
-        client = AppleMapsClient(**credentials)
-        token = client.create_mapkit_token()
+    def test_no_origin_claim_by_default(self, apple_client: AppleMapsClient, public_key):
+        token = apple_client.create_mapkit_token()
         claims = jwt.decode(token, public_key, algorithms=["ES256"])
         assert "origin" not in claims
 
     def test_origin_claim_included_when_set(
-        self, credentials: dict[str, str], public_key
+        self, apple_client: AppleMapsClient, public_key
     ):
-        client = AppleMapsClient(**credentials, origin="https://example.com")
+        client = AppleMapsClient(
+            team_id=apple_client.team_id,
+            key_id=apple_client.key_id,
+            private_key=apple_client.private_key,
+            origin="https://example.com",
+        )
         token = client.create_mapkit_token()
         claims = jwt.decode(token, public_key, algorithms=["ES256"])
         assert claims["origin"] == "https://example.com"
 
     def test_successive_calls_produce_different_tokens(
-        self, credentials: dict[str, str]
+        self, apple_client: AppleMapsClient
     ):
-        client = AppleMapsClient(**credentials)
-        t1 = client.create_mapkit_token()
+        t1 = apple_client.create_mapkit_token()
         time.sleep(1)
-        t2 = client.create_mapkit_token()
+        t2 = apple_client.create_mapkit_token()
         # iat differs by at least 1s so the signed output must differ
         assert t1 != t2

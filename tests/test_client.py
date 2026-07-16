@@ -62,6 +62,56 @@ class TestAppleMapsClientInit:
         with pytest.raises(ValueError, match="private_key must be provided"):
             AppleMapsClient(team_id="TEAM", key_id="KEY", private_key="")
 
+    def test_from_env_success(self, monkeypatch: pytest.MonkeyPatch):
+        monkeypatch.setenv("APPLE_MAPS_TEAM_ID", "TEAM123456")
+        monkeypatch.setenv("APPLE_MAPS_KEY_ID", "KEY1234567")
+        monkeypatch.setenv("APPLE_MAPS_P8_KEY", TEST_PRIVATE_KEY)
+
+        client = AppleMapsClient.from_env()
+
+        assert client.team_id == "TEAM123456"
+        assert client.key_id == "KEY1234567"
+        assert client.origin is None
+
+    def test_from_env_with_origin(self, monkeypatch: pytest.MonkeyPatch):
+        monkeypatch.setenv("APPLE_MAPS_TEAM_ID", "TEAM123456")
+        monkeypatch.setenv("APPLE_MAPS_KEY_ID", "KEY1234567")
+        monkeypatch.setenv("APPLE_MAPS_P8_KEY", TEST_PRIVATE_KEY)
+        monkeypatch.setenv("APPLE_MAPS_ORIGIN", "https://example.com")
+
+        client = AppleMapsClient.from_env()
+
+        assert client.origin == "https://example.com"
+
+    def test_from_env_one_missing(self, monkeypatch: pytest.MonkeyPatch):
+        monkeypatch.setenv("APPLE_MAPS_TEAM_ID", "TEAM123456")
+        monkeypatch.setenv("APPLE_MAPS_KEY_ID", "KEY1234567")
+        monkeypatch.delenv("APPLE_MAPS_P8_KEY", raising=False)
+
+        with pytest.raises(ValueError, match="APPLE_MAPS_P8_KEY"):
+            AppleMapsClient.from_env()
+
+    def test_from_env_all_missing(self, monkeypatch: pytest.MonkeyPatch):
+        monkeypatch.delenv("APPLE_MAPS_TEAM_ID", raising=False)
+        monkeypatch.delenv("APPLE_MAPS_KEY_ID", raising=False)
+        monkeypatch.delenv("APPLE_MAPS_P8_KEY", raising=False)
+
+        with pytest.raises(
+            ValueError,
+            match="APPLE_MAPS_TEAM_ID.*APPLE_MAPS_KEY_ID.*APPLE_MAPS_P8_KEY",
+        ):
+            AppleMapsClient.from_env()
+
+    def test_from_env_empty_string_counts_as_missing(
+        self, monkeypatch: pytest.MonkeyPatch
+    ):
+        monkeypatch.setenv("APPLE_MAPS_TEAM_ID", "")
+        monkeypatch.setenv("APPLE_MAPS_KEY_ID", "KEY1234567")
+        monkeypatch.setenv("APPLE_MAPS_P8_KEY", TEST_PRIVATE_KEY)
+
+        with pytest.raises(ValueError, match="APPLE_MAPS_TEAM_ID"):
+            AppleMapsClient.from_env()
+
 
 class TestGeocode:
     @respx.mock

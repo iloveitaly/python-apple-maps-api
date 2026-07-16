@@ -6,8 +6,6 @@ These tests require the following environment variables to be set:
 - APPLE_MAPS_P8_KEY
 """
 
-import os
-
 import pytest
 
 from apple_maps_api import AppleMapsClient, geocode_coordinates, geocode_postal_code
@@ -15,16 +13,10 @@ from apple_maps_api import AppleMapsClient, geocode_coordinates, geocode_postal_
 
 @pytest.fixture
 def apple_client() -> AppleMapsClient:
-    team_id = os.environ.get("APPLE_MAPS_TEAM_ID", "")
-    key_id = os.environ.get("APPLE_MAPS_KEY_ID", "")
-    private_key = os.environ.get("APPLE_MAPS_P8_KEY", "")
-
-    if not all([team_id, key_id, private_key]):
-        pytest.skip("Apple Maps env vars not set")
-
-    return AppleMapsClient(team_id=team_id, key_id=key_id, private_key=private_key)
+    return AppleMapsClient.from_env()
 
 
+# TODO too many classes here, let's use top-level test functions instead
 class TestAppleMapsClientIntegration:
     def test_geocode(self, apple_client: AppleMapsClient):
         result = apple_client.geocode("1 Apple Park Way, Cupertino, CA")
