@@ -46,7 +46,7 @@ class TestAppleMapsClientIntegration:
     def test_autocomplete(self, apple_client: AppleMapsClient):
         result = apple_client.autocomplete(
             query="1 Apple Par",
-            country_code="US",
+            limit_to_countries="US",
         )
 
         assert len(result.results) > 0
