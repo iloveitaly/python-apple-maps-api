@@ -1,4 +1,5 @@
 extend-exclude = [
+    "examples",
     "playground",
     "playground.py",
     "tests/conftest.py",

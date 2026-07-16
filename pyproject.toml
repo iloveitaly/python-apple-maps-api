@@ -9,7 +9,6 @@ dependencies = [
     "pydantic>=2.12.3",
     "tenacity>=9.1.2",
     "PyJWT[crypto]>=2.9.0",
-    "funcy>=2.0",
     "httpx2>=2.7.0",
 ]
 
