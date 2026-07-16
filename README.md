@@ -9,7 +9,12 @@ A modern, type-safe Python client for the [Apple Maps Server API](https://develo
 
 There's no python library for the Apple Maps API. Maps is super cheap compared to all of the alternatives, so with AI I figured it wouldn't be too hard to build a client library.
 
-The goal of this library is to provide similar functionality to the radar python client.
+The goal of this library is to provide similar functionality to the radar python client. Here's the main goals:
+
+- **Automatic JWT Management**: Handles signing and periodic refresh of Apple's ES256 tokens.
+- **Type-Safe**: Built with Pydantic models for all API responses, giving you excellent IDE support.
+- **Resilient**: Automatic retries with exponential backoff for transient network and server errors.
+- **Modern**: Uses `httpx` for synchronous requests, with a structure that's ready for future async support.
 
 ## Installation
 
@@ -50,12 +55,13 @@ export APPLE_MAPS_P8_KEY=...   # PEM or raw base64 DER
 # optional: export APPLE_MAPS_ORIGIN=https://example.com
 ```
 
+And then you can source the vars from the env:
+
 ```python
 from apple_maps_api import AppleMapsClient
 
 client = AppleMapsClient.from_env()
 ```
-
 
 ### Geocoding
 
@@ -110,7 +116,7 @@ for place in results.results:
 Provide search completions for a partial query and filter by country:
 
 ```python
-results = client.autocomplete("1 Apple Park", country_code="US")
+results = client.autocomplete("1 Apple Park", limit_to_countries="US")
 
 for completion in results.results:
     print(completion.displayLines)
@@ -278,13 +284,6 @@ All responses are returned as Pydantic models for easy integration and validatio
 - `GeocodeResult` - A simplified, flattened representation of a geocoded location
 - `Place` - Detailed information about a specific location or POI
 - `Address` - Structured address data (street, city, state, etc.)
-
-## Features
-
-- **Automatic JWT Management**: Handles signing and periodic refresh of Apple's ES256 tokens.
-- **Type-Safe**: Built with Pydantic models for all API responses, giving you excellent IDE support.
-- **Resilient**: Automatic retries with exponential backoff for transient network and server errors.
-- **Modern**: Uses `httpx` for synchronous requests, with a structure that's ready for future async support.
 
 ## [MIT License](LICENSE.md)
 

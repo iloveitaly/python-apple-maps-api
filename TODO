@@ -7,8 +7,8 @@
 - [ ] We should expose a simple function to create a sign token for the like what's done in `playground/**/web.vite.config.ts`
 - [ ] we don't need the `search_places` functionality right away
 	- [ ] the exact input param requirements (like country code, etc) can change
-- [ ] use httpx + tenacity for retries
 - [ ] you can use the test suite here for sample data, example coverage, etc https://github.com/iloveitaly/radar-mapping-api/blob/master/tests/test_client.py
 - [ ] ability to filter by country on the autocomplete endpoint
 - [ ] it probably doesn't fit in this repository, but I'd love a JavaScript function which attaches an autocomplete field to an address and then updates the city, state, address, country, etc. with the selected address.
 - [ ] i'd be curious to investigate if there is some sort of address validation API for shipping.
+- [x] use httpx + tenacity for retries
