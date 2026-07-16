@@ -1,6 +1,5 @@
 """Tests for helper functions."""
 
-import httpx
 import pytest
 import respx
 
@@ -27,18 +26,17 @@ def apple_client(monkeypatch: pytest.MonkeyPatch) -> AppleMapsClient:
 
 
 # TODO is there a good reason we shouldn't make this a fixture? or at least mock across TestGeocodePostalCode
-def mock_token() -> respx.Route:
-    return respx.get("https://maps-api.apple.com/v1/token").mock(
-        return_value=httpx.Response(200, json=TOKEN_RESPONSE)
+def mock_token(httpx2_mock: respx.Router) -> respx.Route:
+    return httpx2_mock.get("https://maps-api.apple.com/v1/token").respond(
+        json=TOKEN_RESPONSE
     )
 
 
 class TestGeocodePostalCode:
-    @respx.mock
-    def test_success(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(200, json=SAMPLE_POSTAL_GEOCODE_RESPONSE)
+    def test_success(self, apple_client: AppleMapsClient, httpx2_mock: respx.Router):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(
+            json=SAMPLE_POSTAL_GEOCODE_RESPONSE
         )
 
         result = geocode_postal_code(apple_client, postal_code="95014", country="US")
@@ -53,37 +51,38 @@ class TestGeocodePostalCode:
         assert result.country_code == "US"
         assert result.formatted_address == "Cupertino, CA 95014"
 
-    @respx.mock
-    def test_no_results(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(200, json={"results": []})
+    def test_no_results(self, apple_client: AppleMapsClient, httpx2_mock: respx.Router):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(
+            json={"results": []}
         )
 
         result = geocode_postal_code(apple_client, postal_code="00000", country="US")
 
         assert result is None
 
-    @respx.mock
-    def test_multiple_results(self, apple_client: AppleMapsClient):
-        mock_token()
+    def test_multiple_results(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
         multiple_response = {
             "results": [
                 SAMPLE_POSTAL_GEOCODE_RESPONSE["results"][0],
                 SAMPLE_POSTAL_GEOCODE_RESPONSE["results"][0],
             ]
         }
-        respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(200, json=multiple_response)
+        httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(
+            json=multiple_response
         )
 
         result = geocode_postal_code(apple_client, postal_code="95014", country="US")
 
         assert result is not None
 
-    @respx.mock
-    def test_missing_coordinate_returns_none(self, apple_client: AppleMapsClient):
-        mock_token()
+    def test_missing_coordinate_returns_none(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
         # place with no coordinate field
         response = {
             "results": [
@@ -94,9 +93,7 @@ class TestGeocodePostalCode:
                 }
             ]
         }
-        respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(200, json=response)
-        )
+        httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(json=response)
 
         result = geocode_postal_code(apple_client, postal_code="99999", country="US")
 
@@ -104,11 +101,10 @@ class TestGeocodePostalCode:
 
 
 class TestGeocodeCoordinates:
-    @respx.mock
-    def test_success(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/reverseGeocode").mock(
-            return_value=httpx.Response(200, json=SAMPLE_REVERSE_GEOCODE_RESPONSE)
+    def test_success(self, apple_client: AppleMapsClient, httpx2_mock: respx.Router):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/reverseGeocode").respond(
+            json=SAMPLE_REVERSE_GEOCODE_RESPONSE
         )
 
         result = geocode_coordinates(apple_client, lat=37.3349, lon=-122.0090)
@@ -123,22 +119,22 @@ class TestGeocodeCoordinates:
         assert result.state_code == "CA"
         assert result.country_code == "US"
 
-    @respx.mock
-    def test_no_results(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/reverseGeocode").mock(
-            return_value=httpx.Response(200, json={"results": []})
+    def test_no_results(self, apple_client: AppleMapsClient, httpx2_mock: respx.Router):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/reverseGeocode").respond(
+            json={"results": []}
         )
 
         result = geocode_coordinates(apple_client, lat=0.0, lon=0.0)
 
         assert result is None
 
-    @respx.mock
-    def test_with_street_address(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/reverseGeocode").mock(
-            return_value=httpx.Response(200, json=SAMPLE_REVERSE_GEOCODE_RESPONSE)
+    def test_with_street_address(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/reverseGeocode").respond(
+            json=SAMPLE_REVERSE_GEOCODE_RESPONSE
         )
 
         result = geocode_coordinates(apple_client, lat=37.3349, lon=-122.0090)

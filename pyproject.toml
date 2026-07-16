@@ -6,20 +6,15 @@ keywords = ["apple-maps", "geocoding", "search", "geolocation"]
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "httpx>=0.28.1",
     "pydantic>=2.12.3",
     "tenacity>=9.1.2",
     "PyJWT[crypto]>=2.9.0",
     "funcy>=2.0",
+    "httpx2>=2.7.0",
 ]
 
 authors = [{ name = "Michael Bianco", email = "mike@mikebian.co" }]
 urls = { "Repository" = "https://github.com/iloveitaly/apple-maps-api" }
-
-[project.optional-dependencies]
-sentry = ["sentry-sdk>=2.61.0"]
-
-
 
 [build-system]
 requires = ["uv_build>=0.11.17,<0.12"]
@@ -37,11 +32,11 @@ dev = [
     "coverage>=7.14.1",
     "pytest-cov>=7.0.0",
     "covdefaults>=2.3.0",
-    "respx>=0.22.0",
+    "pytest-httpx2>=1.0.0",
 ]
 
 [tool.pyright]
-exclude = ["examples/", "playground/", "tmp/", ".venv/", "tests/"]
+exclude = ["examples/", "playground/", "tmp/", ".venv/"]
 
 [tool.pytest.ini_options]
 addopts = "--cov --cov-report=term-missing --cov-report=html:tmp/htmlcov"

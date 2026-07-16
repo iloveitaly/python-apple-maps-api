@@ -1,6 +1,6 @@
 """Tests for AppleMapsClient."""
 
-import httpx
+import httpx2
 import pytest
 import respx
 
@@ -32,10 +32,10 @@ def apple_client(monkeypatch: pytest.MonkeyPatch) -> AppleMapsClient:
     return client
 
 
-def mock_token() -> respx.Route:
+def mock_token(httpx2_mock: respx.Router) -> respx.Route:
     """Set up mock for /v1/token endpoint."""
-    return respx.get("https://maps-api.apple.com/v1/token").mock(
-        return_value=httpx.Response(200, json=TOKEN_RESPONSE)
+    return httpx2_mock.get("https://maps-api.apple.com/v1/token").respond(
+        json=TOKEN_RESPONSE
     )
 
 
@@ -114,11 +114,12 @@ class TestAppleMapsClientInit:
 
 
 class TestGeocode:
-    @respx.mock
-    def test_geocode_success(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(200, json=SAMPLE_GEOCODE_RESPONSE)
+    def test_geocode_success(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(
+            json=SAMPLE_GEOCODE_RESPONSE
         )
 
         result = apple_client.geocode("1 Apple Park Way, Cupertino, CA")
@@ -128,11 +129,12 @@ class TestGeocode:
         assert result.results[0].structuredAddress is not None
         assert result.results[0].structuredAddress.locality == "Cupertino"
 
-    @respx.mock
-    def test_geocode_with_params(self, apple_client: AppleMapsClient):
-        mock_token()
-        route = respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(200, json=SAMPLE_GEOCODE_RESPONSE)
+    def test_geocode_with_params(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(
+            json=SAMPLE_GEOCODE_RESPONSE
         )
 
         apple_client.geocode("Apple Park", limit_to_countries="US", lang="en-US")
@@ -149,11 +151,12 @@ class TestGeocode:
 
 
 class TestReverseGeocode:
-    @respx.mock
-    def test_reverse_geocode_success(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/reverseGeocode").mock(
-            return_value=httpx.Response(200, json=SAMPLE_GEOCODE_RESPONSE)
+    def test_reverse_geocode_success(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/reverseGeocode").respond(
+            json=SAMPLE_GEOCODE_RESPONSE
         )
 
         result = apple_client.reverse_geocode((37.3349, -122.0090))
@@ -161,11 +164,12 @@ class TestReverseGeocode:
         assert isinstance(result, PlaceResults)
         assert len(result.results) == 1
 
-    @respx.mock
-    def test_reverse_geocode_with_location(self, apple_client: AppleMapsClient):
-        mock_token()
-        route = respx.get("https://maps-api.apple.com/v1/reverseGeocode").mock(
-            return_value=httpx.Response(200, json=SAMPLE_GEOCODE_RESPONSE)
+    def test_reverse_geocode_with_location(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get("https://maps-api.apple.com/v1/reverseGeocode").respond(
+            json=SAMPLE_GEOCODE_RESPONSE
         )
 
         apple_client.reverse_geocode(Location(latitude=37.3349, longitude=-122.0090))
@@ -176,11 +180,12 @@ class TestReverseGeocode:
 
 
 class TestSearch:
-    @respx.mock
-    def test_search_success(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/search").mock(
-            return_value=httpx.Response(200, json=SAMPLE_SEARCH_RESPONSE)
+    def test_search_success(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/search").respond(
+            json=SAMPLE_SEARCH_RESPONSE
         )
 
         result = apple_client.search(query="Apple Park")
@@ -190,11 +195,12 @@ class TestSearch:
         assert result.results[0].poiCategory == "Landmark"
         assert result.displayMapRegion is not None
 
-    @respx.mock
-    def test_search_with_params(self, apple_client: AppleMapsClient):
-        mock_token()
-        route = respx.get("https://maps-api.apple.com/v1/search").mock(
-            return_value=httpx.Response(200, json=SAMPLE_SEARCH_RESPONSE)
+    def test_search_with_params(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get("https://maps-api.apple.com/v1/search").respond(
+            json=SAMPLE_SEARCH_RESPONSE
         )
 
         apple_client.search(
@@ -211,11 +217,12 @@ class TestSearch:
         assert "includePoiCategories=Cafe" in str(request.url)
         assert "limitToCountries=US" in str(request.url)
 
-    @respx.mock
-    def test_search_with_lat_lng(self, apple_client: AppleMapsClient):
-        mock_token()
-        route = respx.get("https://maps-api.apple.com/v1/search").mock(
-            return_value=httpx.Response(200, json=SAMPLE_SEARCH_RESPONSE)
+    def test_search_with_lat_lng(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get("https://maps-api.apple.com/v1/search").respond(
+            json=SAMPLE_SEARCH_RESPONSE
         )
 
         apple_client.search(query="coffee", lat=37.334, lng=-122.009)
@@ -243,11 +250,12 @@ class TestSearch:
 
 
 class TestAutocomplete:
-    @respx.mock
-    def test_autocomplete_success(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/searchAutocomplete").mock(
-            return_value=httpx.Response(200, json=SAMPLE_AUTOCOMPLETE_RESPONSE)
+    def test_autocomplete_success(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/searchAutocomplete").respond(
+            json=SAMPLE_AUTOCOMPLETE_RESPONSE
         )
 
         result = apple_client.autocomplete(query="1 Apple Par")
@@ -256,12 +264,13 @@ class TestAutocomplete:
         assert len(result.results) == 1
         assert result.results[0].completionUrl is not None
 
-    @respx.mock
-    def test_autocomplete_with_country_filter(self, apple_client: AppleMapsClient):
-        mock_token()
-        route = respx.get("https://maps-api.apple.com/v1/searchAutocomplete").mock(
-            return_value=httpx.Response(200, json=SAMPLE_AUTOCOMPLETE_RESPONSE)
-        )
+    def test_autocomplete_with_country_filter(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get(
+            "https://maps-api.apple.com/v1/searchAutocomplete"
+        ).respond(json=SAMPLE_AUTOCOMPLETE_RESPONSE)
 
         apple_client.autocomplete(
             query="1 Apple",
@@ -274,12 +283,13 @@ class TestAutocomplete:
         assert "limitToCountries=US" in str(request.url)
         assert "resultTypeFilter=Address" in str(request.url)
 
-    @respx.mock
-    def test_autocomplete_with_lat_lng(self, apple_client: AppleMapsClient):
-        mock_token()
-        route = respx.get("https://maps-api.apple.com/v1/searchAutocomplete").mock(
-            return_value=httpx.Response(200, json=SAMPLE_AUTOCOMPLETE_RESPONSE)
-        )
+    def test_autocomplete_with_lat_lng(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get(
+            "https://maps-api.apple.com/v1/searchAutocomplete"
+        ).respond(json=SAMPLE_AUTOCOMPLETE_RESPONSE)
 
         apple_client.autocomplete(query="1 Apple", lat=37.334, lng=-122.009)
 
@@ -302,11 +312,12 @@ class TestAutocomplete:
 
 
 class TestAuthentication:
-    @respx.mock
-    def test_bearer_token_sent(self, apple_client: AppleMapsClient):
-        mock_token()
-        route = respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(200, json=SAMPLE_GEOCODE_RESPONSE)
+    def test_bearer_token_sent(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(
+            json=SAMPLE_GEOCODE_RESPONSE
         )
 
         apple_client.geocode("test")
@@ -315,11 +326,12 @@ class TestAuthentication:
         request = route.calls.last.request
         assert request.headers["Authorization"] == "Bearer test_access_token"
 
-    @respx.mock
-    def test_token_cached(self, apple_client: AppleMapsClient):
-        token_route = mock_token()
-        respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(200, json=SAMPLE_GEOCODE_RESPONSE)
+    def test_token_cached(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        token_route = mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(
+            json=SAMPLE_GEOCODE_RESPONSE
         )
 
         apple_client.geocode("test1")
@@ -328,19 +340,20 @@ class TestAuthentication:
         # /v1/token should only be called once due to caching
         assert token_route.call_count == 1
 
-    @respx.mock
-    def test_create_token(self, apple_client: AppleMapsClient):
-        mock_token()
+    def test_create_token(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
         token = apple_client.create_token()
         assert token == "test_access_token"
 
-    @respx.mock
-    def test_create_mapkit_token_returns_jwt(self, apple_client: AppleMapsClient):
-        token_route = mock_token()
+    def test_create_mapkit_token_returns_jwt(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
         token = apple_client.create_mapkit_token()
-        # must be the raw JWT, not the exchanged access token
+        # must be the raw JWT, not the exchanged access token — no /v1/token call
         assert token == "test_jwt"
-        assert token_route.call_count == 0
+        assert not httpx2_mock.calls
 
     def test_create_mapkit_token_default_ttl(self, monkeypatch: pytest.MonkeyPatch):
         client = AppleMapsClient(
@@ -376,24 +389,26 @@ class TestAuthentication:
 
 
 class TestErrorHandling:
-    @respx.mock
-    def test_http_error_raises(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(500, json={"error": "Server error"})
+    def test_http_error_raises(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(
+            500, json={"error": "Server error"}
         )
 
-        with pytest.raises(httpx.HTTPStatusError):
+        with pytest.raises(httpx2.HTTPStatusError):
             apple_client.geocode("test")
 
-    @respx.mock
-    def test_payment_required_no_retry(self, apple_client: AppleMapsClient):
-        mock_token()
-        respx.get("https://maps-api.apple.com/v1/geocode").mock(
-            return_value=httpx.Response(402, json={"error": "Payment required"})
+    def test_payment_required_no_retry(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        httpx2_mock.get("https://maps-api.apple.com/v1/geocode").respond(
+            402, json={"error": "Payment required"}
         )
 
-        with pytest.raises(httpx.HTTPStatusError) as exc_info:
+        with pytest.raises(httpx2.HTTPStatusError) as exc_info:
             apple_client.geocode("test")
 
         assert exc_info.value.response.status_code == 402

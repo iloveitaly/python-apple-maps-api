@@ -14,7 +14,7 @@ from typing import TypedDict, Unpack
 from urllib.parse import parse_qs, urlparse
 
 import funcy as f
-import httpx
+import httpx2
 import jwt
 from tenacity import (
     before_sleep_log,
@@ -68,7 +68,7 @@ def _search_location(
 
 
 # shared timeout: 10s connect, 30s read
-_TIMEOUT = httpx.Timeout(connect=10, read=30, write=10, pool=10)
+_TIMEOUT = httpx2.Timeout(connect=10, read=30, write=10, pool=10)
 
 # Auth JWT lifetime is client-chosen; Apple does not document a max for Maps Server API.
 # Access tokens from /v1/token are separately ~30 min (Apple-controlled).
@@ -76,16 +76,16 @@ _TIMEOUT = httpx.Timeout(connect=10, read=30, write=10, pool=10)
 _DEFAULT_JWT_TTL_SECONDS = 60 * 60
 
 
-def _is_retryable_httpx_error(exception: BaseException) -> bool:
+def _is_retryable_http_error(exception: BaseException) -> bool:
     """Return True to retry, False to stop.
 
     Retries on network-level errors and HTTP 429/5xx.
     All other 4xx errors are permanent failures and should not be retried.
     """
-    if not isinstance(exception, httpx.HTTPError):
+    if not isinstance(exception, httpx2.HTTPError):
         return False
 
-    if isinstance(exception, httpx.HTTPStatusError):
+    if isinstance(exception, httpx2.HTTPStatusError):
         status = (
             exception.response.status_code if exception.response is not None else None
         )
@@ -97,7 +97,7 @@ def _is_retryable_httpx_error(exception: BaseException) -> bool:
 _retry_policy = retry(
     stop=stop_after_attempt(6),
     wait=wait_exponential(multiplier=1, min=0, max=32),
-    retry=retry_if_exception(_is_retryable_httpx_error),
+    retry=retry_if_exception(_is_retryable_http_error),
     before_sleep=before_sleep_log(log, logging.INFO),
     reraise=True,
 )
@@ -275,7 +275,7 @@ class AppleMapsClient:
 
         Spec: https://developer.apple.com/documentation/applemapsserverapi/-v1-token
         """
-        response = httpx.get(
+        response = httpx2.get(
             f"{self.base_url}/v1/token",
             headers={"Authorization": f"Bearer {auth_jwt}"},
             timeout=_TIMEOUT,
@@ -350,7 +350,7 @@ class AppleMapsClient:
         url = f"{self.base_url}{path}"
         headers = {"Authorization": f"Bearer {token}"}
 
-        response = httpx.get(url, params=params, headers=headers, timeout=_TIMEOUT)
+        response = httpx2.get(url, params=params, headers=headers, timeout=_TIMEOUT)
         response.raise_for_status()
 
         return response.json()
