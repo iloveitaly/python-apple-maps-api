@@ -10,6 +10,6 @@ setup:
 run:
 	uv run python app/main.py
 
-# MapKit token server + React map
+# API server + React UI (map + autocomplete)
 dev:
 	./run.sh

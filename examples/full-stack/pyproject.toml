@@ -4,6 +4,8 @@ version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
     "apple-maps-api",
+    "fastapi>=0.139.2",
+    "uvicorn>=0.51.0",
 ]
 
 [tool.uv]

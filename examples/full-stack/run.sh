@@ -13,8 +13,8 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
-echo "starting MapKit token server on http://127.0.0.1:8765"
-uv run python app/token_server.py &
+echo "starting API server on http://127.0.0.1:8765"
+uv run python app/server.py &
 pids+=($!)
 
 echo "starting React frontend on http://localhost:5173"

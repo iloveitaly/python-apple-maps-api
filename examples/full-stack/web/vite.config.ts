@@ -4,7 +4,7 @@ import { defineConfig } from "vite"
 export default defineConfig({
   plugins: [react()],
   server: {
-    // token_server.py (apple_maps_api.create_mapkit_token)
+    // FastAPI app/server.py (maps-token + autocomplete)
     proxy: {
       "/api": "http://127.0.0.1:8765",
     },
