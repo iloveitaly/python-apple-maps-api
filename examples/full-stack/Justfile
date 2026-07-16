@@ -1,0 +1,15 @@
+set shell := ["zsh", "-ceuB", "-o", "pipefail"]
+set ignore-comments := true
+
+setup:
+	mise install
+	uv sync
+	cd web && pnpm install
+
+# Server API demo (geocode, search, autocomplete, …)
+run:
+	uv run python app/main.py
+
+# MapKit token server + React map
+dev:
+	./run.sh

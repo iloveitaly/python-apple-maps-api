@@ -1,0 +1,13 @@
+[project]
+name = "apple-maps-full-stack-example"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "apple-maps-api",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+apple-maps-api = { path = "../../", editable = true }
