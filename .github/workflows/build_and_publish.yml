@@ -37,6 +37,10 @@ jobs:
           # - macos-latest
         python-version: ["3.14", "3.13", "3.12", "3.11"]
     runs-on: ${{ matrix.os }}
+    env:
+      APPLE_MAPS_TEAM_ID: ${{ secrets.APPLE_MAPS_TEAM_ID }}
+      APPLE_MAPS_KEY_ID: ${{ secrets.APPLE_MAPS_KEY_ID }}
+      APPLE_MAPS_P8_KEY: ${{ secrets.APPLE_MAPS_P8_KEY }}
     steps:
       - uses: actions/checkout@v6
       - uses: jdx/mise-action@v4
