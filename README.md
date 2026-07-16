@@ -22,12 +22,6 @@ The goal of this library is to provide similar functionality to the radar python
 uv add apple-maps-api
 ```
 
-For optional Sentry integration:
-
-```bash
-uv add apple-maps-api[sentry]
-```
-
 ## Usage
 
 ### Basic Setup
@@ -101,6 +95,7 @@ Search for points of interest near a location:
 
 ```python
 results = client.search("pizza", near="37.3346,-122.0090")
+# or: client.search("pizza", lat=37.3346, lng=-122.0090)
 
 for place in results.results:
     print(f"{place.name} - {place.formattedAddressLines}")
@@ -116,7 +111,7 @@ for place in results.results:
 Provide search completions for a partial query and filter by country:
 
 ```python
-results = client.autocomplete("1 Apple Park", limit_to_countries="US")
+results = client.autocomplete("1 Apple Park", limit_to_countries="US", lat=37.3346, lng=-122.0090)
 
 for completion in results.results:
     print(completion.displayLines)
@@ -249,41 +244,6 @@ place = client.reverse_geocode((34.1025226, -118.4167959)).results[0]
 # place.structuredAddress.areasOfInterest         => None
 # place.structuredAddress.dependentLocalities     => ["Beverly Crest"]
 ```
-
-## API Reference
-
-### AppleMapsClient
-
-#### Construction
-
-- `AppleMapsClient(team_id=..., key_id=..., private_key=..., origin=None)` - Construct with explicit credentials
-- `AppleMapsClient.from_env()` - Construct from environment variables:
-  - `APPLE_MAPS_TEAM_ID` (required)
-  - `APPLE_MAPS_KEY_ID` (required)
-  - `APPLE_MAPS_P8_KEY` (required; PEM or raw base64 DER)
-  - `APPLE_MAPS_ORIGIN` (optional; MapKit JS domain restriction)
-
-Raises `ValueError` if any required variable is missing or empty.
-
-#### Methods
-
-- `geocode(query, **options)` - Convert address to coordinates
-- `reverse_geocode(coordinates, **options)` - Convert coordinates to address
-- `search(query, **options)` - Search for places and POIs
-- `autocomplete(query, **options)` - Provide search completions
-- `create_token()` - Fetch a short-lived Apple Maps Server API access token
-- `create_mapkit_token()` - Create a JWT for browser-side MapKit JS
-
-### Models
-
-All responses are returned as Pydantic models for easy integration and validation:
-
-- `PlaceResults` - Response for geocoding and reverse geocoding
-- `SearchResponse` - Response for search requests
-- `SearchAutocompleteResponse` - Response for autocomplete requests
-- `GeocodeResult` - A simplified, flattened representation of a geocoded location
-- `Place` - Detailed information about a specific location or POI
-- `Address` - Structured address data (street, city, state, etc.)
 
 ## [MIT License](LICENSE.md)
 
