@@ -10,6 +10,7 @@ dependencies = [
     "tenacity>=9.1.2",
     "PyJWT[crypto]>=2.9.0",
     "httpx2>=2.7.0",
+    "funcy>=2.0",
 ]
 
 authors = [{ name = "Michael Bianco", email = "mike@mikebian.co" }]
@@ -36,6 +37,8 @@ dev = [
 
 [tool.pyright]
 exclude = ["examples/", "playground/", "tmp/", ".venv/"]
+# Unpack[TypedDict] kwargs: reject unknown keyword arguments
+reportCallIssue = "error"
 
 [tool.pytest.ini_options]
 addopts = "--cov --cov-report=term-missing --cov-report=html:tmp/htmlcov"
