@@ -2,13 +2,19 @@
 
 from pydantic import BaseModel
 
-from apple_maps_api import AppleMapsClient
+from apple_maps_api import AppleMapsClient, MapRegion
 
 # Cupertino area
-NEAR = "37.3317,-122.0307"
-# northLat,eastLng,southLat,westLng
-REGION = "37.5,-121.7,37.1,-122.5"
-APPLE_PARK = (37.334859, -122.0090403)
+LAT = 37.3317
+LNG = -122.0307
+REGION = MapRegion(
+    northLatitude=37.5,
+    eastLongitude=-121.7,
+    southLatitude=37.1,
+    westLongitude=-122.5,
+)
+APPLE_PARK_LAT = 37.334859
+APPLE_PARK_LNG = -122.0090403
 
 
 def show(title: str, result: BaseModel) -> None:
@@ -25,14 +31,17 @@ def main() -> None:
     if ac.results:
         show("search_completion", client.search_completion(ac.results[0]))
 
-    show("search (near)", client.search("1 Apple Park Way", near=NEAR))
+    show("search (lat/lng)", client.search("1 Apple Park Way", lat=LAT, lng=LNG))
     show("search (region)", client.search("Apple Park", search_region=REGION))
     show(
-        "search (user_location)",
-        client.search("1 Apple Park Way", user_location=NEAR),
+        "search (user lat/lng)",
+        client.search("1 Apple Park Way", user_lat=LAT, user_lng=LNG),
     )
     show("geocode", client.geocode("1 Apple Park Way, Cupertino, CA"))
-    show("reverse_geocode", client.reverse_geocode(APPLE_PARK))
+    show(
+        "reverse_geocode",
+        client.reverse_geocode(lat=APPLE_PARK_LAT, lng=APPLE_PARK_LNG),
+    )
 
 
 if __name__ == "__main__":
