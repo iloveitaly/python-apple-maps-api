@@ -119,6 +119,16 @@ class SearchACResultType(StrEnum):
     query = "query"
 
 
+class SearchRegionPriority(StrEnum):
+    """Importance of searchRegion for /v1/search and /v1/searchAutocomplete.
+
+    Apple possible values: default, required.
+    """
+
+    default = "default"
+    required = "required"
+
+
 class Location(BaseModel):
     """A coordinate pair from Apple Maps API.
 
@@ -195,10 +205,11 @@ class Place(BaseModel):
 class SearchPlace(Place):
     """Extended Place returned by /v1/search with POI category info.
 
-    poiCategory: point-of-interest category (e.g. "Restaurant", "MovieTheater")
+    poiCategory: point-of-interest category (e.g. Restaurant, MovieTheater).
+    Unknown values from Apple fail validation so we notice and add support.
     """
 
-    poiCategory: str | None = None
+    poiCategory: PoiCategory | None = None
 
 
 class PlaceResults(BaseModel):

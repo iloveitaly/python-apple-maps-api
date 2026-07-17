@@ -27,11 +27,12 @@ from tenacity import (
 from apple_maps_api.models import (
     AddressCategory,
     AutocompleteResult,
-    Location,
+    MapRegion,
     PlaceResults,
     PoiCategory,
     SearchACResultType,
     SearchAutocompleteResponse,
+    SearchRegionPriority,
     SearchResponse,
     SearchResultType,
     TokenResponse,
@@ -41,7 +42,7 @@ log = logging.getLogger(__name__)
 
 
 def _csv(value: str | Sequence | None) -> str | None:
-    """Serialize a plain string or a sequence of StrEnum values to a comma-separated string."""
+    """Serialize a string or sequence of values to Apple's comma-separated form."""
     if value is None:
         return None
     if isinstance(value, str):
@@ -49,22 +50,28 @@ def _csv(value: str | Sequence | None) -> str | None:
     return ",".join(str(v) for v in value)
 
 
-def _search_location(
+def _lat_lng_to_apple_str(
     *,
-    near: str | None = None,
     lat: float | None = None,
     lng: float | None = None,
 ) -> str | None:
-    """Resolve searchLocation from near="lat,lng" or separate lat/lng floats."""
-    if near is not None:
-        assert lat is None and lng is None, "pass near or lat/lng, not both"
-        return near
-
+    """Serialize an optional lat/lng pair to Apple's 'lat,lng' string form."""
     if lat is None and lng is None:
         return None
 
     assert lat is not None and lng is not None, "lat and lng must both be provided"
     return f"{lat},{lng}"
+
+
+def _search_region(region: MapRegion | None) -> str | None:
+    """Serialize MapRegion to Apple's searchRegion form: northLat,eastLng,southLat,westLng."""
+    if region is None:
+        return None
+
+    return (
+        f"{region.northLatitude},{region.eastLongitude},"
+        f"{region.southLatitude},{region.westLongitude}"
+    )
 
 
 # shared timeout: 10s connect, 30s read
@@ -103,75 +110,117 @@ _retry_policy = retry(
 )
 
 
-class GeocodeOptions(TypedDict, total=False):
-    limit_to_countries: str
+class _GeocodeOptionsBase(TypedDict, total=False):
+    """Shared optional kwargs for :meth:`AppleMapsClient.geocode`.
+
+    Location params (all optional; different roles):
+
+    - ``lat`` / ``lng``: app-defined point hint; sent as Apple's
+      ``searchLocation`` (must pass both). Primary geographic bias.
+    - ``search_region``: app-defined bounding-box hint as :class:`MapRegion`.
+    - ``user_lat`` / ``user_lng``: the *user's* current position (must pass both).
+      Used for ranking/relevance; if ``lat``/``lng`` are omitted, some Apple
+      endpoints may fall back to user position as the search hint.
+    """
+
+    limit_to_countries: str | Sequence[str]
     lang: str
-    search_location: str
-    search_region: str
-    user_location: str
+    search_region: MapRegion
+    user_lat: float
+    user_lng: float
 
 
-class ReverseGeocodeOptions(TypedDict, total=False):
-    lang: str
+class GeocodeOptionsLatLng(_GeocodeOptionsBase, total=False):
+    """Geocode options with required ``lat`` and ``lng`` location bias."""
+
+    lat: Required[float]
+    lng: Required[float]
 
 
-# Location bias is optional, but when set must be exactly one of:
-#   near="lat,lng"  OR  lat=... + lng=...
-# Overloads below enforce that for pyright; runtime asserts in _search_location.
+class GeocodeOptions(_GeocodeOptionsBase, total=False):
+    """All optional kwargs for :meth:`AppleMapsClient.geocode`."""
+
+    lat: float
+    lng: float
+
+
+# Location bias is optional; when set both lat and lng are required.
+# Overloads below enforce that for pyright; runtime asserts in _lat_lng_to_apple_str.
 class _SearchOptionsBase(TypedDict, total=False):
-    categories: str | Sequence[PoiCategory]
-    exclude_categories: str | Sequence[PoiCategory]
-    limit_to_countries: str
+    """Shared optional kwargs for :meth:`AppleMapsClient.search`.
+
+    Location params (all optional; different roles):
+
+    - ``lat`` / ``lng``: app-defined point hint; sent as Apple's
+      ``searchLocation`` (must pass both). Primary geographic bias —
+      "search near this map point".
+    - ``search_region``: app-defined bounding-box hint as :class:`MapRegion`.
+    - ``user_lat`` / ``user_lng``: the *user's* current position (must pass both).
+      Used for ranking/relevance; Search may fall back to it as
+      ``searchLocation`` when ``lat``/``lng`` are omitted.
+    """
+
+    categories: str | Sequence[str | PoiCategory]
+    exclude_categories: str | Sequence[str | PoiCategory]
+    limit_to_countries: str | Sequence[str]
     lang: str
-    result_type_filter: str | Sequence[SearchResultType]
-    search_region: str
-    user_location: str
-    search_region_priority: str
+    result_type_filter: str | Sequence[str | SearchResultType]
+    search_region: MapRegion
+    user_lat: float
+    user_lng: float
+    search_region_priority: SearchRegionPriority | str
     enable_pagination: bool
     page_token: str
-    include_address_categories: str | Sequence[AddressCategory]
-    exclude_address_categories: str | Sequence[AddressCategory]
-
-
-class SearchOptionsNear(_SearchOptionsBase, total=False):
-    near: Required[str]
+    include_address_categories: str | Sequence[str | AddressCategory]
+    exclude_address_categories: str | Sequence[str | AddressCategory]
 
 
 class SearchOptionsLatLng(_SearchOptionsBase, total=False):
+    """Search options with required ``lat`` and ``lng`` location bias."""
+
     lat: Required[float]
     lng: Required[float]
 
 
 class SearchOptions(_SearchOptionsBase, total=False):
-    near: str
+    """All optional kwargs for :meth:`AppleMapsClient.search`."""
+
     lat: float
     lng: float
 
 
 class _AutocompleteOptionsBase(TypedDict, total=False):
-    limit_to_countries: str
+    """Shared optional kwargs for :meth:`AppleMapsClient.autocomplete`.
+
+    Location params match search (see :class:`_SearchOptionsBase`):
+    ``lat``/``lng`` → ``searchLocation`` bias; ``search_region`` as MapRegion;
+    ``user_lat``/``user_lng`` is the user's position (ranking; may fall back as
+    ``searchLocation`` when lat/lng are omitted).
+    """
+
+    limit_to_countries: str | Sequence[str]
     lang: str
-    result_type_filter: str | Sequence[SearchACResultType]
-    include_poi_categories: str | Sequence[PoiCategory]
-    exclude_poi_categories: str | Sequence[PoiCategory]
-    search_region: str
-    user_location: str
-    search_region_priority: str
-    include_address_categories: str | Sequence[AddressCategory]
-    exclude_address_categories: str | Sequence[AddressCategory]
-
-
-class AutocompleteOptionsNear(_AutocompleteOptionsBase, total=False):
-    near: Required[str]
+    result_type_filter: str | Sequence[str | SearchACResultType]
+    include_poi_categories: str | Sequence[str | PoiCategory]
+    exclude_poi_categories: str | Sequence[str | PoiCategory]
+    search_region: MapRegion
+    user_lat: float
+    user_lng: float
+    search_region_priority: SearchRegionPriority | str
+    include_address_categories: str | Sequence[str | AddressCategory]
+    exclude_address_categories: str | Sequence[str | AddressCategory]
 
 
 class AutocompleteOptionsLatLng(_AutocompleteOptionsBase, total=False):
+    """Autocomplete options with required ``lat`` and ``lng`` location bias."""
+
     lat: Required[float]
     lng: Required[float]
 
 
 class AutocompleteOptions(_AutocompleteOptionsBase, total=False):
-    near: str
+    """All optional kwargs for :meth:`AppleMapsClient.autocomplete`."""
+
     lat: float
     lng: float
 
@@ -382,17 +431,33 @@ class AppleMapsClient:
 
         return response.json()
 
+    @overload
+    def geocode(
+        self, query: str, **kwargs: Unpack[GeocodeOptionsLatLng]
+    ) -> PlaceResults: ...
+
+    @overload
+    def geocode(
+        self, query: str, **kwargs: Unpack[_GeocodeOptionsBase]
+    ) -> PlaceResults: ...
+
     def geocode(self, query: str, **kwargs: Unpack[GeocodeOptions]) -> PlaceResults:
         """Convert an address string to coordinates.
 
         Maps to GET /v1/geocode.
 
         :param query: Address to geocode (e.g., "1 Apple Park Way").
-        :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
+        :param limit_to_countries: ISO 3166-1 alpha-2 country codes to limit results
+            (e.g. ``["US", "CA"]``).
         :param lang: BCP 47 language code (default: "en-US").
-        :param search_location: Lat/lng hint for search bias (e.g., "37.78,-122.42").
-        :param search_region: Bounding box hint as "northLat,eastLng,southLat,westLng".
-        :param user_location: User's current location as "lat,lng".
+        :param lat: Latitude for app-defined search bias (must pass with lng).
+            Sent as Apple's ``searchLocation``.
+        :param lng: Longitude for app-defined search bias (must pass with lat).
+        :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
+        :param user_lat: Latitude of the user's position (must pass with user_lng).
+            Used for ranking/relevance; if ``lat``/``lng`` are omitted, some
+            endpoints may fall back to this as the search hint.
+        :param user_lng: Longitude of the user's position (must pass with user_lat).
         """
         if not query:
             raise ValueError("query must be provided.")
@@ -401,11 +466,17 @@ class AppleMapsClient:
             f.compact(
                 {
                     "q": query,
-                    "limitToCountries": kwargs.get("limit_to_countries"),
+                    "limitToCountries": _csv(kwargs.get("limit_to_countries")),
                     "lang": kwargs.get("lang"),
-                    "searchLocation": kwargs.get("search_location"),
-                    "searchRegion": kwargs.get("search_region"),
-                    "userLocation": kwargs.get("user_location"),
+                    "searchLocation": _lat_lng_to_apple_str(
+                        lat=kwargs.get("lat"),
+                        lng=kwargs.get("lng"),
+                    ),
+                    "searchRegion": _search_region(kwargs.get("search_region")),
+                    "userLocation": _lat_lng_to_apple_str(
+                        lat=kwargs.get("user_lat"),
+                        lng=kwargs.get("user_lng"),
+                    ),
                 }
             )
         )
@@ -415,32 +486,23 @@ class AppleMapsClient:
 
     def reverse_geocode(
         self,
-        coordinates: tuple[float, float] | Location,
-        **kwargs: Unpack[ReverseGeocodeOptions],
+        *,
+        lat: float,
+        lng: float,
+        lang: str | None = None,
     ) -> PlaceResults:
         """Convert coordinates to an address.
 
         Maps to GET /v1/reverseGeocode.
 
-        :param coordinates: (latitude, longitude) tuple or Location object.
+        :param lat: Latitude of the point to reverse geocode.
+        :param lng: Longitude of the point to reverse geocode.
         :param lang: BCP 47 language code (default: "en-US").
         """
-        if isinstance(coordinates, Location):
-            loc_str = f"{coordinates.latitude},{coordinates.longitude}"
-        else:
-            loc_str = f"{coordinates[0]},{coordinates[1]}"
-
-        params: dict[str, str] = dict(
-            f.compact({"loc": loc_str, "lang": kwargs.get("lang")})
-        )
+        params: dict[str, str] = dict(f.compact({"loc": f"{lat},{lng}", "lang": lang}))
 
         raw = self._make_request("/v1/reverseGeocode", params)
         return PlaceResults.model_validate(raw)
-
-    @overload
-    def search(
-        self, query: str, **kwargs: Unpack[SearchOptionsNear]
-    ) -> SearchResponse: ...
 
     @overload
     def search(
@@ -457,43 +519,50 @@ class AppleMapsClient:
 
         Maps to GET /v1/search.
 
-        Location bias (optional): pass ``near="lat,lng"`` *or* ``lat=`` + ``lng=``,
-        not both.
+        Location bias (optional): pass ``lat=`` and ``lng=`` together.
 
         :param query: Search query (e.g., "coffee", "Apple Park").
-        :param near: Location bias as "lat,lng" (maps to searchLocation).
-        :param lat: Latitude for location bias (must pass with lng).
-        :param lng: Longitude for location bias (must pass with lat).
-        :param categories: Comma-separated POI categories to include (e.g., "MovieTheater").
-        :param exclude_categories: Comma-separated POI categories to exclude.
-        :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
+        :param lat: Latitude for app-defined search bias (must pass with lng).
+            Sent as Apple's ``searchLocation`` — "search near this map point".
+        :param lng: Longitude for app-defined search bias (must pass with lat).
+        :param categories: POI categories to include (e.g. ``["MovieTheater", "Cafe"]``).
+        :param exclude_categories: POI categories to exclude (e.g. ``["Parking"]``).
+        :param limit_to_countries: ISO 3166-1 alpha-2 country codes
+            (e.g. ``["US", "CA"]``).
         :param lang: BCP 47 language code (default: "en-US").
-        :param result_type_filter: Comma-separated result types (e.g., "Poi", "Address").
-        :param search_region: Bounding box hint as "northLat,eastLng,southLat,westLng".
-        :param user_location: User's current location as "lat,lng".
-        :param search_region_priority: "default" or "required".
+        :param result_type_filter: Result types (e.g. ``["Poi", "Address"]``).
+        :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
+        :param user_lat: Latitude of the user's position (must pass with user_lng).
+            Used for ranking/relevance; Search may fall back to it as
+            ``searchLocation`` when ``lat``/``lng`` are omitted.
+        :param user_lng: Longitude of the user's position (must pass with user_lat).
+        :param search_region_priority: Importance of ``search_region``
+            (:class:`SearchRegionPriority` or ``"default"`` / ``"required"``).
         :param enable_pagination: Request paginated results.
         :param page_token: Token identifying which page of results to return.
-        :param include_address_categories: Comma-separated AddressCategory values to include.
-        :param exclude_address_categories: Comma-separated AddressCategory values to exclude.
+        :param include_address_categories: Address categories to include
+            (e.g. ``["AdministrativeArea"]``).
+        :param exclude_address_categories: Address categories to exclude.
         """
         if not query:
             raise ValueError("query must be provided.")
 
         raw_params: dict[str, object] = {
             "q": query,
-            "searchLocation": _search_location(
-                near=kwargs.get("near"),
+            "searchLocation": _lat_lng_to_apple_str(
                 lat=kwargs.get("lat"),
                 lng=kwargs.get("lng"),
             ),
             "includePoiCategories": _csv(kwargs.get("categories")),
             "excludePoiCategories": _csv(kwargs.get("exclude_categories")),
-            "limitToCountries": kwargs.get("limit_to_countries"),
+            "limitToCountries": _csv(kwargs.get("limit_to_countries")),
             "lang": kwargs.get("lang"),
             "resultTypeFilter": _csv(kwargs.get("result_type_filter")),
-            "searchRegion": kwargs.get("search_region"),
-            "userLocation": kwargs.get("user_location"),
+            "searchRegion": _search_region(kwargs.get("search_region")),
+            "userLocation": _lat_lng_to_apple_str(
+                lat=kwargs.get("user_lat"),
+                lng=kwargs.get("user_lng"),
+            ),
             "searchRegionPriority": kwargs.get("search_region_priority"),
             "pageToken": kwargs.get("page_token"),
             "includeAddressCategories": _csv(kwargs.get("include_address_categories")),
@@ -506,11 +575,6 @@ class AppleMapsClient:
 
         raw = self._make_request("/v1/search", params)
         return SearchResponse.model_validate(raw)
-
-    @overload
-    def autocomplete(
-        self, query: str, **kwargs: Unpack[AutocompleteOptionsNear]
-    ) -> SearchAutocompleteResponse: ...
 
     @overload
     def autocomplete(
@@ -529,27 +593,32 @@ class AppleMapsClient:
 
         Maps to GET /v1/searchAutocomplete.
 
-        Location bias (optional): pass ``near="lat,lng"`` *or* ``lat=`` + ``lng=``,
-        not both.
+        Location bias (optional): pass ``lat=`` and ``lng=`` together.
 
         Result count is fixed by Apple; the API has no limit/maxResults parameter.
         For more results, use search() (supports enable_pagination) or
         search_completion() to expand a single autocomplete hit.
 
         :param query: Partial address or place name to autocomplete.
-        :param near: Location bias as "lat,lng" to prefer nearby results.
-        :param lat: Latitude for location bias (must pass with lng).
-        :param lng: Longitude for location bias (must pass with lat).
-        :param limit_to_countries: Comma-separated ISO 3166-1 alpha-2 country codes to limit results.
+        :param lat: Latitude for app-defined search bias (must pass with lng).
+            Sent as Apple's ``searchLocation`` — "search near this map point".
+        :param lng: Longitude for app-defined search bias (must pass with lat).
+        :param limit_to_countries: ISO 3166-1 alpha-2 country codes
+            (e.g. ``["US", "CA"]``).
         :param lang: BCP 47 language code (default: "en-US").
-        :param result_type_filter: Comma-separated result types (e.g., "Address", "Poi").
-        :param include_poi_categories: Comma-separated POI categories to include.
-        :param exclude_poi_categories: Comma-separated POI categories to exclude.
-        :param search_region: Bounding box hint as "northLat,eastLng,southLat,westLng".
-        :param user_location: User's current location as "lat,lng".
-        :param search_region_priority: "default" or "required".
-        :param include_address_categories: Comma-separated AddressCategory values to include.
-        :param exclude_address_categories: Comma-separated AddressCategory values to exclude.
+        :param result_type_filter: Result types (e.g. ``["Address", "Poi"]``).
+        :param include_poi_categories: POI categories to include
+            (e.g. ``["Cafe"]``).
+        :param exclude_poi_categories: POI categories to exclude.
+        :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
+        :param user_lat: Latitude of the user's position (must pass with user_lng).
+            Used for ranking/relevance; may fall back as ``searchLocation``
+            when ``lat``/``lng`` are omitted.
+        :param user_lng: Longitude of the user's position (must pass with user_lat).
+        :param search_region_priority: Importance of ``search_region``
+            (:class:`SearchRegionPriority` or ``"default"`` / ``"required"``).
+        :param include_address_categories: Address categories to include.
+        :param exclude_address_categories: Address categories to exclude.
         """
         if not query:
             raise ValueError("query must be provided.")
@@ -558,19 +627,21 @@ class AppleMapsClient:
             f.compact(
                 {
                     "q": query,
-                    "searchLocation": _search_location(
-                        near=kwargs.get("near"),
+                    "searchLocation": _lat_lng_to_apple_str(
                         lat=kwargs.get("lat"),
                         lng=kwargs.get("lng"),
                     ),
                     # Note: Apple maps documentation says to use 'limitToCountries' param but it seems to work only with almost full address
-                    "limitToCountries": kwargs.get("limit_to_countries"),
+                    "limitToCountries": _csv(kwargs.get("limit_to_countries")),
                     "lang": kwargs.get("lang"),
                     "resultTypeFilter": _csv(kwargs.get("result_type_filter")),
                     "includePoiCategories": _csv(kwargs.get("include_poi_categories")),
                     "excludePoiCategories": _csv(kwargs.get("exclude_poi_categories")),
-                    "searchRegion": kwargs.get("search_region"),
-                    "userLocation": kwargs.get("user_location"),
+                    "searchRegion": _search_region(kwargs.get("search_region")),
+                    "userLocation": _lat_lng_to_apple_str(
+                        lat=kwargs.get("user_lat"),
+                        lng=kwargs.get("user_lng"),
+                    ),
                     "searchRegionPriority": kwargs.get("search_region_priority"),
                     "includeAddressCategories": _csv(
                         kwargs.get("include_address_categories")

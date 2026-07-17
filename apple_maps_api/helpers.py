@@ -119,7 +119,7 @@ def geocode_coordinates(
         GeocodeResult with lat, lon, zip_code, city, and state information.
         Returns None if geocoding fails.
     """
-    location_result = client.reverse_geocode((lat, lon))
+    location_result = client.reverse_geocode(lat=lat, lng=lon)
 
     if len(location_result.results) == 0:
         _log_geocode_event(
