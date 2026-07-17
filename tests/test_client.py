@@ -296,6 +296,22 @@ class TestSearch:
         with pytest.raises(ValueError, match="query must be provided"):
             apple_client.search(query="")
 
+    def test_search_with_page_token_only(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get("https://maps-api.apple.com/v1/search").respond(
+            json=SAMPLE_SEARCH_RESPONSE
+        )
+
+        apple_client.search(page_token="opaque-token")
+
+        assert route.called
+        request = route.calls.last.request
+        assert "pageToken=opaque-token" in str(request.url)
+        assert "q=" not in str(request.url)
+        assert "enablePagination" not in str(request.url)
+
 
 class TestAutocomplete:
     def test_autocomplete_success(
