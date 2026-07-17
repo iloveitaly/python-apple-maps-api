@@ -221,15 +221,31 @@ class PlaceResults(BaseModel):
     results: list[Place]
 
 
+class PaginationInfo(BaseModel):
+    """Pagination metadata from /v1/search when enablePagination is true.
+
+    nextPageToken / prevPageToken: opaque tokens for pageToken on the next request
+    totalPageCount: total pages available
+    totalResults: total matching results
+    """
+
+    nextPageToken: str | None = None
+    prevPageToken: str | None = None
+    totalPageCount: int | float | None = None
+    totalResults: int | float | None = None
+
+
 class SearchResponse(BaseModel):
     """Response from /v1/search.
 
     results: list of SearchPlace objects with optional POI category
     displayMapRegion: suggested map viewport encompassing all results
+    paginationInfo: present when the request set enablePagination
     """
 
     results: list[SearchPlace]
     displayMapRegion: MapRegion | None = None
+    paginationInfo: PaginationInfo | None = None
 
 
 class AutocompleteResult(BaseModel):

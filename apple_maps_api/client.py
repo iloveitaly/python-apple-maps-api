@@ -511,17 +511,24 @@ class AppleMapsClient:
 
     @overload
     def search(
-        self, query: str, **kwargs: Unpack[_SearchOptionsBase]
+        self, query: str = "", **kwargs: Unpack[_SearchOptionsBase]
     ) -> SearchResponse: ...
 
-    def search(self, query: str, **kwargs: Unpack[SearchOptions]) -> SearchResponse:
+    def search(
+        self, query: str = "", **kwargs: Unpack[SearchOptions]
+    ) -> SearchResponse:
         """Search for places by name or category.
 
         Maps to GET /v1/search.
 
         Location bias (optional): pass ``lat=`` and ``lng=`` together.
 
-        :param query: Search query (e.g., "coffee", "Apple Park").
+        For page 2+, pass only ``page_token`` from a prior response's
+        ``paginationInfo.nextPageToken``. Apple rejects other search params
+        (including ``q`` and ``enablePagination``) on token requests.
+
+        :param query: Search query (e.g., "coffee", "Apple Park"). Required
+            unless ``page_token`` is set.
         :param lat: Latitude for app-defined search bias (must pass with lng).
             Sent as Apple's ``searchLocation`` — "search near this map point".
         :param lng: Longitude for app-defined search bias (must pass with lat).
@@ -538,12 +545,19 @@ class AppleMapsClient:
         :param user_lng: Longitude of the user's position (must pass with user_lat).
         :param search_region_priority: Importance of ``search_region``
             (:class:`SearchRegionPriority` or ``"default"`` / ``"required"``).
-        :param enable_pagination: Request paginated results.
-        :param page_token: Token identifying which page of results to return.
+        :param enable_pagination: Request paginated results (first page only).
+        :param page_token: Token from ``paginationInfo`` for a subsequent page.
+            When set, sent alone — do not combine with query or other filters.
         :param include_address_categories: Address categories to include
             (e.g. ``["AdministrativeArea"]``).
         :param exclude_address_categories: Address categories to exclude.
         """
+        page_token = kwargs.get("page_token")
+        if page_token:
+            # Apple: pageToken requests must not include q, enablePagination, etc.
+            raw = self._make_request("/v1/search", {"pageToken": page_token})
+            return SearchResponse.model_validate(raw)
+
         if not query:
             raise ValueError("query must be provided.")
 
@@ -564,7 +578,6 @@ class AppleMapsClient:
                 lng=kwargs.get("user_lng"),
             ),
             "searchRegionPriority": kwargs.get("search_region_priority"),
-            "pageToken": kwargs.get("page_token"),
             "includeAddressCategories": _csv(kwargs.get("include_address_categories")),
             "excludeAddressCategories": _csv(kwargs.get("exclude_address_categories")),
         }
