@@ -16,6 +16,13 @@ The goal of this library is to provide similar functionality to the radar python
 - **Resilient**: Automatic retries with exponential backoff for transient network and server errors.
 - **Modern**: Uses `httpx` for synchronous requests, with a structure that's ready for future async support.
 
+## Full-stack Example
+
+See [`examples/full-stack/`](examples/full-stack/) for a runnable FastAPI + React/MapKit JS app that demonstrates:
+
+- Minting MapKit JS tokens server-side (`create_mapkit_token`) and rendering an interactive map
+- Address autocomplete via this client, proxied through a small FastAPI API
+
 ## Installation
 
 ```bash
@@ -57,6 +64,29 @@ from apple_maps_api import AppleMapsClient
 client = AppleMapsClient.from_env()
 ```
 
+### Generating a Long-lived Frontend Token
+
+MapKit JS needs a signed JWT (not the Server API access token). Use `create_mapkit_token()`:
+
+```python
+from apple_maps_api import AppleMapsClient
+
+client = AppleMapsClient.from_env()
+
+# default TTL is 1 hour — fine for production token endpoints
+token = client.create_mapkit_token()
+
+# long-lived token for local FE work (e.g. 30 days)
+token = client.create_mapkit_token(ttl_seconds=30 * 24 * 60 * 60)
+print(token)
+```
+
+Paste the printed JWT into MapKit JS / [mapkit-react](https://github.com/Nicolapps/mapkit-react) during development so you do not need a backend token endpoint.
+
+Optional domain lock: set `origin` on the client (or `APPLE_MAPS_ORIGIN`) so the token only works from that origin (e.g. `http://localhost:5173`). Omit `origin` for unrestricted local play.
+
+Do not ship long-lived tokens in production frontend builds — mint short-lived tokens from your server instead (see [`examples/full-stack/`](examples/full-stack/)).
+
 ### Geocoding
 
 Convert an address string to coordinates:
@@ -79,7 +109,7 @@ for place in results.results:
 Convert coordinates back to a structured address:
 
 ```python
-results = client.reverse_geocode((37.3346, -122.0090))
+results = client.reverse_geocode(lat=37.3346, lng=-122.0090)
 
 if results.results:
     print(results.results[0].formattedAddressLines)
@@ -94,8 +124,7 @@ if results.results:
 Search for points of interest near a location:
 
 ```python
-results = client.search("pizza", near="37.3346,-122.0090")
-# or: client.search("pizza", lat=37.3346, lng=-122.0090)
+results = client.search("pizza", lat=37.3346, lng=-122.0090)
 
 for place in results.results:
     print(f"{place.name} - {place.formattedAddressLines}")
@@ -111,7 +140,12 @@ for place in results.results:
 Provide search completions for a partial query and filter by country:
 
 ```python
-results = client.autocomplete("1 Apple Park", limit_to_countries="US", lat=37.3346, lng=-122.0090)
+results = client.autocomplete(
+    "1 Apple Park",
+    limit_to_countries=["US"],
+    lat=37.3346,
+    lng=-122.0090,
+)
 
 for completion in results.results:
     print(completion.displayLines)
@@ -119,6 +153,47 @@ for completion in results.results:
 # results.results[0].displayLines => ["1 Apple Park Way", "Cupertino, CA, United States"]
 # results.results[1].displayLines => ["1 Apple Hill Dr", "Natick, MA, United States"]
 # results.results[0].completionUrl => "/v1/search?q=1%20Apple%20Park%20Way..."
+```
+
+Multi-value filters (countries, categories, result types, …) accept a list; a single string still works.
+
+### Importance of Lat/Lng Hinting for Result Relevance
+
+Always pass `lat`/`lng`. Autocomplete ranking is heavily biased by location — without it you get scattered results across the country for common street names. For server-side autocomplete, resolve the user's approximate location from their IP:
+
+1. Get the client public IP with [fastapi-ipware](https://github.com/iloveitaly/fastapi-ipware)
+2. Look up lat/lng via [observabilitystack/geoip-api](https://github.com/observabilitystack/geoip-api) (`ghcr.io/observabilitystack/geoip-api:latest`)
+
+### Location Bias Options
+
+Search, autocomplete, and geocode share the same location-hint shape:
+
+- **`lat` / `lng`** — app-defined search bias (Apple `searchLocation`). Prefer nearby results around this map point.
+- **`user_lat` / `user_lng`** — the user's current position (Apple `userLocation`). Used for ranking; if `lat`/`lng` are omitted, some endpoints may fall back to this.
+- **`search_region`** — bounding-box hint as a `MapRegion` (Apple `searchRegion`).
+- **`search_region_priority`** — `SearchRegionPriority.default` or `.required` (or the strings `"default"` / `"required"`).
+
+```python
+from apple_maps_api import MapRegion, SearchRegionPriority
+
+region = MapRegion(
+    northLatitude=37.5,
+    eastLongitude=-121.7,
+    southLatitude=37.1,
+    westLongitude=-122.5,
+)
+
+results = client.search(
+    "coffee",
+    lat=37.3346,
+    lng=-122.0090,
+    user_lat=37.3317,
+    user_lng=-122.0307,
+    search_region=region,
+    search_region_priority=SearchRegionPriority.required,
+    categories=["Cafe"],
+    limit_to_countries=["US"],
+)
 ```
 
 ### Helper Functions
@@ -191,7 +266,7 @@ result = geocode_coordinates(client, lat=40.7589, lon=-73.9851)
 Apple Park, Cupertino CA (`37.3346, -122.0090`):
 
 ```python
-place = client.reverse_geocode((37.3346, -122.0090)).results[0]
+place = client.reverse_geocode(lat=37.3346, lng=-122.0090).results[0]
 # place.name                                      => "Apple Park"
 # place.formattedAddressLines                     => ["Apple Park", "1 Apple Park Way", "Cupertino, CA  95014", "United States"]
 # place.structuredAddress.administrativeArea      => "California"
@@ -210,7 +285,7 @@ place = client.reverse_geocode((37.3346, -122.0090)).results[0]
 Times Square, NYC (`40.7589, -73.9851`):
 
 ```python
-place = client.reverse_geocode((40.7589, -73.9851)).results[0]
+place = client.reverse_geocode(lat=40.7589, lng=-73.9851).results[0]
 # place.name                                      => "Times Square"
 # place.formattedAddressLines                     => ["Times Square", "1552–1568 Broadway", "New York, NY  10036", "United States"]
 # place.structuredAddress.administrativeArea      => "New York"
@@ -229,7 +304,7 @@ place = client.reverse_geocode((40.7589, -73.9851)).results[0]
 Beverly Hills, CA (`34.1025226, -118.4167959`) — note `locality` vs formatted address mismatch:
 
 ```python
-place = client.reverse_geocode((34.1025226, -118.4167959)).results[0]
+place = client.reverse_geocode(lat=34.1025226, lng=-118.4167959).results[0]
 # place.name                                      => "1731 N Franklin Canyon Dr"
 # place.formattedAddressLines                     => ["1731 N Franklin Canyon Dr", "Beverly Hills, CA  90210", "United States"]
 # place.structuredAddress.administrativeArea      => "California"
@@ -244,6 +319,11 @@ place = client.reverse_geocode((34.1025226, -118.4167959)).results[0]
 # place.structuredAddress.areasOfInterest         => None
 # place.structuredAddress.dependentLocalities     => ["Beverly Crest"]
 ```
+
+## Related Projects
+
+- [fastapi-ipware](https://github.com/iloveitaly/fastapi-ipware) — client IP extraction for FastAPI (useful for lat/lng hinting via GeoIP)
+- [mapkit-react](https://github.com/Nicolapps/mapkit-react) — React bindings for MapKit JS (used in the full-stack example)
 
 ## [MIT License](LICENSE.md)
 
