@@ -4,9 +4,10 @@ import httpx2
 import pytest
 import respx
 
-from apple_maps_api import AppleMapsClient
+from apple_maps_api import AppleMapsClient, SearchRegionPriority
+from apple_maps_api.client import _lat_lng_to_apple_str
 from apple_maps_api.models import (
-    Location,
+    MapRegion,
     PlaceResults,
     SearchAutocompleteResponse,
     SearchResponse,
@@ -159,12 +160,12 @@ class TestReverseGeocode:
             json=SAMPLE_GEOCODE_RESPONSE
         )
 
-        result = apple_client.reverse_geocode((37.3349, -122.0090))
+        result = apple_client.reverse_geocode(lat=37.3349, lng=-122.0090)
 
         assert isinstance(result, PlaceResults)
         assert len(result.results) == 1
 
-    def test_reverse_geocode_with_location(
+    def test_reverse_geocode_sends_loc_param(
         self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
     ):
         mock_token(httpx2_mock)
@@ -172,11 +173,12 @@ class TestReverseGeocode:
             json=SAMPLE_GEOCODE_RESPONSE
         )
 
-        apple_client.reverse_geocode(Location(latitude=37.3349, longitude=-122.0090))
+        apple_client.reverse_geocode(lat=37.3349, lng=-122.0090)
 
         assert route.called
         request = route.calls.last.request
         assert "loc=37.3349" in str(request.url)
+        assert "-122.009" in str(request.url)
 
 
 class TestSearch:
@@ -205,7 +207,8 @@ class TestSearch:
 
         apple_client.search(
             query="coffee",
-            near="37.334,-122.009",
+            lat=37.334,
+            lng=-122.009,
             categories="Cafe",
             limit_to_countries="US",
         )
@@ -232,17 +235,62 @@ class TestSearch:
         assert "searchLocation=37.334" in str(request.url)
         assert "-122.009" in str(request.url)
 
-    def test_search_near_and_lat_lng_mutually_exclusive(
-        self, apple_client: AppleMapsClient
+    def test_search_with_user_lat_lng(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
     ):
-        with pytest.raises(AssertionError, match="near or lat/lng"):
-            apple_client.search(
-                query="coffee", near="37.334,-122.009", lat=37.334, lng=-122.009
-            )
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get("https://maps-api.apple.com/v1/search").respond(
+            json=SAMPLE_SEARCH_RESPONSE
+        )
 
-    def test_search_lat_without_lng(self, apple_client: AppleMapsClient):
+        apple_client.search(query="coffee", user_lat=37.334, user_lng=-122.009)
+
+        assert route.called
+        request = route.calls.last.request
+        assert "userLocation=37.334" in str(request.url)
+        assert "-122.009" in str(request.url)
+
+    def test_search_user_lat_without_user_lng(self, apple_client: AppleMapsClient):
         with pytest.raises(AssertionError, match="lat and lng must both"):
-            apple_client.search(query="coffee", lat=37.334)
+            apple_client.search(query="coffee", user_lat=37.334)
+
+    def test_lat_lng_to_apple_str_requires_both(self):
+        with pytest.raises(AssertionError, match="lat and lng must both"):
+            _lat_lng_to_apple_str(lat=37.334)
+
+        with pytest.raises(AssertionError, match="lat and lng must both"):
+            _lat_lng_to_apple_str(lng=-122.009)
+
+        assert _lat_lng_to_apple_str() is None
+        assert _lat_lng_to_apple_str(lat=37.334, lng=-122.009) == "37.334,-122.009"
+
+    def test_search_with_region(
+        self, apple_client: AppleMapsClient, httpx2_mock: respx.Router
+    ):
+        mock_token(httpx2_mock)
+        route = httpx2_mock.get("https://maps-api.apple.com/v1/search").respond(
+            json=SAMPLE_SEARCH_RESPONSE
+        )
+
+        region = MapRegion(
+            northLatitude=37.5,
+            eastLongitude=-121.7,
+            southLatitude=37.1,
+            westLongitude=-122.5,
+        )
+        apple_client.search(
+            query="coffee",
+            search_region=region,
+            search_region_priority=SearchRegionPriority.required,
+        )
+
+        assert route.called
+        request = route.calls.last.request
+        assert "searchRegion=37.5" in str(request.url)
+        assert "-121.7" in str(request.url)
+        assert "37.1" in str(request.url)
+        assert "-122.5" in str(request.url)
+        assert "searchRegionPriority=required" in str(request.url)
 
     def test_search_empty_query(self, apple_client: AppleMapsClient):
         with pytest.raises(ValueError, match="query must be provided"):
@@ -297,14 +345,6 @@ class TestAutocomplete:
         request = route.calls.last.request
         assert "searchLocation=37.334" in str(request.url)
         assert "-122.009" in str(request.url)
-
-    def test_autocomplete_near_and_lat_lng_mutually_exclusive(
-        self, apple_client: AppleMapsClient
-    ):
-        with pytest.raises(AssertionError, match="near or lat/lng"):
-            apple_client.autocomplete(
-                query="1 Apple", near="37.334,-122.009", lat=37.334, lng=-122.009
-            )
 
     def test_autocomplete_empty_query(self, apple_client: AppleMapsClient):
         with pytest.raises(ValueError, match="query must be provided"):

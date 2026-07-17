@@ -10,6 +10,7 @@ from apple_maps_api.models import (
     MapRegion,
     Place,
     PlaceResults,
+    PoiCategory,
     SearchAutocompleteResponse,
     SearchPlace,
     SearchResponse,
@@ -100,8 +101,12 @@ class TestSearchPlace:
             coordinate=Location(latitude=37.334, longitude=-122.009),
         )
 
-        assert place.poiCategory == "MovieTheater"
+        assert place.poiCategory == PoiCategory.MovieTheater
         assert place.name == "AMC Theaters"
+
+    def test_unknown_poi_category_fails(self):
+        with pytest.raises(ValidationError):
+            SearchPlace(name="Somewhere", poiCategory="NotARealCategory")
 
     def test_inherits_place_fields(self):
         place = SearchPlace(

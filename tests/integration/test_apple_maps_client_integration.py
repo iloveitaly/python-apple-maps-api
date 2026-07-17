@@ -28,7 +28,7 @@ class TestAppleMapsClientIntegration:
         assert "Cupertino" in place.structuredAddress.locality
 
     def test_reverse_geocode(self, apple_client: AppleMapsClient):
-        result = apple_client.reverse_geocode((37.3349, -122.0090))
+        result = apple_client.reverse_geocode(lat=37.3349, lng=-122.0090)
 
         assert len(result.results) > 0
         place = result.results[0]
@@ -37,7 +37,8 @@ class TestAppleMapsClientIntegration:
     def test_search(self, apple_client: AppleMapsClient):
         result = apple_client.search(
             query="Apple Park",
-            near="37.3349,-122.0090",
+            lat=37.3349,
+            lng=-122.0090,
         )
 
         assert len(result.results) > 0
