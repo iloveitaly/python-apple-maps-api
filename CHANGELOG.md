@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.2.0](https://github.com/iloveitaly/python-apple-maps-api/compare/v0.1.0...v0.2.0) (2026-07-17)
+
+
+### Features
+
+* **api:** enforce location bias parameters with overloads ([12be41d](https://github.com/iloveitaly/python-apple-maps-api/commit/12be41dfa29c87aee3b8a9deb318186bf7c9e0c5))
+* implement pagination support for Apple Maps search ([eb17719](https://github.com/iloveitaly/python-apple-maps-api/commit/eb177199ad2f75671d61c9068d1a07ee9f54fe18))
+
+
+### Bug Fixes
+
+* use params for lat/lng instead of strings or objects ([5cace13](https://github.com/iloveitaly/python-apple-maps-api/commit/5cace133086e37867d643cd243a2d7c41b77d2d1))
+
+
+### Documentation
+
+* improve documentation for location biasing and token generation ([c9dc57b](https://github.com/iloveitaly/python-apple-maps-api/commit/c9dc57bc7b36f809f9e1c80a9115cb7e9498ee73))
+
 ## 0.1.0 (2026-07-16)
 
 
