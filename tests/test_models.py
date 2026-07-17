@@ -95,10 +95,12 @@ class TestPlace:
 
 class TestSearchPlace:
     def test_with_poi_category(self):
-        place = SearchPlace(
-            name="AMC Theaters",
-            poiCategory="MovieTheater",
-            coordinate=Location(latitude=37.334, longitude=-122.009),
+        place = SearchPlace.model_validate(
+            {
+                "name": "AMC Theaters",
+                "poiCategory": "MovieTheater",
+                "coordinate": {"latitude": 37.334, "longitude": -122.009},
+            }
         )
 
         assert place.poiCategory == PoiCategory.MovieTheater
@@ -106,7 +108,9 @@ class TestSearchPlace:
 
     def test_unknown_poi_category_fails(self):
         with pytest.raises(ValidationError):
-            SearchPlace(name="Somewhere", poiCategory="NotARealCategory")
+            SearchPlace.model_validate(
+                {"name": "Somewhere", "poiCategory": "NotARealCategory"}
+            )
 
     def test_inherits_place_fields(self):
         place = SearchPlace(
@@ -138,7 +142,7 @@ class TestSearchResponse:
     def test_valid_response(self):
         resp = SearchResponse(
             results=[
-                SearchPlace(name="Apple Park", poiCategory="Landmark"),
+                SearchPlace(name="Apple Park", poiCategory=PoiCategory.Landmark),
             ],
             displayMapRegion=MapRegion(
                 northLatitude=37.5,

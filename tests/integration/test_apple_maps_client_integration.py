@@ -250,7 +250,10 @@ def test_search_completion_from_autocomplete(apple_client: AppleMapsClient):
     resolved = apple_client.search_completion(hit, lang="en-US")
 
     assert len(resolved.results) > 0
-    assert resolved.results[0].name is not None or resolved.results[0].coordinate is not None
+    assert (
+        resolved.results[0].name is not None
+        or resolved.results[0].coordinate is not None
+    )
 
 
 def test_search_completion_from_url_string(apple_client: AppleMapsClient):
