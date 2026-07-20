@@ -1,6 +1,6 @@
 [project]
 name = "apple-maps-api"
-version = "0.1.0"
+version = "0.2.0"
 description = "A modern Python client for the Apple Maps Server API with automatic JWT management and type safety"
 keywords = ["apple-maps", "geocoding", "search", "geolocation"]
 readme = "README.md"
