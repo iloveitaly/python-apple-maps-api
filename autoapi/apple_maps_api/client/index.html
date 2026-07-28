@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="blue" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple_maps_api.client - apple-maps-api documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+      <link rel="canonical" href="https://iloveitaly.github.io/python-apple-maps-api/autoapi/apple_maps_api/client/" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=168b0b94" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://iloveitaly.github.io/python-apple-maps-api/autoapi/apple_maps_api/client/"/>
+  <meta property="og:title" content="apple_maps_api.client"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>apple-maps-api</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../index.html">API Reference</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/iloveitaly/python-apple-maps-api" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0">
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">apple-maps-api</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">apple_maps_api.client</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>View as Markdown</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="apple-maps-api-client">
+<h1>apple_maps_api.client<a class="headerlink" href="#apple-maps-api-client" title="Link to this heading">#</a></h1>
+<p>.. py:module:: apple_maps_api.client</p>
+<p>.. autoapi-nested-parse::</p>
+<p>Apple Maps Server API client library.</p>
+<p>API docs: https://developer.apple.com/documentation/applemapsserverapi</p>
+<p>This library provides a Python client for the Apple Maps Server API with JWT-based
+authentication, automatic token management, and retry logic.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
+<p>.. autoapisummary::</p>
+<p>apple_maps_api.client.log</p>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<p>.. autoapisummary::</p>
+<p>apple_maps_api.client.GeocodeOptionsLatLng
+apple_maps_api.client.GeocodeOptions
+apple_maps_api.client.SearchOptionsLatLng
+apple_maps_api.client.SearchOptions
+apple_maps_api.client.AutocompleteOptionsLatLng
+apple_maps_api.client.AutocompleteOptions
+apple_maps_api.client.AppleMapsClient</p>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<p>.. py:data:: log</p>
+<p>.. py:class:: GeocodeOptionsLatLng</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_GeocodeOptionsBase</span></code></p>
+<p>Geocode options with required <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lng</span></code> location bias.</p>
+<p>.. py:attribute:: lat
+:type:  Required[float]</p>
+<p>.. py:attribute:: lng
+:type:  Required[float]</p>
+<p>.. py:class:: GeocodeOptions</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_GeocodeOptionsBase</span></code></p>
+<p>All optional kwargs for :meth:<code class="docutils literal notranslate"><span class="pre">AppleMapsClient.geocode</span></code>.</p>
+<p>.. py:attribute:: lat
+:type:  float</p>
+<p>.. py:attribute:: lng
+:type:  float</p>
+<p>.. py:class:: SearchOptionsLatLng</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_SearchOptionsBase</span></code></p>
+<p>Search options with required <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lng</span></code> location bias.</p>
+<p>.. py:attribute:: lat
+:type:  Required[float]</p>
+<p>.. py:attribute:: lng
+:type:  Required[float]</p>
+<p>.. py:class:: SearchOptions</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_SearchOptionsBase</span></code></p>
+<p>All optional kwargs for :meth:<code class="docutils literal notranslate"><span class="pre">AppleMapsClient.search</span></code>.</p>
+<p>.. py:attribute:: lat
+:type:  float</p>
+<p>.. py:attribute:: lng
+:type:  float</p>
+<p>.. py:class:: AutocompleteOptionsLatLng</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_AutocompleteOptionsBase</span></code></p>
+<p>Autocomplete options with required <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lng</span></code> location bias.</p>
+<p>.. py:attribute:: lat
+:type:  Required[float]</p>
+<p>.. py:attribute:: lng
+:type:  Required[float]</p>
+<p>.. py:class:: AutocompleteOptions</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_AutocompleteOptionsBase</span></code></p>
+<p>All optional kwargs for :meth:<code class="docutils literal notranslate"><span class="pre">AppleMapsClient.autocomplete</span></code>.</p>
+<p>.. py:attribute:: lat
+:type:  float</p>
+<p>.. py:attribute:: lng
+:type:  float</p>
+<p>.. py:class:: AppleMapsClient(*, team_id: str, key_id: str, private_key: str, origin: str | None = None)</p>
+<p>A client for the Apple Maps Server API.</p>
+<p>Handles JWT-based authentication with automatic token refresh,
+and provides methods for geocoding, reverse geocoding, search, and autocomplete.</p>
+<p>.. py:attribute:: team_id</p>
+<p>.. py:attribute:: key_id</p>
+<p>.. py:attribute:: origin
+:value: None</p>
+<p>.. py:attribute:: private_key</p>
+<p>.. py:attribute:: base_url
+:value: ‘https://maps-api.apple.com’</p>
+<p>.. py:method:: from_env() -&gt; AppleMapsClient
+:classmethod:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Construct a client from APPLE_MAPS_* environment variables.
+</span><span data-line="2">
+</span><span data-line="3">  Required:
+</span><span data-line="4">  - APPLE_MAPS_TEAM_ID
+</span><span data-line="5">  - APPLE_MAPS_KEY_ID
+</span><span data-line="6">  - APPLE_MAPS_P8_KEY
+</span><span data-line="7">
+</span><span data-line="8">  Optional:
+</span><span data-line="9">  - APPLE_MAPS_ORIGIN
+</span></pre></div>
+</div>
+<p>.. py:method:: create_token() -&gt; str</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Return a valid Maps access token for Apple Maps Server API use.
+</span><span data-line="2">
+</span><span data-line="3">  This is the *access token* (not the auth JWT) suitable for server-side
+</span><span data-line="4">  API calls (geocode, search, etc.). It is NOT suitable for MapKit JS.
+</span><span data-line="5">  Use `create_mapkit_token()` for browser-side MapKit JS initialization.
+</span><span data-line="6">
+</span><span data-line="7">  Spec: https://developer.apple.com/documentation/applemapsserverapi/-v1-token
+</span></pre></div>
+</div>
+<p>.. py:method:: create_mapkit_token(*, ttl_seconds: int = _DEFAULT_JWT_TTL_SECONDS) -&gt; str</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Return a signed JWT for MapKit JS browser initialization.
+</span><span data-line="2">
+</span><span data-line="3">  MapKit JS requires the raw signed JWT, not the Server API access token.
+</span><span data-line="4">  Pass this to the `authorizationCallback` done() function.
+</span><span data-line="5">  If `origin` was set on the client, the token is restricted to that domain.
+</span><span data-line="6">
+</span><span data-line="7">  :param ttl_seconds: JWT lifetime in seconds (default: 1 hour).
+</span><span data-line="8">      Apple does not document a maximum for Maps tokens.
+</span><span data-line="9">
+</span><span data-line="10">  Spec:
+</span><span data-line="11">  https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api
+</span><span data-line="12">  https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js
+</span></pre></div>
+</div>
+<p>.. py:method:: geocode(query: str, **kwargs: Unpack[GeocodeOptionsLatLng]) -&gt; apple_maps_api.models.PlaceResults
+geocode(query: str, **kwargs: Unpack[_GeocodeOptionsBase]) -&gt; apple_maps_api.models.PlaceResults</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Convert an address string to coordinates.
+</span><span data-line="2">
+</span><span data-line="3">  Maps to GET /v1/geocode.
+</span><span data-line="4">
+</span><span data-line="5">  :param query: Address to geocode (e.g., &quot;1 Apple Park Way&quot;).
+</span><span data-line="6">  :param limit_to_countries: ISO 3166-1 alpha-2 country codes to limit results
+</span><span data-line="7">      (e.g. ``[&quot;US&quot;, &quot;CA&quot;]``).
+</span><span data-line="8">  :param lang: BCP 47 language code (default: &quot;en-US&quot;).
+</span><span data-line="9">  :param lat: Latitude for app-defined search bias (must pass with lng).
+</span><span data-line="10">      Sent as Apple&#39;s ``searchLocation``.
+</span><span data-line="11">  :param lng: Longitude for app-defined search bias (must pass with lat).
+</span><span data-line="12">  :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
+</span><span data-line="13">  :param user_lat: Latitude of the user&#39;s position (must pass with user_lng).
+</span><span data-line="14">      Used for ranking/relevance; if ``lat``/``lng`` are omitted, some
+</span><span data-line="15">      endpoints may fall back to this as the search hint.
+</span><span data-line="16">  :param user_lng: Longitude of the user&#39;s position (must pass with user_lat).
+</span></pre></div>
+</div>
+<p>.. py:method:: reverse_geocode(*, lat: float, lng: float, lang: str | None = None) -&gt; apple_maps_api.models.PlaceResults</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Convert coordinates to an address.
+</span><span data-line="2">
+</span><span data-line="3">  Maps to GET /v1/reverseGeocode.
+</span><span data-line="4">
+</span><span data-line="5">  :param lat: Latitude of the point to reverse geocode.
+</span><span data-line="6">  :param lng: Longitude of the point to reverse geocode.
+</span><span data-line="7">  :param lang: BCP 47 language code (default: &quot;en-US&quot;).
+</span></pre></div>
+</div>
+<p>.. py:method:: search(query: str, **kwargs: Unpack[SearchOptionsLatLng]) -&gt; apple_maps_api.models.SearchResponse
+search(query: str = ‘’, **kwargs: Unpack[_SearchOptionsBase]) -&gt; apple_maps_api.models.SearchResponse</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Search for places by name or category.
+</span><span data-line="2">
+</span><span data-line="3">  Maps to GET /v1/search.
+</span><span data-line="4">
+</span><span data-line="5">  Location bias (optional): pass ``lat=`` and ``lng=`` together.
+</span><span data-line="6">
+</span><span data-line="7">  For page 2+, pass only ``page_token`` from a prior response&#39;s
+</span><span data-line="8">  ``paginationInfo.nextPageToken``. Apple rejects other search params
+</span><span data-line="9">  (including ``q`` and ``enablePagination``) on token requests.
+</span><span data-line="10">
+</span><span data-line="11">  :param query: Search query (e.g., &quot;coffee&quot;, &quot;Apple Park&quot;). Required
+</span><span data-line="12">      unless ``page_token`` is set.
+</span><span data-line="13">  :param lat: Latitude for app-defined search bias (must pass with lng).
+</span><span data-line="14">      Sent as Apple&#39;s ``searchLocation`` — &quot;search near this map point&quot;.
+</span><span data-line="15">  :param lng: Longitude for app-defined search bias (must pass with lat).
+</span><span data-line="16">  :param categories: POI categories to include (e.g. ``[&quot;MovieTheater&quot;, &quot;Cafe&quot;]``).
+</span><span data-line="17">  :param exclude_categories: POI categories to exclude (e.g. ``[&quot;Parking&quot;]``).
+</span><span data-line="18">  :param limit_to_countries: ISO 3166-1 alpha-2 country codes
+</span><span data-line="19">      (e.g. ``[&quot;US&quot;, &quot;CA&quot;]``).
+</span><span data-line="20">  :param lang: BCP 47 language code (default: &quot;en-US&quot;).
+</span><span data-line="21">  :param result_type_filter: Result types (e.g. ``[&quot;Poi&quot;, &quot;Address&quot;]``).
+</span><span data-line="22">  :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
+</span><span data-line="23">  :param user_lat: Latitude of the user&#39;s position (must pass with user_lng).
+</span><span data-line="24">      Used for ranking/relevance; Search may fall back to it as
+</span><span data-line="25">      ``searchLocation`` when ``lat``/``lng`` are omitted.
+</span><span data-line="26">  :param user_lng: Longitude of the user&#39;s position (must pass with user_lat).
+</span><span data-line="27">  :param search_region_priority: Importance of ``search_region``
+</span><span data-line="28">      (:class:`SearchRegionPriority` or ``&quot;default&quot;`` / ``&quot;required&quot;``).
+</span><span data-line="29">  :param enable_pagination: Request paginated results (first page only).
+</span><span data-line="30">  :param page_token: Token from ``paginationInfo`` for a subsequent page.
+</span><span data-line="31">      When set, sent alone — do not combine with query or other filters.
+</span><span data-line="32">  :param include_address_categories: Address categories to include
+</span><span data-line="33">      (e.g. ``[&quot;AdministrativeArea&quot;]``).
+</span><span data-line="34">  :param exclude_address_categories: Address categories to exclude.
+</span></pre></div>
+</div>
+<p>.. py:method:: autocomplete(query: str, **kwargs: Unpack[AutocompleteOptionsLatLng]) -&gt; apple_maps_api.models.SearchAutocompleteResponse
+autocomplete(query: str, **kwargs: Unpack[_AutocompleteOptionsBase]) -&gt; apple_maps_api.models.SearchAutocompleteResponse</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Autocomplete partial addresses and place names.
+</span><span data-line="2">
+</span><span data-line="3">  Maps to GET /v1/searchAutocomplete.
+</span><span data-line="4">
+</span><span data-line="5">  Location bias (optional): pass ``lat=`` and ``lng=`` together.
+</span><span data-line="6">
+</span><span data-line="7">  Result count is fixed by Apple; the API has no limit/maxResults parameter.
+</span><span data-line="8">  For more results, use search() (supports enable_pagination) or
+</span><span data-line="9">  search_completion() to expand a single autocomplete hit.
+</span><span data-line="10">
+</span><span data-line="11">  :param query: Partial address or place name to autocomplete.
+</span><span data-line="12">  :param lat: Latitude for app-defined search bias (must pass with lng).
+</span><span data-line="13">      Sent as Apple&#39;s ``searchLocation`` — &quot;search near this map point&quot;.
+</span><span data-line="14">  :param lng: Longitude for app-defined search bias (must pass with lat).
+</span><span data-line="15">  :param limit_to_countries: ISO 3166-1 alpha-2 country codes
+</span><span data-line="16">      (e.g. ``[&quot;US&quot;, &quot;CA&quot;]``).
+</span><span data-line="17">  :param lang: BCP 47 language code (default: &quot;en-US&quot;).
+</span><span data-line="18">  :param result_type_filter: Result types (e.g. ``[&quot;Address&quot;, &quot;Poi&quot;]``).
+</span><span data-line="19">  :param include_poi_categories: POI categories to include
+</span><span data-line="20">      (e.g. ``[&quot;Cafe&quot;]``).
+</span><span data-line="21">  :param exclude_poi_categories: POI categories to exclude.
+</span><span data-line="22">  :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
+</span><span data-line="23">  :param user_lat: Latitude of the user&#39;s position (must pass with user_lng).
+</span><span data-line="24">      Used for ranking/relevance; may fall back as ``searchLocation``
+</span><span data-line="25">      when ``lat``/``lng`` are omitted.
+</span><span data-line="26">  :param user_lng: Longitude of the user&#39;s position (must pass with user_lat).
+</span><span data-line="27">  :param search_region_priority: Importance of ``search_region``
+</span><span data-line="28">      (:class:`SearchRegionPriority` or ``&quot;default&quot;`` / ``&quot;required&quot;``).
+</span><span data-line="29">  :param include_address_categories: Address categories to include.
+</span><span data-line="30">  :param exclude_address_categories: Address categories to exclude.
+</span></pre></div>
+</div>
+<p>.. py:method:: search_completion(completion: apple_maps_api.models.AutocompleteResult | str, *, lang: str | None = None) -&gt; apple_maps_api.models.SearchResponse</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Resolve an autocomplete suggestion to full search results.
+</span><span data-line="2">
+</span><span data-line="3">  Maps to GET /v1/search using the completionUrl from an AutocompleteResult.
+</span><span data-line="4">  The completionUrl already encodes the query and opaque metadata Apple needs
+</span><span data-line="5">  to return precise results for the suggestion.
+</span><span data-line="6">
+</span><span data-line="7">  :param completion: An AutocompleteResult or its completionUrl string.
+</span><span data-line="8">  :param lang: BCP 47 language code (e.g., &quot;en-US&quot;). Apple does not carry the
+</span><span data-line="9">      language through the completionUrl, so callers must re-specify it here.
+</span><span data-line="10">  :raises ValueError: If the completion has no completionUrl.
+</span></pre></div>
+</div>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Michael Bianco</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/iloveitaly/python-apple-maps-api" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

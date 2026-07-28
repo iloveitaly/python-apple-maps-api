@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="blue" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple-maps-api documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+      <link rel="canonical" href="https://iloveitaly.github.io/python-apple-maps-api/" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=168b0b94" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://iloveitaly.github.io/python-apple-maps-api/"/>
+  <meta property="og:title" content="Python Client for Apple Maps Server API"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="#">
+      
+      
+      <strong>apple-maps-api</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="autoapi/index.html">API Reference</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/iloveitaly/python-apple-maps-api" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0">
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#full-stack-example">Full-stack Example</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#basic-setup">Basic Setup</a></li>
+<li><a class="reference internal" href="#generating-a-long-lived-frontend-token">Generating a Long-lived Frontend Token</a></li>
+<li><a class="reference internal" href="#geocoding">Geocoding</a></li>
+<li><a class="reference internal" href="#reverse-geocoding">Reverse Geocoding</a></li>
+<li><a class="reference internal" href="#place-search">Place Search</a></li>
+<li><a class="reference internal" href="#address-autocomplete">Address Autocomplete</a></li>
+<li><a class="reference internal" href="#importance-of-lat-lng-hinting-for-result-relevance">Importance of Lat/Lng Hinting for Result Relevance</a></li>
+<li><a class="reference internal" href="#location-bias-options">Location Bias Options</a></li>
+<li><a class="reference internal" href="#helper-functions">Helper Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-payloads">Example Payloads</a><ul>
+<li><a class="reference internal" href="#geocoding-a-postal-code">Geocoding a postal code</a></li>
+<li><a class="reference internal" href="#reverse-geocoding-coordinates">Reverse geocoding coordinates</a></li>
+<li><a class="reference internal" href="#raw-reverse-geocode-response-full-structuredaddress">Raw <code class="docutils literal notranslate"><span class="pre">reverse_geocode</span></code> response &#8212; full <code class="docutils literal notranslate"><span class="pre">structuredAddress</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#related-projects">Related Projects</a></li>
+<li><a class="reference internal" href="#mit-license"><span class="xref myst">MIT License</span></a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="#"><span itemprop="name">apple-maps-api</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Python Client for Apple Maps Server API</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/index.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/index.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://iloveitaly.github.io/python-apple-maps-api/_sources/index.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>View as Markdown</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <p><a class="reference external" href="https://github.com/iloveitaly/apple-maps-api/releases"><img alt="Release Notes" src="https://img.shields.io/github/release/iloveitaly/apple-maps-api" /></a>
+<a class="reference external" href="https://pepy.tech/project/apple-maps-api"><img alt="Downloads" src="https://static.pepy.tech/badge/apple-maps-api/month" /></a>
+<img alt="GitHub CI Status" src="https://github.com/iloveitaly/apple-maps-api/actions/workflows/build_and_publish.yml/badge.svg" />
+<a class="reference external" href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a></p>
+<section id="python-client-for-apple-maps-server-api">
+<h1>Python Client for Apple Maps Server API<a class="headerlink" href="#python-client-for-apple-maps-server-api" title="Link to this heading">#</a></h1>
+<p>A modern, type-safe Python client for the <a class="reference external" href="https://developer.apple.com/documentation/applemapsserverapi">Apple Maps Server API</a>.</p>
+<p>There’s no python library for the Apple Maps API. Maps is super cheap compared to all of the alternatives, so with AI I figured it wouldn’t be too hard to build a client library.</p>
+<p>The goal of this library is to provide similar functionality to the radar python client. Here’s the main goals:</p>
+<ul class="simple">
+<li><p><strong>Automatic JWT Management</strong>: Handles signing and periodic refresh of Apple’s ES256 tokens.</p></li>
+<li><p><strong>Type-Safe</strong>: Built with Pydantic models for all API responses, giving you excellent IDE support.</p></li>
+<li><p><strong>Resilient</strong>: Automatic retries with exponential backoff for transient network and server errors.</p></li>
+<li><p><strong>Modern</strong>: Uses <code class="docutils literal notranslate"><span class="pre">httpx</span></code> for synchronous requests, with a structure that’s ready for future async support.</p></li>
+</ul>
+<section id="full-stack-example">
+<h2>Full-stack Example<a class="headerlink" href="#full-stack-example" title="Link to this heading">#</a></h2>
+<p>See <a class="reference internal" href="#examples/full-stack/"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">examples/full-stack/</span></code></span></a> for a runnable FastAPI + React/MapKit JS app that demonstrates:</p>
+<ul class="simple">
+<li><p>Minting MapKit JS tokens server-side (<code class="docutils literal notranslate"><span class="pre">create_mapkit_token</span></code>) and rendering an interactive map</p></li>
+<li><p>Address autocomplete via this client, proxied through a small FastAPI API</p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">uv<span class="w"> </span>add<span class="w"> </span>apple-maps-api
+</span></pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<section id="basic-setup">
+<h3>Basic Setup<a class="headerlink" href="#basic-setup" title="Link to this heading">#</a></h3>
+<p>You’ll need your Team ID, Key ID, and the private key from your Apple Developer account.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">apple_maps_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppleMapsClient</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">client</span> <span class="o">=</span> <span class="n">AppleMapsClient</span><span class="p">(</span>
+</span><span data-line="4">    <span class="n">team_id</span><span class="o">=</span><span class="s2">&quot;YOUR_TEAM_ID&quot;</span><span class="p">,</span>
+</span><span data-line="5">    <span class="n">key_id</span><span class="o">=</span><span class="s2">&quot;YOUR_KEY_ID&quot;</span><span class="p">,</span>
+</span><span data-line="6">    <span class="n">private_key</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;-----BEGIN PRIVATE KEY-----</span>
+</span><span data-line="7"><span class="s2">...</span>
+</span><span data-line="8"><span class="s2">-----END PRIVATE KEY-----&quot;&quot;&quot;</span>
+</span><span data-line="9"><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Or load credentials from environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">export</span><span class="w"> </span><span class="nv">APPLE_MAPS_TEAM_ID</span><span class="o">=</span>...
+</span><span data-line="2"><span class="nb">export</span><span class="w"> </span><span class="nv">APPLE_MAPS_KEY_ID</span><span class="o">=</span>...
+</span><span data-line="3"><span class="nb">export</span><span class="w"> </span><span class="nv">APPLE_MAPS_P8_KEY</span><span class="o">=</span>...<span class="w">   </span><span class="c1"># PEM or raw base64 DER</span>
+</span><span data-line="4"><span class="c1"># optional: export APPLE_MAPS_ORIGIN=https://example.com</span>
+</span></pre></div>
+</div>
+<p>And then you can source the vars from the env:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">apple_maps_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppleMapsClient</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">client</span> <span class="o">=</span> <span class="n">AppleMapsClient</span><span class="o">.</span><span class="n">from_env</span><span class="p">()</span>
+</span></pre></div>
+</div>
+</section>
+<section id="generating-a-long-lived-frontend-token">
+<h3>Generating a Long-lived Frontend Token<a class="headerlink" href="#generating-a-long-lived-frontend-token" title="Link to this heading">#</a></h3>
+<p>MapKit JS needs a signed JWT (not the Server API access token). Use <code class="docutils literal notranslate"><span class="pre">create_mapkit_token()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">apple_maps_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppleMapsClient</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">client</span> <span class="o">=</span> <span class="n">AppleMapsClient</span><span class="o">.</span><span class="n">from_env</span><span class="p">()</span>
+</span><span data-line="4">
+</span><span data-line="5"><span class="c1"># default TTL is 1 hour — fine for production token endpoints</span>
+</span><span data-line="6"><span class="n">token</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_mapkit_token</span><span class="p">()</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="c1"># long-lived token for local FE work (e.g. 30 days)</span>
+</span><span data-line="9"><span class="n">token</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_mapkit_token</span><span class="p">(</span><span class="n">ttl_seconds</span><span class="o">=</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+</span><span data-line="10"><span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Paste the printed JWT into MapKit JS / <a class="reference external" href="https://github.com/Nicolapps/mapkit-react">mapkit-react</a> during development so you do not need a backend token endpoint.</p>
+<p>Optional domain lock: set <code class="docutils literal notranslate"><span class="pre">origin</span></code> on the client (or <code class="docutils literal notranslate"><span class="pre">APPLE_MAPS_ORIGIN</span></code>) so the token only works from that origin (e.g. <code class="docutils literal notranslate"><span class="pre">http://localhost:5173</span></code>). Omit <code class="docutils literal notranslate"><span class="pre">origin</span></code> for unrestricted local play.</p>
+<p>Do not ship long-lived tokens in production frontend builds — mint short-lived tokens from your server instead (see <a class="reference internal" href="#examples/full-stack/"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">examples/full-stack/</span></code></span></a>).</p>
+</section>
+<section id="geocoding">
+<h3>Geocoding<a class="headerlink" href="#geocoding" title="Link to this heading">#</a></h3>
+<p>Convert an address string to coordinates:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="s2">&quot;1 Apple Park Way, Cupertino, CA&quot;</span><span class="p">)</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="k">for</span> <span class="n">place</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+</span><span data-line="4">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">place</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">place</span><span class="o">.</span><span class="n">coordinate</span><span class="o">.</span><span class="n">latitude</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">place</span><span class="o">.</span><span class="n">coordinate</span><span class="o">.</span><span class="n">longitude</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="5">
+</span><span data-line="6"><span class="c1"># place.name                              =&gt; &quot;1 Apple Park Way&quot;</span>
+</span><span data-line="7"><span class="c1"># place.coordinate.latitude               =&gt; 37.334859</span>
+</span><span data-line="8"><span class="c1"># place.coordinate.longitude              =&gt; -122.0090403</span>
+</span><span data-line="9"><span class="c1"># place.formattedAddressLines             =&gt; [&quot;1 Apple Park Way&quot;, &quot;Cupertino, CA  95014&quot;, &quot;United States&quot;]</span>
+</span><span data-line="10"><span class="c1"># place.structuredAddress.locality        =&gt; &quot;Cupertino&quot;</span>
+</span></pre></div>
+</div>
+</section>
+<section id="reverse-geocoding">
+<h3>Reverse Geocoding<a class="headerlink" href="#reverse-geocoding" title="Link to this heading">#</a></h3>
+<p>Convert coordinates back to a structured address:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">reverse_geocode</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">37.3346</span><span class="p">,</span> <span class="n">lng</span><span class="o">=-</span><span class="mf">122.0090</span><span class="p">)</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+</span><span data-line="4">    <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">formattedAddressLines</span><span class="p">)</span>
+</span><span data-line="5">
+</span><span data-line="6"><span class="c1"># place.formattedAddressLines      =&gt; [&quot;Apple Park&quot;, &quot;1 Apple Park Way&quot;, &quot;Cupertino, CA  95014&quot;, &quot;United States&quot;]</span>
+</span><span data-line="7"><span class="c1"># place.structuredAddress.locality =&gt; &quot;Cupertino&quot;</span>
+</span><span data-line="8"><span class="c1"># place.structuredAddress.postCode =&gt; &quot;95014&quot;</span>
+</span></pre></div>
+</div>
+</section>
+<section id="place-search">
+<h3>Place Search<a class="headerlink" href="#place-search" title="Link to this heading">#</a></h3>
+<p>Search for points of interest near a location:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;pizza&quot;</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mf">37.3346</span><span class="p">,</span> <span class="n">lng</span><span class="o">=-</span><span class="mf">122.0090</span><span class="p">)</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="k">for</span> <span class="n">place</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+</span><span data-line="4">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">place</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">place</span><span class="o">.</span><span class="n">formattedAddressLines</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="5">
+</span><span data-line="6"><span class="c1"># results.results[0].name                  =&gt; &quot;Pizza My Heart&quot;</span>
+</span><span data-line="7"><span class="c1"># results.results[0].formattedAddressLines =&gt; [&quot;19409 Stevens Creek Blvd&quot;, &quot;Cupertino, CA  95014&quot;, &quot;United States&quot;]</span>
+</span><span data-line="8"><span class="c1"># results.results[1].name                  =&gt; &quot;Mountain Mike&#39;s Pizza&quot;</span>
+</span><span data-line="9"><span class="c1"># results.results[2].name                  =&gt; &quot;Pizz&#39;a Chicago&quot;</span>
+</span></pre></div>
+</div>
+</section>
+<section id="address-autocomplete">
+<h3>Address Autocomplete<a class="headerlink" href="#address-autocomplete" title="Link to this heading">#</a></h3>
+<p>Provide search completions for a partial query and filter by country:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">autocomplete</span><span class="p">(</span>
+</span><span data-line="2">    <span class="s2">&quot;1 Apple Park&quot;</span><span class="p">,</span>
+</span><span data-line="3">    <span class="n">limit_to_countries</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">],</span>
+</span><span data-line="4">    <span class="n">lat</span><span class="o">=</span><span class="mf">37.3346</span><span class="p">,</span>
+</span><span data-line="5">    <span class="n">lng</span><span class="o">=-</span><span class="mf">122.0090</span><span class="p">,</span>
+</span><span data-line="6"><span class="p">)</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="k">for</span> <span class="n">completion</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+</span><span data-line="9">    <span class="nb">print</span><span class="p">(</span><span class="n">completion</span><span class="o">.</span><span class="n">displayLines</span><span class="p">)</span>
+</span><span data-line="10">
+</span><span data-line="11"><span class="c1"># results.results[0].displayLines =&gt; [&quot;1 Apple Park Way&quot;, &quot;Cupertino, CA, United States&quot;]</span>
+</span><span data-line="12"><span class="c1"># results.results[1].displayLines =&gt; [&quot;1 Apple Hill Dr&quot;, &quot;Natick, MA, United States&quot;]</span>
+</span><span data-line="13"><span class="c1"># results.results[0].completionUrl =&gt; &quot;/v1/search?q=1%20Apple%20Park%20Way...&quot;</span>
+</span></pre></div>
+</div>
+<p>Multi-value filters (countries, categories, result types, …) accept a list; a single string still works.</p>
+</section>
+<section id="importance-of-lat-lng-hinting-for-result-relevance">
+<h3>Importance of Lat/Lng Hinting for Result Relevance<a class="headerlink" href="#importance-of-lat-lng-hinting-for-result-relevance" title="Link to this heading">#</a></h3>
+<p>Always pass <code class="docutils literal notranslate"><span class="pre">lat</span></code>/<code class="docutils literal notranslate"><span class="pre">lng</span></code>. Autocomplete ranking is heavily biased by location — without it you get scattered results across the country for common street names. For server-side autocomplete, resolve the user’s approximate location from their IP:</p>
+<ol class="arabic simple">
+<li><p>Get the client public IP with <a class="reference external" href="https://github.com/iloveitaly/fastapi-ipware">fastapi-ipware</a></p></li>
+<li><p>Look up lat/lng via <a class="reference external" href="https://github.com/observabilitystack/geoip-api">observabilitystack/geoip-api</a> (<code class="docutils literal notranslate"><span class="pre">ghcr.io/observabilitystack/geoip-api:latest</span></code>)</p></li>
+</ol>
+</section>
+<section id="location-bias-options">
+<h3>Location Bias Options<a class="headerlink" href="#location-bias-options" title="Link to this heading">#</a></h3>
+<p>Search, autocomplete, and geocode share the same location-hint shape:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">lat</span></code> / <code class="docutils literal notranslate"><span class="pre">lng</span></code></strong> — app-defined search bias (Apple <code class="docutils literal notranslate"><span class="pre">searchLocation</span></code>). Prefer nearby results around this map point.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">user_lat</span></code> / <code class="docutils literal notranslate"><span class="pre">user_lng</span></code></strong> — the user’s current position (Apple <code class="docutils literal notranslate"><span class="pre">userLocation</span></code>). Used for ranking; if <code class="docutils literal notranslate"><span class="pre">lat</span></code>/<code class="docutils literal notranslate"><span class="pre">lng</span></code> are omitted, some endpoints may fall back to this.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">search_region</span></code></strong> — bounding-box hint as a <code class="docutils literal notranslate"><span class="pre">MapRegion</span></code> (Apple <code class="docutils literal notranslate"><span class="pre">searchRegion</span></code>).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">search_region_priority</span></code></strong> — <code class="docutils literal notranslate"><span class="pre">SearchRegionPriority.default</span></code> or <code class="docutils literal notranslate"><span class="pre">.required</span></code> (or the strings <code class="docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;required&quot;</span></code>).</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">apple_maps_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">MapRegion</span><span class="p">,</span> <span class="n">SearchRegionPriority</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">region</span> <span class="o">=</span> <span class="n">MapRegion</span><span class="p">(</span>
+</span><span data-line="4">    <span class="n">northLatitude</span><span class="o">=</span><span class="mf">37.5</span><span class="p">,</span>
+</span><span data-line="5">    <span class="n">eastLongitude</span><span class="o">=-</span><span class="mf">121.7</span><span class="p">,</span>
+</span><span data-line="6">    <span class="n">southLatitude</span><span class="o">=</span><span class="mf">37.1</span><span class="p">,</span>
+</span><span data-line="7">    <span class="n">westLongitude</span><span class="o">=-</span><span class="mf">122.5</span><span class="p">,</span>
+</span><span data-line="8"><span class="p">)</span>
+</span><span data-line="9">
+</span><span data-line="10"><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+</span><span data-line="11">    <span class="s2">&quot;coffee&quot;</span><span class="p">,</span>
+</span><span data-line="12">    <span class="n">lat</span><span class="o">=</span><span class="mf">37.3346</span><span class="p">,</span>
+</span><span data-line="13">    <span class="n">lng</span><span class="o">=-</span><span class="mf">122.0090</span><span class="p">,</span>
+</span><span data-line="14">    <span class="n">user_lat</span><span class="o">=</span><span class="mf">37.3317</span><span class="p">,</span>
+</span><span data-line="15">    <span class="n">user_lng</span><span class="o">=-</span><span class="mf">122.0307</span><span class="p">,</span>
+</span><span data-line="16">    <span class="n">search_region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+</span><span data-line="17">    <span class="n">search_region_priority</span><span class="o">=</span><span class="n">SearchRegionPriority</span><span class="o">.</span><span class="n">required</span><span class="p">,</span>
+</span><span data-line="18">    <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Cafe&quot;</span><span class="p">],</span>
+</span><span data-line="19">    <span class="n">limit_to_countries</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">],</span>
+</span><span data-line="20"><span class="p">)</span>
+</span></pre></div>
+</div>
+</section>
+<section id="helper-functions">
+<h3>Helper Functions<a class="headerlink" href="#helper-functions" title="Link to this heading">#</a></h3>
+<p>The library includes high-level helpers for common geocoding operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">apple_maps_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">geocode_postal_code</span><span class="p">,</span> <span class="n">geocode_coordinates</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="c1"># Geocode a postal code</span>
+</span><span data-line="4"><span class="n">result</span> <span class="o">=</span> <span class="n">geocode_postal_code</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">postal_code</span><span class="o">=</span><span class="s2">&quot;95014&quot;</span><span class="p">,</span> <span class="n">country</span><span class="o">=</span><span class="s2">&quot;US&quot;</span><span class="p">)</span>
+</span><span data-line="5"><span class="c1"># result.lat              =&gt; 37.2895111</span>
+</span><span data-line="6"><span class="c1"># result.lon              =&gt; -122.0811912</span>
+</span><span data-line="7"><span class="c1"># result.city             =&gt; &quot;Cupertino&quot;</span>
+</span><span data-line="8"><span class="c1"># result.state_code       =&gt; &quot;CA&quot;</span>
+</span><span data-line="9"><span class="c1"># result.postal_code      =&gt; &quot;95014&quot;</span>
+</span><span data-line="10"><span class="c1"># result.formatted_address =&gt; &quot;Cupertino, CA  95014, United States&quot;</span>
+</span><span data-line="11">
+</span><span data-line="12"><span class="c1"># Reverse geocode coordinates</span>
+</span><span data-line="13"><span class="n">result</span> <span class="o">=</span> <span class="n">geocode_coordinates</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mf">37.3346</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mf">122.0090</span><span class="p">)</span>
+</span><span data-line="14"><span class="c1"># result.address1          =&gt; &quot;1 Apple Park Way&quot;</span>
+</span><span data-line="15"><span class="c1"># result.postal_code       =&gt; &quot;95014&quot;</span>
+</span><span data-line="16"><span class="c1"># result.city              =&gt; &quot;Cupertino&quot;</span>
+</span><span data-line="17"><span class="c1"># result.state_code        =&gt; &quot;CA&quot;</span>
+</span><span data-line="18"><span class="c1"># result.formatted_address =&gt; &quot;Apple Park, 1 Apple Park Way, Cupertino, CA  95014, United States&quot;</span>
+</span></pre></div>
+</div>
+</section>
+</section>
+<section id="example-payloads">
+<h2>Example Payloads<a class="headerlink" href="#example-payloads" title="Link to this heading">#</a></h2>
+<p>These examples show the real data shapes returned by the Apple Maps API for common operations.</p>
+<blockquote>
+<div><p><strong>Note on city names:</strong> Apple Maps uses its own administrative boundaries. The <code class="docutils literal notranslate"><span class="pre">city</span></code> field on <code class="docutils literal notranslate"><span class="pre">GeocodeResult</span></code> maps to <code class="docutils literal notranslate"><span class="pre">structuredAddress.locality</span></code>, which may differ from the colloquial city name. For example, postal code <code class="docutils literal notranslate"><span class="pre">90210</span></code> returns <code class="docutils literal notranslate"><span class="pre">city=&quot;Los</span> <span class="pre">Angeles&quot;</span></code> even though the formatted address reads <code class="docutils literal notranslate"><span class="pre">&quot;Beverly</span> <span class="pre">Hills&quot;</span></code> — Beverly Hills is an independent city but Apple Maps assigns it to the LA locality.</p>
+</div></blockquote>
+<section id="geocoding-a-postal-code">
+<h3>Geocoding a postal code<a class="headerlink" href="#geocoding-a-postal-code" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">result</span> <span class="o">=</span> <span class="n">geocode_postal_code</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">postal_code</span><span class="o">=</span><span class="s2">&quot;10001&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="c1"># result.lat             =&gt; 40.7504876</span>
+</span><span data-line="3"><span class="c1"># result.lon             =&gt; -74.0025705</span>
+</span><span data-line="4"><span class="c1"># result.city            =&gt; &quot;New York&quot;</span>
+</span><span data-line="5"><span class="c1"># result.state_code      =&gt; &quot;NY&quot;</span>
+</span><span data-line="6"><span class="c1"># result.postal_code     =&gt; &quot;10001&quot;</span>
+</span><span data-line="7"><span class="c1"># result.formatted_address =&gt; &quot;New York, NY  10001, United States&quot;</span>
+</span></pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">result</span> <span class="o">=</span> <span class="n">geocode_postal_code</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">postal_code</span><span class="o">=</span><span class="s2">&quot;90210&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="c1"># result.lat             =&gt; 34.1025226</span>
+</span><span data-line="3"><span class="c1"># result.lon             =&gt; -118.4167959</span>
+</span><span data-line="4"><span class="c1"># result.city            =&gt; &quot;Los Angeles&quot;   # NOT &quot;Beverly Hills&quot;</span>
+</span><span data-line="5"><span class="c1"># result.state_code      =&gt; &quot;CA&quot;</span>
+</span><span data-line="6"><span class="c1"># result.postal_code     =&gt; &quot;90210&quot;</span>
+</span><span data-line="7"><span class="c1"># result.formatted_address =&gt; &quot;Beverly Hills, CA  90210, United States&quot;</span>
+</span></pre></div>
+</div>
+</section>
+<section id="reverse-geocoding-coordinates">
+<h3>Reverse geocoding coordinates<a class="headerlink" href="#reverse-geocoding-coordinates" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="c1"># Times Square, NYC</span>
+</span><span data-line="2"><span class="n">result</span> <span class="o">=</span> <span class="n">geocode_coordinates</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mf">40.7589</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mf">73.9851</span><span class="p">)</span>
+</span><span data-line="3"><span class="c1"># result.address1          =&gt; &quot;1552–1568 Broadway&quot;</span>
+</span><span data-line="4"><span class="c1"># result.postal_code       =&gt; &quot;10036&quot;</span>
+</span><span data-line="5"><span class="c1"># result.city              =&gt; &quot;New York&quot;</span>
+</span><span data-line="6"><span class="c1"># result.state_code        =&gt; &quot;NY&quot;</span>
+</span><span data-line="7"><span class="c1"># result.formatted_address =&gt; &quot;Times Square, 1552–1568 Broadway, New York, NY  10036, United States&quot;</span>
+</span></pre></div>
+</div>
+</section>
+<section id="raw-reverse-geocode-response-full-structuredaddress">
+<h3>Raw <code class="docutils literal notranslate"><span class="pre">reverse_geocode</span></code> response — full <code class="docutils literal notranslate"><span class="pre">structuredAddress</span></code><a class="headerlink" href="#raw-reverse-geocode-response-full-structuredaddress" title="Link to this heading">#</a></h3>
+<p>Apple Park, Cupertino CA (<code class="docutils literal notranslate"><span class="pre">37.3346,</span> <span class="pre">-122.0090</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">place</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">reverse_geocode</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">37.3346</span><span class="p">,</span> <span class="n">lng</span><span class="o">=-</span><span class="mf">122.0090</span><span class="p">)</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="2"><span class="c1"># place.name                                      =&gt; &quot;Apple Park&quot;</span>
+</span><span data-line="3"><span class="c1"># place.formattedAddressLines                     =&gt; [&quot;Apple Park&quot;, &quot;1 Apple Park Way&quot;, &quot;Cupertino, CA  95014&quot;, &quot;United States&quot;]</span>
+</span><span data-line="4"><span class="c1"># place.structuredAddress.administrativeArea      =&gt; &quot;California&quot;</span>
+</span><span data-line="5"><span class="c1"># place.structuredAddress.administrativeAreaCode  =&gt; &quot;CA&quot;</span>
+</span><span data-line="6"><span class="c1"># place.structuredAddress.subAdministrativeArea   =&gt; None</span>
+</span><span data-line="7"><span class="c1"># place.structuredAddress.locality                =&gt; &quot;Cupertino&quot;</span>
+</span><span data-line="8"><span class="c1"># place.structuredAddress.subLocality             =&gt; None</span>
+</span><span data-line="9"><span class="c1"># place.structuredAddress.fullThoroughfare        =&gt; &quot;1 Apple Park Way&quot;</span>
+</span><span data-line="10"><span class="c1"># place.structuredAddress.thoroughfare            =&gt; &quot;Apple Park Way&quot;</span>
+</span><span data-line="11"><span class="c1"># place.structuredAddress.subThoroughfare         =&gt; &quot;1&quot;</span>
+</span><span data-line="12"><span class="c1"># place.structuredAddress.postCode                =&gt; &quot;95014&quot;</span>
+</span><span data-line="13"><span class="c1"># place.structuredAddress.areasOfInterest         =&gt; [&quot;Apple Park&quot;]</span>
+</span><span data-line="14"><span class="c1"># place.structuredAddress.dependentLocalities     =&gt; None</span>
+</span></pre></div>
+</div>
+<p>Times Square, NYC (<code class="docutils literal notranslate"><span class="pre">40.7589,</span> <span class="pre">-73.9851</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">place</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">reverse_geocode</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">40.7589</span><span class="p">,</span> <span class="n">lng</span><span class="o">=-</span><span class="mf">73.9851</span><span class="p">)</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="2"><span class="c1"># place.name                                      =&gt; &quot;Times Square&quot;</span>
+</span><span data-line="3"><span class="c1"># place.formattedAddressLines                     =&gt; [&quot;Times Square&quot;, &quot;1552–1568 Broadway&quot;, &quot;New York, NY  10036&quot;, &quot;United States&quot;]</span>
+</span><span data-line="4"><span class="c1"># place.structuredAddress.administrativeArea      =&gt; &quot;New York&quot;</span>
+</span><span data-line="5"><span class="c1"># place.structuredAddress.administrativeAreaCode  =&gt; &quot;NY&quot;</span>
+</span><span data-line="6"><span class="c1"># place.structuredAddress.subAdministrativeArea   =&gt; None</span>
+</span><span data-line="7"><span class="c1"># place.structuredAddress.locality                =&gt; &quot;New York&quot;</span>
+</span><span data-line="8"><span class="c1"># place.structuredAddress.subLocality             =&gt; &quot;Manhattan&quot;</span>
+</span><span data-line="9"><span class="c1"># place.structuredAddress.fullThoroughfare        =&gt; &quot;1552–1568 Broadway&quot;</span>
+</span><span data-line="10"><span class="c1"># place.structuredAddress.thoroughfare            =&gt; &quot;Broadway&quot;</span>
+</span><span data-line="11"><span class="c1"># place.structuredAddress.subThoroughfare         =&gt; &quot;1552–1568&quot;</span>
+</span><span data-line="12"><span class="c1"># place.structuredAddress.postCode                =&gt; &quot;10036&quot;</span>
+</span><span data-line="13"><span class="c1"># place.structuredAddress.areasOfInterest         =&gt; [&quot;Times Square&quot;, &quot;Manhattan&quot;]</span>
+</span><span data-line="14"><span class="c1"># place.structuredAddress.dependentLocalities     =&gt; [&quot;Broadway&quot;, &quot;Times Square&quot;, &quot;Theater District&quot;, &quot;Midtown Manhattan&quot;, &quot;Midtown&quot;, &quot;North Hudson&quot;]</span>
+</span></pre></div>
+</div>
+<p>Beverly Hills, CA (<code class="docutils literal notranslate"><span class="pre">34.1025226,</span> <span class="pre">-118.4167959</span></code>) — note <code class="docutils literal notranslate"><span class="pre">locality</span></code> vs formatted address mismatch:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">place</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">reverse_geocode</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">34.1025226</span><span class="p">,</span> <span class="n">lng</span><span class="o">=-</span><span class="mf">118.4167959</span><span class="p">)</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="2"><span class="c1"># place.name                                      =&gt; &quot;1731 N Franklin Canyon Dr&quot;</span>
+</span><span data-line="3"><span class="c1"># place.formattedAddressLines                     =&gt; [&quot;1731 N Franklin Canyon Dr&quot;, &quot;Beverly Hills, CA  90210&quot;, &quot;United States&quot;]</span>
+</span><span data-line="4"><span class="c1"># place.structuredAddress.administrativeArea      =&gt; &quot;California&quot;</span>
+</span><span data-line="5"><span class="c1"># place.structuredAddress.administrativeAreaCode  =&gt; &quot;CA&quot;</span>
+</span><span data-line="6"><span class="c1"># place.structuredAddress.subAdministrativeArea   =&gt; None</span>
+</span><span data-line="7"><span class="c1"># place.structuredAddress.locality                =&gt; &quot;Los Angeles&quot;   # NOT &quot;Beverly Hills&quot;</span>
+</span><span data-line="8"><span class="c1"># place.structuredAddress.subLocality             =&gt; &quot;Beverly Crest&quot;</span>
+</span><span data-line="9"><span class="c1"># place.structuredAddress.fullThoroughfare        =&gt; &quot;1731 N Franklin Canyon Dr&quot;</span>
+</span><span data-line="10"><span class="c1"># place.structuredAddress.thoroughfare            =&gt; &quot;N Franklin Canyon Dr&quot;</span>
+</span><span data-line="11"><span class="c1"># place.structuredAddress.subThoroughfare         =&gt; &quot;1731&quot;</span>
+</span><span data-line="12"><span class="c1"># place.structuredAddress.postCode                =&gt; &quot;90210&quot;</span>
+</span><span data-line="13"><span class="c1"># place.structuredAddress.areasOfInterest         =&gt; None</span>
+</span><span data-line="14"><span class="c1"># place.structuredAddress.dependentLocalities     =&gt; [&quot;Beverly Crest&quot;]</span>
+</span></pre></div>
+</div>
+</section>
+</section>
+<section id="related-projects">
+<h2>Related Projects<a class="headerlink" href="#related-projects" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/iloveitaly/fastapi-ipware">fastapi-ipware</a> — client IP extraction for FastAPI (useful for lat/lng hinting via GeoIP)</p></li>
+<li><p><a class="reference external" href="https://github.com/Nicolapps/mapkit-react">mapkit-react</a> — React bindings for MapKit JS (used in the full-stack example)</p></li>
+</ul>
+</section>
+<section id="mit-license">
+<h2><a class="reference internal" href="#LICENSE.md"><span class="xref myst">MIT License</span></a><a class="headerlink" href="#mit-license" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p><em>This project was created from <a class="reference external" href="https://github.com/iloveitaly/python-package-template">iloveitaly/python-package-template</a></em></p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Michael Bianco</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/iloveitaly/python-apple-maps-api" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script></body>
+</html>

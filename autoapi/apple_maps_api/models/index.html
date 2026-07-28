@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="blue" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple_maps_api.models - apple-maps-api documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+      <link rel="canonical" href="https://iloveitaly.github.io/python-apple-maps-api/autoapi/apple_maps_api/models/" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=168b0b94" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://iloveitaly.github.io/python-apple-maps-api/autoapi/apple_maps_api/models/"/>
+  <meta property="og:title" content="apple_maps_api.models"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>apple-maps-api</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../index.html">API Reference</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/iloveitaly/python-apple-maps-api" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0">
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">apple-maps-api</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">apple_maps_api.models</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/models/index.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/models/index.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/models/index.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>View as Markdown</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/models/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/models/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="apple-maps-api-models">
+<h1>apple_maps_api.models<a class="headerlink" href="#apple-maps-api-models" title="Link to this heading">#</a></h1>
+<p>.. py:module:: apple_maps_api.models</p>
+<p>.. autoapi-nested-parse::</p>
+<p>Pydantic models for Apple Maps Server API responses.</p>
+<p>Model names and field names match Apple’s official API documentation exactly.
+Docstrings explain what each field represents in familiar terms.</p>
+<p>See: https://developer.apple.com/documentation/applemapsserverapi</p>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<p>.. autoapisummary::</p>
+<p>apple_maps_api.models.AddressCategory
+apple_maps_api.models.PoiCategory
+apple_maps_api.models.SearchResultType
+apple_maps_api.models.SearchACResultType
+apple_maps_api.models.SearchRegionPriority
+apple_maps_api.models.Location
+apple_maps_api.models.StructuredAddress
+apple_maps_api.models.MapRegion
+apple_maps_api.models.Place
+apple_maps_api.models.SearchPlace
+apple_maps_api.models.PlaceResults
+apple_maps_api.models.PaginationInfo
+apple_maps_api.models.SearchResponse
+apple_maps_api.models.AutocompleteResult
+apple_maps_api.models.SearchAutocompleteResponse
+apple_maps_api.models.TokenResponse
+apple_maps_api.models.GeocodeResult</p>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<p>.. py:class:: AddressCategory</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">enum.StrEnum</span></code></p>
+<p>Enum where members are also (and must be) strings</p>
+<p>.. py:attribute:: Country
+:value: ‘Country’</p>
+<p>.. py:attribute:: AdministrativeArea
+:value: ‘AdministrativeArea’</p>
+<p>.. py:attribute:: SubAdministrativeArea
+:value: ‘SubAdministrativeArea’</p>
+<p>.. py:attribute:: Locality
+:value: ‘Locality’</p>
+<p>.. py:attribute:: SubLocality
+:value: ‘SubLocality’</p>
+<p>.. py:attribute:: PostalCode
+:value: ‘PostalCode’</p>
+<p>.. py:class:: PoiCategory</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">enum.StrEnum</span></code></p>
+<p>Enum where members are also (and must be) strings</p>
+<p>.. py:attribute:: Airport
+:value: ‘Airport’</p>
+<p>.. py:attribute:: AirportGate
+:value: ‘AirportGate’</p>
+<p>.. py:attribute:: AirportTerminal
+:value: ‘AirportTerminal’</p>
+<p>.. py:attribute:: AmusementPark
+:value: ‘AmusementPark’</p>
+<p>.. py:attribute:: AnimalService
+:value: ‘AnimalService’</p>
+<p>.. py:attribute:: Aquarium
+:value: ‘Aquarium’</p>
+<p>.. py:attribute:: ATM
+:value: ‘ATM’</p>
+<p>.. py:attribute:: AutomotiveRepair
+:value: ‘AutomotiveRepair’</p>
+<p>.. py:attribute:: Bakery
+:value: ‘Bakery’</p>
+<p>.. py:attribute:: Bank
+:value: ‘Bank’</p>
+<p>.. py:attribute:: Baseball
+:value: ‘Baseball’</p>
+<p>.. py:attribute:: Basketball
+:value: ‘Basketball’</p>
+<p>.. py:attribute:: Beach
+:value: ‘Beach’</p>
+<p>.. py:attribute:: Beauty
+:value: ‘Beauty’</p>
+<p>.. py:attribute:: Bowling
+:value: ‘Bowling’</p>
+<p>.. py:attribute:: Brewery
+:value: ‘Brewery’</p>
+<p>.. py:attribute:: Cafe
+:value: ‘Cafe’</p>
+<p>.. py:attribute:: Campground
+:value: ‘Campground’</p>
+<p>.. py:attribute:: CarRental
+:value: ‘CarRental’</p>
+<p>.. py:attribute:: Castle
+:value: ‘Castle’</p>
+<p>.. py:attribute:: ConventionCenter
+:value: ‘ConventionCenter’</p>
+<p>.. py:attribute:: Distillery
+:value: ‘Distillery’</p>
+<p>.. py:attribute:: EVCharger
+:value: ‘EVCharger’</p>
+<p>.. py:attribute:: Fairground
+:value: ‘Fairground’</p>
+<p>.. py:attribute:: FireStation
+:value: ‘FireStation’</p>
+<p>.. py:attribute:: Fishing
+:value: ‘Fishing’</p>
+<p>.. py:attribute:: FitnessCenter
+:value: ‘FitnessCenter’</p>
+<p>.. py:attribute:: FoodMarket
+:value: ‘FoodMarket’</p>
+<p>.. py:attribute:: Fortress
+:value: ‘Fortress’</p>
+<p>.. py:attribute:: GasStation
+:value: ‘GasStation’</p>
+<p>.. py:attribute:: GoKart
+:value: ‘GoKart’</p>
+<p>.. py:attribute:: Golf
+:value: ‘Golf’</p>
+<p>.. py:attribute:: Hiking
+:value: ‘Hiking’</p>
+<p>.. py:attribute:: Hospital
+:value: ‘Hospital’</p>
+<p>.. py:attribute:: Hotel
+:value: ‘Hotel’</p>
+<p>.. py:attribute:: Kayaking
+:value: ‘Kayaking’</p>
+<p>.. py:attribute:: Landmark
+:value: ‘Landmark’</p>
+<p>.. py:attribute:: Laundry
+:value: ‘Laundry’</p>
+<p>.. py:attribute:: Library
+:value: ‘Library’</p>
+<p>.. py:attribute:: Mailbox
+:value: ‘Mailbox’</p>
+<p>.. py:attribute:: Marina
+:value: ‘Marina’</p>
+<p>.. py:attribute:: MiniGolf
+:value: ‘MiniGolf’</p>
+<p>.. py:attribute:: MovieTheater
+:value: ‘MovieTheater’</p>
+<p>.. py:attribute:: Museum
+:value: ‘Museum’</p>
+<p>.. py:attribute:: MusicVenue
+:value: ‘MusicVenue’</p>
+<p>.. py:attribute:: NationalMonument
+:value: ‘NationalMonument’</p>
+<p>.. py:attribute:: NationalPark
+:value: ‘NationalPark’</p>
+<p>.. py:attribute:: Nightlife
+:value: ‘Nightlife’</p>
+<p>.. py:attribute:: Park
+:value: ‘Park’</p>
+<p>.. py:attribute:: Parking
+:value: ‘Parking’</p>
+<p>.. py:attribute:: Pharmacy
+:value: ‘Pharmacy’</p>
+<p>.. py:attribute:: Planetarium
+:value: ‘Planetarium’</p>
+<p>.. py:attribute:: Playground
+:value: ‘Playground’</p>
+<p>.. py:attribute:: Police
+:value: ‘Police’</p>
+<p>.. py:attribute:: PostOffice
+:value: ‘PostOffice’</p>
+<p>.. py:attribute:: PublicTransport
+:value: ‘PublicTransport’</p>
+<p>.. py:attribute:: ReligiousSite
+:value: ‘ReligiousSite’</p>
+<p>.. py:attribute:: Restaurant
+:value: ‘Restaurant’</p>
+<p>.. py:attribute:: Restroom
+:value: ‘Restroom’</p>
+<p>.. py:attribute:: RockClimbing
+:value: ‘RockClimbing’</p>
+<p>.. py:attribute:: RVPark
+:value: ‘RVPark’</p>
+<p>.. py:attribute:: School
+:value: ‘School’</p>
+<p>.. py:attribute:: SkatePark
+:value: ‘SkatePark’</p>
+<p>.. py:attribute:: Skating
+:value: ‘Skating’</p>
+<p>.. py:attribute:: Skiing
+:value: ‘Skiing’</p>
+<p>.. py:attribute:: Soccer
+:value: ‘Soccer’</p>
+<p>.. py:attribute:: Spa
+:value: ‘Spa’</p>
+<p>.. py:attribute:: Stadium
+:value: ‘Stadium’</p>
+<p>.. py:attribute:: Store
+:value: ‘Store’</p>
+<p>.. py:attribute:: Surfing
+:value: ‘Surfing’</p>
+<p>.. py:attribute:: Swimming
+:value: ‘Swimming’</p>
+<p>.. py:attribute:: Tennis
+:value: ‘Tennis’</p>
+<p>.. py:attribute:: Theater
+:value: ‘Theater’</p>
+<p>.. py:attribute:: University
+:value: ‘University’</p>
+<p>.. py:attribute:: Volleyball
+:value: ‘Volleyball’</p>
+<p>.. py:attribute:: Winery
+:value: ‘Winery’</p>
+<p>.. py:attribute:: Zoo
+:value: ‘Zoo’</p>
+<p>.. py:class:: SearchResultType</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">enum.StrEnum</span></code></p>
+<p>Result type filter for /v1/search.</p>
+<p>.. py:attribute:: poi
+:value: ‘poi’</p>
+<p>.. py:attribute:: address
+:value: ‘address’</p>
+<p>.. py:attribute:: physicalFeature
+:value: ‘physicalFeature’</p>
+<p>.. py:attribute:: pointOfInterest
+:value: ‘pointOfInterest’</p>
+<p>.. py:class:: SearchACResultType</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">enum.StrEnum</span></code></p>
+<p>Result type filter for /v1/searchAutocomplete.</p>
+<p>.. py:attribute:: poi
+:value: ‘poi’</p>
+<p>.. py:attribute:: address
+:value: ‘address’</p>
+<p>.. py:attribute:: physicalFeature
+:value: ‘physicalFeature’</p>
+<p>.. py:attribute:: pointOfInterest
+:value: ‘pointOfInterest’</p>
+<p>.. py:attribute:: query
+:value: ‘query’</p>
+<p>.. py:class:: SearchRegionPriority</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">enum.StrEnum</span></code></p>
+<p>Importance of searchRegion for /v1/search and /v1/searchAutocomplete.</p>
+<p>Apple possible values: default, required.</p>
+<p>.. py:attribute:: default
+:value: ‘default’</p>
+<p>.. py:attribute:: required
+:value: ‘required’</p>
+<p>.. py:class:: Location(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A coordinate pair from Apple Maps API.</p>
+<p>latitude: north-south position (e.g. 37.334)
+longitude: east-west position (e.g. -122.009)</p>
+<p>.. py:attribute:: latitude
+:type:  float</p>
+<p>.. py:attribute:: longitude
+:type:  float</p>
+<p>.. py:class:: StructuredAddress(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Detailed address components of a place.</p>
+<p>Apple uses different terminology than most geocoding APIs:</p>
+<ul class="simple">
+<li><p>locality = city</p></li>
+<li><p>administrativeArea = state/province name</p></li>
+<li><p>administrativeAreaCode = state/province short code (e.g. “NY”)</p></li>
+<li><p>subAdministrativeArea = county name</p></li>
+<li><p>postCode = postal/ZIP code</p></li>
+<li><p>fullThoroughfare = full street address (number + street, e.g. “841 Broadway”)</p></li>
+<li><p>thoroughfare = street name (e.g. “Broadway”)</p></li>
+<li><p>subThoroughfare = street/house number (e.g. “841”)</p></li>
+<li><p>subLocality = neighborhood or area within the city</p></li>
+<li><p>areasOfInterest = common names for the surrounding area</p></li>
+<li><p>dependentLocalities = neighborhood names</p></li>
+</ul>
+<p>.. py:attribute:: administrativeArea
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: administrativeAreaCode
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: subAdministrativeArea
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: areasOfInterest
+:type:  list[str] | None
+:value: None</p>
+<p>.. py:attribute:: dependentLocalities
+:type:  list[str] | None
+:value: None</p>
+<p>.. py:attribute:: fullThoroughfare
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: locality
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: postCode
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: subLocality
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: subThoroughfare
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: thoroughfare
+:type:  str | None
+:value: None</p>
+<p>.. py:class:: MapRegion(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A rectangular bounding box on a map.</p>
+<p>Expressed as south-west and north-east corners.</p>
+<p>.. py:attribute:: eastLongitude
+:type:  float</p>
+<p>.. py:attribute:: northLatitude
+:type:  float</p>
+<p>.. py:attribute:: southLatitude
+:type:  float</p>
+<p>.. py:attribute:: westLongitude
+:type:  float</p>
+<p>.. py:class:: Place(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A place returned by geocode, reverseGeocode, or place lookup endpoints.</p>
+<p>coordinate: lat/lng of the place
+formattedAddressLines: human-readable address lines (e.g. [“841 Broadway”, “New York, NY 10003”])
+structuredAddress: parsed address components
+displayMapRegion: suggested map viewport for displaying this place</p>
+<p>.. py:attribute:: id
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: name
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: coordinate
+:type:  Location | None
+:value: None</p>
+<p>.. py:attribute:: formattedAddressLines
+:type:  list[str] | None
+:value: None</p>
+<p>.. py:attribute:: structuredAddress
+:type:  StructuredAddress | None
+:value: None</p>
+<p>.. py:attribute:: country
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: countryCode
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: displayMapRegion
+:type:  MapRegion | None
+:value: None</p>
+<p>.. py:attribute:: alternateIds
+:type:  list[str] | None
+:value: None</p>
+<p>.. py:class:: SearchPlace(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">Place</span></code></p>
+<p>Extended Place returned by /v1/search with POI category info.</p>
+<p>poiCategory: point-of-interest category (e.g. Restaurant, MovieTheater).
+Unknown values from Apple fail validation so we notice and add support.</p>
+<p>.. py:attribute:: poiCategory
+:type:  PoiCategory | None
+:value: None</p>
+<p>.. py:class:: PlaceResults(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Response from /v1/geocode and /v1/reverseGeocode.</p>
+<p>results: list of Place objects matching the query</p>
+<p>.. py:attribute:: results
+:type:  list[Place]</p>
+<p>.. py:class:: PaginationInfo(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pagination metadata from /v1/search when enablePagination is true.</p>
+<p>nextPageToken / prevPageToken: opaque tokens for pageToken on the next request
+totalPageCount: total pages available
+totalResults: total matching results</p>
+<p>.. py:attribute:: nextPageToken
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: prevPageToken
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: totalPageCount
+:type:  int | float | None
+:value: None</p>
+<p>.. py:attribute:: totalResults
+:type:  int | float | None
+:value: None</p>
+<p>.. py:class:: SearchResponse(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Response from /v1/search.</p>
+<p>results: list of SearchPlace objects with optional POI category
+displayMapRegion: suggested map viewport encompassing all results
+paginationInfo: present when the request set enablePagination</p>
+<p>.. py:attribute:: results
+:type:  list[SearchPlace]</p>
+<p>.. py:attribute:: displayMapRegion
+:type:  MapRegion | None
+:value: None</p>
+<p>.. py:attribute:: paginationInfo
+:type:  PaginationInfo | None
+:value: None</p>
+<p>.. py:class:: AutocompleteResult(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A single autocomplete suggestion from /v1/searchAutocomplete.</p>
+<p>completionUrl: relative URL to /v1/search to fetch full details for this suggestion
+displayLines: raw text lines Apple returns — use completionTitle / completionSubtitle instead
+location: approximate coordinate of the suggestion
+structuredAddress: parsed address components if available</p>
+<p>.. py:attribute:: completionUrl
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: displayLines
+:type:  list[str] | None
+:value: None</p>
+<p>.. py:attribute:: location
+:type:  Location | None
+:value: None</p>
+<p>.. py:attribute:: structuredAddress
+:type:  StructuredAddress | None
+:value: None</p>
+<p>.. py:property:: completionTitle
+:type: str | None</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Primary display text (e.g. place name or street address).
+</span></pre></div>
+</div>
+<p>.. py:property:: completionSubtitle
+:type: str | None</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Secondary display text (e.g. city, state).
+</span></pre></div>
+</div>
+<p>.. py:class:: SearchAutocompleteResponse(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Response from /v1/searchAutocomplete.</p>
+<p>results: list of autocomplete suggestions</p>
+<p>.. py:attribute:: results
+:type:  list[AutocompleteResult]</p>
+<p>.. py:class:: TokenResponse(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Response from /v1/token.</p>
+<p>accessToken: short-lived Bearer token for API requests
+expiresInSeconds: token lifetime (typically 1800 = 30 minutes)</p>
+<p>.. py:attribute:: accessToken
+:type:  str</p>
+<p>.. py:attribute:: expiresInSeconds
+:type:  int</p>
+<p>.. py:class:: GeocodeResult(/, **data: Any)</p>
+<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Provider-agnostic geocode result.</p>
+<p>Identical to radar-mapping-api’s GeocodeResult for drop-in replacement.
+This abstraction allows swapping Apple Maps for Radar without changing consuming code.</p>
+<p>.. py:attribute:: lat
+:type:  float</p>
+<p>.. py:attribute:: lon
+:type:  float</p>
+<p>.. py:attribute:: address1
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: address2
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: postal_code
+:type:  str | None</p>
+<p>.. py:attribute:: city
+:type:  str | None</p>
+<p>.. py:attribute:: state_code
+:type:  str | None</p>
+<p>.. py:attribute:: country_code
+:type:  str | None
+:value: None</p>
+<p>.. py:attribute:: formatted_address
+:type:  str | None</p>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Michael Bianco</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/iloveitaly/python-apple-maps-api" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

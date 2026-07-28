@@ -1,0 +1,21 @@
+# apple_maps_api
+
+.. py:module:: apple_maps_api
+
+.. autoapi-nested-parse::
+
+apple-maps-api: A Python client for the Apple Maps Server API.
+
+This package provides a type-safe, production-ready client for interacting with
+Apple Maps geocoding, reverse geocoding, search, and autocomplete APIs.
+
+## Submodules
+
+.. toctree::
+:maxdepth: 1
+
+/autoapi/apple_maps_api/client/index
+/autoapi/apple_maps_api/exceptions/index
+/autoapi/apple_maps_api/helpers/index
+/autoapi/apple_maps_api/models/index
+/autoapi/apple_maps_api/version/index
