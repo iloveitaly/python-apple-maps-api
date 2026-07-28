@@ -1,6 +1,6 @@
-- [ ] We shouldn't require a user to reference a file for their token. We should instead allow them to specify this as an environment variable. Specifying a file won't work well with any cloud provider that has ephemeral storage, and the only alternative there would mean actually committing the key to the repository, which would also be bad.
-- [ ] We need a very clean way to automatically grab a new token when one expires. My instinct is that we should hold this in memory.
-- [ ] I don't want to pass a token into each function. I'd rather do something like a client which holds the token for the user and then you can simply call autocomplete with your address or whatever it might be directly on the client instead of having to manage the token directly.
+- [x] We shouldn't require a user to reference a file for their token. We should instead allow them to specify this as an environment variable. Specifying a file won't work well with any cloud provider that has ephemeral storage, and the only alternative there would mean actually committing the key to the repository, which would also be bad.
+- [x] We need a very clean way to automatically grab a new token when one expires. My instinct is that we should hold this in memory.
+- [x] I don't want to pass a token into each function. I'd rather do something like a client which holds the token for the user and then you can simply call autocomplete with your address or whatever it might be directly on the client instead of having to manage the token directly.
 - [ ] geolocationautocomplete component needs to use frontend components, which should probably be either in a separate repo or we don't actually need anything special because of the mapkit?
   - [ ] Submit a PR against the dual location shad CN component to support Apple Maps. This should be a sort of optional thing or just another variant of the component.
   - [ ] it may makes sense to just fork this repo and come up with another one https://github.com/iloveitaly/shadcn-radar-address-autocomplete
@@ -8,7 +8,11 @@
 - [ ] we don't need the `search_places` functionality right away
 	- [ ] the exact input param requirements (like country code, etc) can change
 - [ ] you can use the test suite here for sample data, example coverage, etc https://github.com/iloveitaly/radar-mapping-api/blob/master/tests/test_client.py
-- [ ] ability to filter by country on the autocomplete endpoint
+- [x] ability to filter by country on the autocomplete endpoint
 - [ ] it probably doesn't fit in this repository, but I'd love a JavaScript function which attaches an autocomplete field to an address and then updates the city, state, address, country, etc. with the selected address.
 - [ ] i'd be curious to investigate if there is some sort of address validation API for shipping.
 - [x] use httpx + tenacity for retries
+
+## Apple MAps
+
+- move to npm package for apple maps loading https://grok.com/share/bGVnYWN5_432278cb-a2f6-4f15-9596-af95bc375892
