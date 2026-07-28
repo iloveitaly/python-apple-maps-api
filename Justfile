@@ -163,6 +163,13 @@ github_repo_permissions_create:
       -F can_approve_pull_request_reviews=true && \
     gh api "/repos/${repo_path}/actions/permissions/workflow"
 
+# Enable GitHub Pages from the gh-pages branch
+github_pages_enable:
+    repo=$(just _github_repo) && \
+    gh api --method POST "repos/$repo/pages" \
+      -f 'source[branch]=gh-pages' \
+      -f 'source[path]=/'
+
 github_repo_set_metadata:
   gh repo edit \
     --description "$(yq  '.project.description' pyproject.toml)" \
