@@ -27,11 +27,8 @@ from .models import (
 from .version import __version__
 
 __all__ = [
-    "__version__",
-    "AppleMapsClient",
-    "geocode_coordinates",
-    "geocode_postal_code",
     "AddressCategory",
+    "AppleMapsClient",
     "AutocompleteResult",
     "GeocodeResult",
     "Location",
@@ -47,4 +44,7 @@ __all__ = [
     "SearchResultType",
     "StructuredAddress",
     "TokenResponse",
+    "__version__",
+    "geocode_coordinates",
+    "geocode_postal_code",
 ]
