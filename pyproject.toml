@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 authors = [{ name = "Michael Bianco", email = "mike@mikebian.co" }]
-urls = { "Repository" = "https://github.com/iloveitaly/apple-maps-api" }
+urls = { "Repository" = "https://github.com/iloveitaly/apple-maps-api", "Documentation" = "https://iloveitaly.github.io/python-apple-maps-api/" }
 
 [build-system]
 requires = ["uv_build>=0.11.17,<0.12"]
@@ -33,6 +33,17 @@ dev = [
     "pytest-cov>=7.0.0",
     "covdefaults>=2.3.0",
     "pytest-httpx2>=1.0.0",
+]
+# Sphinx toolchain for local/CI docs builds — not a published package extra
+docs = [
+    "sphinx>=7.1.2",
+    "shibuya",
+    "myst-parser>=2.0.0",
+    "sphinx-design>=0.5.0",
+    "sphinx-copybutton>=0.5.2",
+    "sphinx-autobuild",
+    "sphinx-autoapi",
+    "sphinx-llm",
 ]
 
 [tool.pyright]
