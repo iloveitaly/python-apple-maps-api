@@ -77,7 +77,7 @@ html_theme_options = {
     "accent_color": "blue",
     "github_url": "https://github.com/iloveitaly/python-apple-maps-api",
     "nav_links": [
-        {"title": "API Reference", "url": "autoapi/index"},
+        {"title": "API Reference", "url": "autoapi/apple_maps_api/index"},
     ],
 }
 
