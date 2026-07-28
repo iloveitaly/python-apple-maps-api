@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="blue" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple_maps_api.client - apple-maps-api documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple_maps_api.client - apple-maps-api documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="apple_maps_api.exceptions" href="../exceptions/index.html" /><link rel="prev" title="apple_maps_api" href="../index.html" />
       <link rel="canonical" href="https://iloveitaly.github.io/python-apple-maps-api/autoapi/apple_maps_api/client/" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
@@ -65,8 +65,15 @@ data-aria-dark="Switch to auto color mode">
   <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
-        <div class="globaltoc" data-expand-depth="0"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">API Reference</a></li>
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">apple_maps_api.client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exceptions/index.html">apple_maps_api.exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/index.html">apple_maps_api.helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/index.html">apple_maps_api.models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../version/index.html">apple_maps_api.version</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -81,7 +88,56 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
-<li><a class="reference internal" href="#module-contents">Module Contents</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#apple_maps_api.client.log"><code class="docutils literal notranslate"><span class="pre">log</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.GeocodeOptionsLatLng"><code class="docutils literal notranslate"><span class="pre">GeocodeOptionsLatLng</span></code></a><ul>
+<li><a class="reference internal" href="#apple_maps_api.client.GeocodeOptionsLatLng.lat"><code class="docutils literal notranslate"><span class="pre">GeocodeOptionsLatLng.lat</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.GeocodeOptionsLatLng.lng"><code class="docutils literal notranslate"><span class="pre">GeocodeOptionsLatLng.lng</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apple_maps_api.client.GeocodeOptions"><code class="docutils literal notranslate"><span class="pre">GeocodeOptions</span></code></a><ul>
+<li><a class="reference internal" href="#apple_maps_api.client.GeocodeOptions.lat"><code class="docutils literal notranslate"><span class="pre">GeocodeOptions.lat</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.GeocodeOptions.lng"><code class="docutils literal notranslate"><span class="pre">GeocodeOptions.lng</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apple_maps_api.client.SearchOptionsLatLng"><code class="docutils literal notranslate"><span class="pre">SearchOptionsLatLng</span></code></a><ul>
+<li><a class="reference internal" href="#apple_maps_api.client.SearchOptionsLatLng.lat"><code class="docutils literal notranslate"><span class="pre">SearchOptionsLatLng.lat</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.SearchOptionsLatLng.lng"><code class="docutils literal notranslate"><span class="pre">SearchOptionsLatLng.lng</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apple_maps_api.client.SearchOptions"><code class="docutils literal notranslate"><span class="pre">SearchOptions</span></code></a><ul>
+<li><a class="reference internal" href="#apple_maps_api.client.SearchOptions.lat"><code class="docutils literal notranslate"><span class="pre">SearchOptions.lat</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.SearchOptions.lng"><code class="docutils literal notranslate"><span class="pre">SearchOptions.lng</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apple_maps_api.client.AutocompleteOptionsLatLng"><code class="docutils literal notranslate"><span class="pre">AutocompleteOptionsLatLng</span></code></a><ul>
+<li><a class="reference internal" href="#apple_maps_api.client.AutocompleteOptionsLatLng.lat"><code class="docutils literal notranslate"><span class="pre">AutocompleteOptionsLatLng.lat</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AutocompleteOptionsLatLng.lng"><code class="docutils literal notranslate"><span class="pre">AutocompleteOptionsLatLng.lng</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apple_maps_api.client.AutocompleteOptions"><code class="docutils literal notranslate"><span class="pre">AutocompleteOptions</span></code></a><ul>
+<li><a class="reference internal" href="#apple_maps_api.client.AutocompleteOptions.lat"><code class="docutils literal notranslate"><span class="pre">AutocompleteOptions.lat</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AutocompleteOptions.lng"><code class="docutils literal notranslate"><span class="pre">AutocompleteOptions.lng</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient</span></code></a><ul>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.team_id"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.team_id</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.key_id"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.key_id</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.origin"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.origin</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.private_key"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.private_key</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.base_url"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.base_url</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.from_env"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.from_env()</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.create_token"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.create_token()</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.create_mapkit_token"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.create_mapkit_token()</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.geocode"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.geocode()</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.reverse_geocode"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.reverse_geocode()</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.search"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.search()</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.autocomplete"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.autocomplete()</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.search_completion"><code class="docutils literal notranslate"><span class="pre">AppleMapsClient.search_completion()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
@@ -99,8 +155,12 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">apple_maps_api.client</strong>
+        <a itemprop="item" href="../index.html"><span itemprop="name">apple_maps_api</span></a>
+        <span>/</span>
         <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">apple_maps_api.client</strong>
+        <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
       <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
@@ -116,7 +176,7 @@ data-aria-dark="Switch to auto color mode">
     <button
       type="button"
       class="js-copy px-3 py-1 inline-flex items-center gap-1"
-      data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt"
+      data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.rst.txt"
     >
       <i class="i-lucide" data-icon="copy"></i>
       <span>Copy page</span>
@@ -130,256 +190,399 @@ data-aria-dark="Switch to auto color mode">
     <div role="presentation">
       <div class="flex flex-col" role="group">
         <button class="js-copy" type="button" role="menuitem"
-          data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt">
+          data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.rst.txt">
           <span class="iconify-icon">
             <i class="i-lucide" data-icon="copy"></i>
           </span>
           <span>Copy page</span>
         </button>
-        <a role="menuitem" href="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
-            <span>View as Markdown</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        <a role="menuitem" href="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.rst.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.rst.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:openai"></iconify-icon>
           <span>Open in ChatGPT</span>
-        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/client/index.rst.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:claude"></iconify-icon>
           <span>Open in Claude</span>
         </a></div>
     </div>
   </div>
 </div><article class="yue" role="main">
-          <section id="apple-maps-api-client">
-<h1>apple_maps_api.client<a class="headerlink" href="#apple-maps-api-client" title="Link to this heading">#</a></h1>
-<p>.. py:module:: apple_maps_api.client</p>
-<p>.. autoapi-nested-parse::</p>
+          <section id="module-apple_maps_api.client">
+<span id="apple-maps-api-client"></span><h1>apple_maps_api.client<a class="headerlink" href="#module-apple_maps_api.client" title="Link to this heading">#</a></h1>
 <p>Apple Maps Server API client library.</p>
-<p>API docs: https://developer.apple.com/documentation/applemapsserverapi</p>
+<p>API docs: <a class="reference external" href="https://developer.apple.com/documentation/applemapsserverapi">https://developer.apple.com/documentation/applemapsserverapi</a></p>
 <p>This library provides a Python client for the Apple Maps Server API with JWT-based
 authentication, automatic token management, and retry logic.</p>
 <section id="attributes">
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
-<p>.. autoapisummary::</p>
-<p>apple_maps_api.client.log</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apple_maps_api.client.log" title="apple_maps_api.client.log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
-<p>.. autoapisummary::</p>
-<p>apple_maps_api.client.GeocodeOptionsLatLng
-apple_maps_api.client.GeocodeOptions
-apple_maps_api.client.SearchOptionsLatLng
-apple_maps_api.client.SearchOptions
-apple_maps_api.client.AutocompleteOptionsLatLng
-apple_maps_api.client.AutocompleteOptions
-apple_maps_api.client.AppleMapsClient</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apple_maps_api.client.GeocodeOptionsLatLng" title="apple_maps_api.client.GeocodeOptionsLatLng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeocodeOptionsLatLng</span></code></a></p></td>
+<td><p>Geocode options with required <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lng</span></code> location bias.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apple_maps_api.client.GeocodeOptions" title="apple_maps_api.client.GeocodeOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeocodeOptions</span></code></a></p></td>
+<td><p>All optional kwargs for <a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.geocode" title="apple_maps_api.client.AppleMapsClient.geocode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppleMapsClient.geocode()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apple_maps_api.client.SearchOptionsLatLng" title="apple_maps_api.client.SearchOptionsLatLng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SearchOptionsLatLng</span></code></a></p></td>
+<td><p>Search options with required <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lng</span></code> location bias.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apple_maps_api.client.SearchOptions" title="apple_maps_api.client.SearchOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SearchOptions</span></code></a></p></td>
+<td><p>All optional kwargs for <a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.search" title="apple_maps_api.client.AppleMapsClient.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppleMapsClient.search()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apple_maps_api.client.AutocompleteOptionsLatLng" title="apple_maps_api.client.AutocompleteOptionsLatLng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AutocompleteOptionsLatLng</span></code></a></p></td>
+<td><p>Autocomplete options with required <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lng</span></code> location bias.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apple_maps_api.client.AutocompleteOptions" title="apple_maps_api.client.AutocompleteOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AutocompleteOptions</span></code></a></p></td>
+<td><p>All optional kwargs for <a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.autocomplete" title="apple_maps_api.client.AppleMapsClient.autocomplete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppleMapsClient.autocomplete()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient" title="apple_maps_api.client.AppleMapsClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AppleMapsClient</span></code></a></p></td>
+<td><p>A client for the Apple Maps Server API.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
-<p>.. py:data:: log</p>
-<p>.. py:class:: GeocodeOptionsLatLng</p>
-<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_GeocodeOptionsBase</span></code></p>
+<dl class="py data">
+<dt class="sig sig-object py" id="apple_maps_api.client.log">
+<span class="sig-prename descclassname"><span class="pre">apple_maps_api.client.</span></span><span class="sig-name descname"><span class="pre">log</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.log" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apple_maps_api.client.GeocodeOptionsLatLng">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">apple_maps_api.client.</span></span><span class="sig-name descname"><span class="pre">GeocodeOptionsLatLng</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#GeocodeOptionsLatLng"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.GeocodeOptionsLatLng" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">_GeocodeOptionsBase</span></code></p>
 <p>Geocode options with required <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lng</span></code> location bias.</p>
-<p>.. py:attribute:: lat
-:type:  Required[float]</p>
-<p>.. py:attribute:: lng
-:type:  Required[float]</p>
-<p>.. py:class:: GeocodeOptions</p>
-<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_GeocodeOptionsBase</span></code></p>
-<p>All optional kwargs for :meth:<code class="docutils literal notranslate"><span class="pre">AppleMapsClient.geocode</span></code>.</p>
-<p>.. py:attribute:: lat
-:type:  float</p>
-<p>.. py:attribute:: lng
-:type:  float</p>
-<p>.. py:class:: SearchOptionsLatLng</p>
-<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_SearchOptionsBase</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.GeocodeOptionsLatLng.lat">
+<span class="sig-name descname"><span class="pre">lat</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#GeocodeOptionsLatLng.lat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.GeocodeOptionsLatLng.lat" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.GeocodeOptionsLatLng.lng">
+<span class="sig-name descname"><span class="pre">lng</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#GeocodeOptionsLatLng.lng"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.GeocodeOptionsLatLng.lng" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apple_maps_api.client.GeocodeOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">apple_maps_api.client.</span></span><span class="sig-name descname"><span class="pre">GeocodeOptions</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#GeocodeOptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.GeocodeOptions" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">_GeocodeOptionsBase</span></code></p>
+<p>All optional kwargs for <a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.geocode" title="apple_maps_api.client.AppleMapsClient.geocode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppleMapsClient.geocode()</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.GeocodeOptions.lat">
+<span class="sig-name descname"><span class="pre">lat</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#GeocodeOptions.lat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.GeocodeOptions.lat" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.GeocodeOptions.lng">
+<span class="sig-name descname"><span class="pre">lng</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#GeocodeOptions.lng"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.GeocodeOptions.lng" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apple_maps_api.client.SearchOptionsLatLng">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">apple_maps_api.client.</span></span><span class="sig-name descname"><span class="pre">SearchOptionsLatLng</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#SearchOptionsLatLng"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.SearchOptionsLatLng" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">_SearchOptionsBase</span></code></p>
 <p>Search options with required <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lng</span></code> location bias.</p>
-<p>.. py:attribute:: lat
-:type:  Required[float]</p>
-<p>.. py:attribute:: lng
-:type:  Required[float]</p>
-<p>.. py:class:: SearchOptions</p>
-<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_SearchOptionsBase</span></code></p>
-<p>All optional kwargs for :meth:<code class="docutils literal notranslate"><span class="pre">AppleMapsClient.search</span></code>.</p>
-<p>.. py:attribute:: lat
-:type:  float</p>
-<p>.. py:attribute:: lng
-:type:  float</p>
-<p>.. py:class:: AutocompleteOptionsLatLng</p>
-<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_AutocompleteOptionsBase</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.SearchOptionsLatLng.lat">
+<span class="sig-name descname"><span class="pre">lat</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#SearchOptionsLatLng.lat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.SearchOptionsLatLng.lat" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.SearchOptionsLatLng.lng">
+<span class="sig-name descname"><span class="pre">lng</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#SearchOptionsLatLng.lng"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.SearchOptionsLatLng.lng" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apple_maps_api.client.SearchOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">apple_maps_api.client.</span></span><span class="sig-name descname"><span class="pre">SearchOptions</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#SearchOptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.SearchOptions" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">_SearchOptionsBase</span></code></p>
+<p>All optional kwargs for <a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.search" title="apple_maps_api.client.AppleMapsClient.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppleMapsClient.search()</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.SearchOptions.lat">
+<span class="sig-name descname"><span class="pre">lat</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#SearchOptions.lat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.SearchOptions.lat" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.SearchOptions.lng">
+<span class="sig-name descname"><span class="pre">lng</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#SearchOptions.lng"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.SearchOptions.lng" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apple_maps_api.client.AutocompleteOptionsLatLng">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">apple_maps_api.client.</span></span><span class="sig-name descname"><span class="pre">AutocompleteOptionsLatLng</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AutocompleteOptionsLatLng"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AutocompleteOptionsLatLng" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">_AutocompleteOptionsBase</span></code></p>
 <p>Autocomplete options with required <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lng</span></code> location bias.</p>
-<p>.. py:attribute:: lat
-:type:  Required[float]</p>
-<p>.. py:attribute:: lng
-:type:  Required[float]</p>
-<p>.. py:class:: AutocompleteOptions</p>
-<p>Bases: :py:obj:<code class="docutils literal notranslate"><span class="pre">_AutocompleteOptionsBase</span></code></p>
-<p>All optional kwargs for :meth:<code class="docutils literal notranslate"><span class="pre">AppleMapsClient.autocomplete</span></code>.</p>
-<p>.. py:attribute:: lat
-:type:  float</p>
-<p>.. py:attribute:: lng
-:type:  float</p>
-<p>.. py:class:: AppleMapsClient(*, team_id: str, key_id: str, private_key: str, origin: str | None = None)</p>
-<p>A client for the Apple Maps Server API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.AutocompleteOptionsLatLng.lat">
+<span class="sig-name descname"><span class="pre">lat</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AutocompleteOptionsLatLng.lat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AutocompleteOptionsLatLng.lat" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.AutocompleteOptionsLatLng.lng">
+<span class="sig-name descname"><span class="pre">lng</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AutocompleteOptionsLatLng.lng"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AutocompleteOptionsLatLng.lng" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apple_maps_api.client.AutocompleteOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">apple_maps_api.client.</span></span><span class="sig-name descname"><span class="pre">AutocompleteOptions</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AutocompleteOptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AutocompleteOptions" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">_AutocompleteOptionsBase</span></code></p>
+<p>All optional kwargs for <a class="reference internal" href="#apple_maps_api.client.AppleMapsClient.autocomplete" title="apple_maps_api.client.AppleMapsClient.autocomplete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AppleMapsClient.autocomplete()</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.AutocompleteOptions.lat">
+<span class="sig-name descname"><span class="pre">lat</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AutocompleteOptions.lat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AutocompleteOptions.lat" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.AutocompleteOptions.lng">
+<span class="sig-name descname"><span class="pre">lng</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AutocompleteOptions.lng"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AutocompleteOptions.lng" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">apple_maps_api.client.</span></span><span class="sig-name descname"><span class="pre">AppleMapsClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient" title="Link to this definition">#</a></dt>
+<dd><p>A client for the Apple Maps Server API.</p>
 <p>Handles JWT-based authentication with automatic token refresh,
 and provides methods for geocoding, reverse geocoding, search, and autocomplete.</p>
-<p>.. py:attribute:: team_id</p>
-<p>.. py:attribute:: key_id</p>
-<p>.. py:attribute:: origin
-:value: None</p>
-<p>.. py:attribute:: private_key</p>
-<p>.. py:attribute:: base_url
-:value: ‘https://maps-api.apple.com’</p>
-<p>.. py:method:: from_env() -&gt; AppleMapsClient
-:classmethod:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Construct a client from APPLE_MAPS_* environment variables.
-</span><span data-line="2">
-</span><span data-line="3">  Required:
-</span><span data-line="4">  - APPLE_MAPS_TEAM_ID
-</span><span data-line="5">  - APPLE_MAPS_KEY_ID
-</span><span data-line="6">  - APPLE_MAPS_P8_KEY
-</span><span data-line="7">
-</span><span data-line="8">  Optional:
-</span><span data-line="9">  - APPLE_MAPS_ORIGIN
-</span></pre></div>
-</div>
-<p>.. py:method:: create_token() -&gt; str</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Return a valid Maps access token for Apple Maps Server API use.
-</span><span data-line="2">
-</span><span data-line="3">  This is the *access token* (not the auth JWT) suitable for server-side
-</span><span data-line="4">  API calls (geocode, search, etc.). It is NOT suitable for MapKit JS.
-</span><span data-line="5">  Use `create_mapkit_token()` for browser-side MapKit JS initialization.
-</span><span data-line="6">
-</span><span data-line="7">  Spec: https://developer.apple.com/documentation/applemapsserverapi/-v1-token
-</span></pre></div>
-</div>
-<p>.. py:method:: create_mapkit_token(*, ttl_seconds: int = _DEFAULT_JWT_TTL_SECONDS) -&gt; str</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Return a signed JWT for MapKit JS browser initialization.
-</span><span data-line="2">
-</span><span data-line="3">  MapKit JS requires the raw signed JWT, not the Server API access token.
-</span><span data-line="4">  Pass this to the `authorizationCallback` done() function.
-</span><span data-line="5">  If `origin` was set on the client, the token is restricted to that domain.
-</span><span data-line="6">
-</span><span data-line="7">  :param ttl_seconds: JWT lifetime in seconds (default: 1 hour).
-</span><span data-line="8">      Apple does not document a maximum for Maps tokens.
-</span><span data-line="9">
-</span><span data-line="10">  Spec:
-</span><span data-line="11">  https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api
-</span><span data-line="12">  https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js
-</span></pre></div>
-</div>
-<p>.. py:method:: geocode(query: str, **kwargs: Unpack[GeocodeOptionsLatLng]) -&gt; apple_maps_api.models.PlaceResults
-geocode(query: str, **kwargs: Unpack[_GeocodeOptionsBase]) -&gt; apple_maps_api.models.PlaceResults</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Convert an address string to coordinates.
-</span><span data-line="2">
-</span><span data-line="3">  Maps to GET /v1/geocode.
-</span><span data-line="4">
-</span><span data-line="5">  :param query: Address to geocode (e.g., &quot;1 Apple Park Way&quot;).
-</span><span data-line="6">  :param limit_to_countries: ISO 3166-1 alpha-2 country codes to limit results
-</span><span data-line="7">      (e.g. ``[&quot;US&quot;, &quot;CA&quot;]``).
-</span><span data-line="8">  :param lang: BCP 47 language code (default: &quot;en-US&quot;).
-</span><span data-line="9">  :param lat: Latitude for app-defined search bias (must pass with lng).
-</span><span data-line="10">      Sent as Apple&#39;s ``searchLocation``.
-</span><span data-line="11">  :param lng: Longitude for app-defined search bias (must pass with lat).
-</span><span data-line="12">  :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
-</span><span data-line="13">  :param user_lat: Latitude of the user&#39;s position (must pass with user_lng).
-</span><span data-line="14">      Used for ranking/relevance; if ``lat``/``lng`` are omitted, some
-</span><span data-line="15">      endpoints may fall back to this as the search hint.
-</span><span data-line="16">  :param user_lng: Longitude of the user&#39;s position (must pass with user_lat).
-</span></pre></div>
-</div>
-<p>.. py:method:: reverse_geocode(*, lat: float, lng: float, lang: str | None = None) -&gt; apple_maps_api.models.PlaceResults</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Convert coordinates to an address.
-</span><span data-line="2">
-</span><span data-line="3">  Maps to GET /v1/reverseGeocode.
-</span><span data-line="4">
-</span><span data-line="5">  :param lat: Latitude of the point to reverse geocode.
-</span><span data-line="6">  :param lng: Longitude of the point to reverse geocode.
-</span><span data-line="7">  :param lang: BCP 47 language code (default: &quot;en-US&quot;).
-</span></pre></div>
-</div>
-<p>.. py:method:: search(query: str, **kwargs: Unpack[SearchOptionsLatLng]) -&gt; apple_maps_api.models.SearchResponse
-search(query: str = ‘’, **kwargs: Unpack[_SearchOptionsBase]) -&gt; apple_maps_api.models.SearchResponse</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Search for places by name or category.
-</span><span data-line="2">
-</span><span data-line="3">  Maps to GET /v1/search.
-</span><span data-line="4">
-</span><span data-line="5">  Location bias (optional): pass ``lat=`` and ``lng=`` together.
-</span><span data-line="6">
-</span><span data-line="7">  For page 2+, pass only ``page_token`` from a prior response&#39;s
-</span><span data-line="8">  ``paginationInfo.nextPageToken``. Apple rejects other search params
-</span><span data-line="9">  (including ``q`` and ``enablePagination``) on token requests.
-</span><span data-line="10">
-</span><span data-line="11">  :param query: Search query (e.g., &quot;coffee&quot;, &quot;Apple Park&quot;). Required
-</span><span data-line="12">      unless ``page_token`` is set.
-</span><span data-line="13">  :param lat: Latitude for app-defined search bias (must pass with lng).
-</span><span data-line="14">      Sent as Apple&#39;s ``searchLocation`` — &quot;search near this map point&quot;.
-</span><span data-line="15">  :param lng: Longitude for app-defined search bias (must pass with lat).
-</span><span data-line="16">  :param categories: POI categories to include (e.g. ``[&quot;MovieTheater&quot;, &quot;Cafe&quot;]``).
-</span><span data-line="17">  :param exclude_categories: POI categories to exclude (e.g. ``[&quot;Parking&quot;]``).
-</span><span data-line="18">  :param limit_to_countries: ISO 3166-1 alpha-2 country codes
-</span><span data-line="19">      (e.g. ``[&quot;US&quot;, &quot;CA&quot;]``).
-</span><span data-line="20">  :param lang: BCP 47 language code (default: &quot;en-US&quot;).
-</span><span data-line="21">  :param result_type_filter: Result types (e.g. ``[&quot;Poi&quot;, &quot;Address&quot;]``).
-</span><span data-line="22">  :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
-</span><span data-line="23">  :param user_lat: Latitude of the user&#39;s position (must pass with user_lng).
-</span><span data-line="24">      Used for ranking/relevance; Search may fall back to it as
-</span><span data-line="25">      ``searchLocation`` when ``lat``/``lng`` are omitted.
-</span><span data-line="26">  :param user_lng: Longitude of the user&#39;s position (must pass with user_lat).
-</span><span data-line="27">  :param search_region_priority: Importance of ``search_region``
-</span><span data-line="28">      (:class:`SearchRegionPriority` or ``&quot;default&quot;`` / ``&quot;required&quot;``).
-</span><span data-line="29">  :param enable_pagination: Request paginated results (first page only).
-</span><span data-line="30">  :param page_token: Token from ``paginationInfo`` for a subsequent page.
-</span><span data-line="31">      When set, sent alone — do not combine with query or other filters.
-</span><span data-line="32">  :param include_address_categories: Address categories to include
-</span><span data-line="33">      (e.g. ``[&quot;AdministrativeArea&quot;]``).
-</span><span data-line="34">  :param exclude_address_categories: Address categories to exclude.
-</span></pre></div>
-</div>
-<p>.. py:method:: autocomplete(query: str, **kwargs: Unpack[AutocompleteOptionsLatLng]) -&gt; apple_maps_api.models.SearchAutocompleteResponse
-autocomplete(query: str, **kwargs: Unpack[_AutocompleteOptionsBase]) -&gt; apple_maps_api.models.SearchAutocompleteResponse</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Autocomplete partial addresses and place names.
-</span><span data-line="2">
-</span><span data-line="3">  Maps to GET /v1/searchAutocomplete.
-</span><span data-line="4">
-</span><span data-line="5">  Location bias (optional): pass ``lat=`` and ``lng=`` together.
-</span><span data-line="6">
-</span><span data-line="7">  Result count is fixed by Apple; the API has no limit/maxResults parameter.
-</span><span data-line="8">  For more results, use search() (supports enable_pagination) or
-</span><span data-line="9">  search_completion() to expand a single autocomplete hit.
-</span><span data-line="10">
-</span><span data-line="11">  :param query: Partial address or place name to autocomplete.
-</span><span data-line="12">  :param lat: Latitude for app-defined search bias (must pass with lng).
-</span><span data-line="13">      Sent as Apple&#39;s ``searchLocation`` — &quot;search near this map point&quot;.
-</span><span data-line="14">  :param lng: Longitude for app-defined search bias (must pass with lat).
-</span><span data-line="15">  :param limit_to_countries: ISO 3166-1 alpha-2 country codes
-</span><span data-line="16">      (e.g. ``[&quot;US&quot;, &quot;CA&quot;]``).
-</span><span data-line="17">  :param lang: BCP 47 language code (default: &quot;en-US&quot;).
-</span><span data-line="18">  :param result_type_filter: Result types (e.g. ``[&quot;Address&quot;, &quot;Poi&quot;]``).
-</span><span data-line="19">  :param include_poi_categories: POI categories to include
-</span><span data-line="20">      (e.g. ``[&quot;Cafe&quot;]``).
-</span><span data-line="21">  :param exclude_poi_categories: POI categories to exclude.
-</span><span data-line="22">  :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
-</span><span data-line="23">  :param user_lat: Latitude of the user&#39;s position (must pass with user_lng).
-</span><span data-line="24">      Used for ranking/relevance; may fall back as ``searchLocation``
-</span><span data-line="25">      when ``lat``/``lng`` are omitted.
-</span><span data-line="26">  :param user_lng: Longitude of the user&#39;s position (must pass with user_lat).
-</span><span data-line="27">  :param search_region_priority: Importance of ``search_region``
-</span><span data-line="28">      (:class:`SearchRegionPriority` or ``&quot;default&quot;`` / ``&quot;required&quot;``).
-</span><span data-line="29">  :param include_address_categories: Address categories to include.
-</span><span data-line="30">  :param exclude_address_categories: Address categories to exclude.
-</span></pre></div>
-</div>
-<p>.. py:method:: search_completion(completion: apple_maps_api.models.AutocompleteResult | str, *, lang: str | None = None) -&gt; apple_maps_api.models.SearchResponse</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span data-line="1">  Resolve an autocomplete suggestion to full search results.
-</span><span data-line="2">
-</span><span data-line="3">  Maps to GET /v1/search using the completionUrl from an AutocompleteResult.
-</span><span data-line="4">  The completionUrl already encodes the query and opaque metadata Apple needs
-</span><span data-line="5">  to return precise results for the suggestion.
-</span><span data-line="6">
-</span><span data-line="7">  :param completion: An AutocompleteResult or its completionUrl string.
-</span><span data-line="8">  :param lang: BCP 47 language code (e.g., &quot;en-US&quot;). Apple does not carry the
-</span><span data-line="9">      language through the completionUrl, so callers must re-specify it here.
-</span><span data-line="10">  :raises ValueError: If the completion has no completionUrl.
-</span></pre></div>
-</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.team_id">
+<span class="sig-name descname"><span class="pre">team_id</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.team_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.team_id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.key_id">
+<span class="sig-name descname"><span class="pre">key_id</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.key_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.key_id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.origin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.origin" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.private_key">
+<span class="sig-name descname"><span class="pre">private_key</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.private_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.private_key" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.base_url">
+<span class="sig-name descname"><span class="pre">base_url</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://maps-api.apple.com'</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.base_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.base_url" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.from_env">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_env</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#apple_maps_api.client.AppleMapsClient" title="apple_maps_api.client.AppleMapsClient"><span class="pre">AppleMapsClient</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.from_env"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.from_env" title="Link to this definition">#</a></dt>
+<dd><p>Construct a client from APPLE_MAPS_* environment variables.</p>
+<p>Required:
+- APPLE_MAPS_TEAM_ID
+- APPLE_MAPS_KEY_ID
+- APPLE_MAPS_P8_KEY</p>
+<p>Optional:
+- APPLE_MAPS_ORIGIN</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.create_token">
+<span class="sig-name descname"><span class="pre">create_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.create_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.create_token" title="Link to this definition">#</a></dt>
+<dd><p>Return a valid Maps access token for Apple Maps Server API use.</p>
+<p>This is the <em>access token</em> (not the auth JWT) suitable for server-side
+API calls (geocode, search, etc.). It is NOT suitable for MapKit JS.
+Use <cite>create_mapkit_token()</cite> for browser-side MapKit JS initialization.</p>
+<p>Spec: <a class="reference external" href="https://developer.apple.com/documentation/applemapsserverapi/-v1-token">https://developer.apple.com/documentation/applemapsserverapi/-v1-token</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.create_mapkit_token">
+<span class="sig-name descname"><span class="pre">create_mapkit_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttl_seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_DEFAULT_JWT_TTL_SECONDS</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.create_mapkit_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.create_mapkit_token" title="Link to this definition">#</a></dt>
+<dd><p>Return a signed JWT for MapKit JS browser initialization.</p>
+<p>MapKit JS requires the raw signed JWT, not the Server API access token.
+Pass this to the <cite>authorizationCallback</cite> done() function.
+If <cite>origin</cite> was set on the client, the token is restricted to that domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ttl_seconds</strong> – JWT lifetime in seconds (default: 1 hour).
+Apple does not document a maximum for Maps tokens.</p>
+</dd>
+</dl>
+<p>Spec:
+<a class="reference external" href="https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api">https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api</a>
+<a class="reference external" href="https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js">https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.geocode">
+<span class="sig-name descname"><span class="pre">geocode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#apple_maps_api.client.GeocodeOptionsLatLng" title="apple_maps_api.client.GeocodeOptionsLatLng"><span class="pre">GeocodeOptionsLatLng</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.PlaceResults" title="apple_maps_api.models.PlaceResults"><span class="pre">apple_maps_api.models.PlaceResults</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.geocode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.geocode" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">geocode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><span class="pre">_GeocodeOptionsBase</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.PlaceResults" title="apple_maps_api.models.PlaceResults"><span class="pre">apple_maps_api.models.PlaceResults</span></a></span></span></dt>
+<dd><p>Convert an address string to coordinates.</p>
+<p>Maps to GET /v1/geocode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – Address to geocode (e.g., “1 Apple Park Way”).</p></li>
+<li><p><strong>limit_to_countries</strong> – ISO 3166-1 alpha-2 country codes to limit results
+(e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;US&quot;,</span> <span class="pre">&quot;CA&quot;]</span></code>).</p></li>
+<li><p><strong>lang</strong> – BCP 47 language code (default: “en-US”).</p></li>
+<li><p><strong>lat</strong> – Latitude for app-defined search bias (must pass with lng).
+Sent as Apple’s <code class="docutils literal notranslate"><span class="pre">searchLocation</span></code>.</p></li>
+<li><p><strong>lng</strong> – Longitude for app-defined search bias (must pass with lat).</p></li>
+<li><p><strong>search_region</strong> – App-defined bounding-box hint as <code class="xref py py-class docutils literal notranslate"><span class="pre">MapRegion</span></code>.</p></li>
+<li><p><strong>user_lat</strong> – Latitude of the user’s position (must pass with user_lng).
+Used for ranking/relevance; if <code class="docutils literal notranslate"><span class="pre">lat</span></code>/<code class="docutils literal notranslate"><span class="pre">lng</span></code> are omitted, some
+endpoints may fall back to this as the search hint.</p></li>
+<li><p><strong>user_lng</strong> – Longitude of the user’s position (must pass with user_lat).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.reverse_geocode">
+<span class="sig-name descname"><span class="pre">reverse_geocode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">lng</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.PlaceResults" title="apple_maps_api.models.PlaceResults"><span class="pre">apple_maps_api.models.PlaceResults</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.reverse_geocode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.reverse_geocode" title="Link to this definition">#</a></dt>
+<dd><p>Convert coordinates to an address.</p>
+<p>Maps to GET /v1/reverseGeocode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat</strong> – Latitude of the point to reverse geocode.</p></li>
+<li><p><strong>lng</strong> – Longitude of the point to reverse geocode.</p></li>
+<li><p><strong>lang</strong> – BCP 47 language code (default: “en-US”).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#apple_maps_api.client.SearchOptionsLatLng" title="apple_maps_api.client.SearchOptionsLatLng"><span class="pre">SearchOptionsLatLng</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.SearchResponse" title="apple_maps_api.models.SearchResponse"><span class="pre">apple_maps_api.models.SearchResponse</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.search" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><span class="pre">_SearchOptionsBase</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.SearchResponse" title="apple_maps_api.models.SearchResponse"><span class="pre">apple_maps_api.models.SearchResponse</span></a></span></span></dt>
+<dd><p>Search for places by name or category.</p>
+<p>Maps to GET /v1/search.</p>
+<p>Location bias (optional): pass <code class="docutils literal notranslate"><span class="pre">lat=</span></code> and <code class="docutils literal notranslate"><span class="pre">lng=</span></code> together.</p>
+<p>For page 2+, pass only <code class="docutils literal notranslate"><span class="pre">page_token</span></code> from a prior response’s
+<code class="docutils literal notranslate"><span class="pre">paginationInfo.nextPageToken</span></code>. Apple rejects other search params
+(including <code class="docutils literal notranslate"><span class="pre">q</span></code> and <code class="docutils literal notranslate"><span class="pre">enablePagination</span></code>) on token requests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – Search query (e.g., “coffee”, “Apple Park”). Required
+unless <code class="docutils literal notranslate"><span class="pre">page_token</span></code> is set.</p></li>
+<li><p><strong>lat</strong> – Latitude for app-defined search bias (must pass with lng).
+Sent as Apple’s <code class="docutils literal notranslate"><span class="pre">searchLocation</span></code> — “search near this map point”.</p></li>
+<li><p><strong>lng</strong> – Longitude for app-defined search bias (must pass with lat).</p></li>
+<li><p><strong>categories</strong> – POI categories to include (e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;MovieTheater&quot;,</span> <span class="pre">&quot;Cafe&quot;]</span></code>).</p></li>
+<li><p><strong>exclude_categories</strong> – POI categories to exclude (e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;Parking&quot;]</span></code>).</p></li>
+<li><p><strong>limit_to_countries</strong> – ISO 3166-1 alpha-2 country codes
+(e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;US&quot;,</span> <span class="pre">&quot;CA&quot;]</span></code>).</p></li>
+<li><p><strong>lang</strong> – BCP 47 language code (default: “en-US”).</p></li>
+<li><p><strong>result_type_filter</strong> – Result types (e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;Poi&quot;,</span> <span class="pre">&quot;Address&quot;]</span></code>).</p></li>
+<li><p><strong>search_region</strong> – App-defined bounding-box hint as <code class="xref py py-class docutils literal notranslate"><span class="pre">MapRegion</span></code>.</p></li>
+<li><p><strong>user_lat</strong> – Latitude of the user’s position (must pass with user_lng).
+Used for ranking/relevance; Search may fall back to it as
+<code class="docutils literal notranslate"><span class="pre">searchLocation</span></code> when <code class="docutils literal notranslate"><span class="pre">lat</span></code>/<code class="docutils literal notranslate"><span class="pre">lng</span></code> are omitted.</p></li>
+<li><p><strong>user_lng</strong> – Longitude of the user’s position (must pass with user_lat).</p></li>
+<li><p><strong>search_region_priority</strong> – Importance of <code class="docutils literal notranslate"><span class="pre">search_region</span></code>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">SearchRegionPriority</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;required&quot;</span></code>).</p></li>
+<li><p><strong>enable_pagination</strong> – Request paginated results (first page only).</p></li>
+<li><p><strong>page_token</strong> – Token from <code class="docutils literal notranslate"><span class="pre">paginationInfo</span></code> for a subsequent page.
+When set, sent alone — do not combine with query or other filters.</p></li>
+<li><p><strong>include_address_categories</strong> – Address categories to include
+(e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;AdministrativeArea&quot;]</span></code>).</p></li>
+<li><p><strong>exclude_address_categories</strong> – Address categories to exclude.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.autocomplete">
+<span class="sig-name descname"><span class="pre">autocomplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#apple_maps_api.client.AutocompleteOptionsLatLng" title="apple_maps_api.client.AutocompleteOptionsLatLng"><span class="pre">AutocompleteOptionsLatLng</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.SearchAutocompleteResponse" title="apple_maps_api.models.SearchAutocompleteResponse"><span class="pre">apple_maps_api.models.SearchAutocompleteResponse</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.autocomplete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.autocomplete" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">autocomplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><span class="pre">_AutocompleteOptionsBase</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.SearchAutocompleteResponse" title="apple_maps_api.models.SearchAutocompleteResponse"><span class="pre">apple_maps_api.models.SearchAutocompleteResponse</span></a></span></span></dt>
+<dd><p>Autocomplete partial addresses and place names.</p>
+<p>Maps to GET /v1/searchAutocomplete.</p>
+<p>Location bias (optional): pass <code class="docutils literal notranslate"><span class="pre">lat=</span></code> and <code class="docutils literal notranslate"><span class="pre">lng=</span></code> together.</p>
+<p>Result count is fixed by Apple; the API has no limit/maxResults parameter.
+For more results, use search() (supports enable_pagination) or
+search_completion() to expand a single autocomplete hit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – Partial address or place name to autocomplete.</p></li>
+<li><p><strong>lat</strong> – Latitude for app-defined search bias (must pass with lng).
+Sent as Apple’s <code class="docutils literal notranslate"><span class="pre">searchLocation</span></code> — “search near this map point”.</p></li>
+<li><p><strong>lng</strong> – Longitude for app-defined search bias (must pass with lat).</p></li>
+<li><p><strong>limit_to_countries</strong> – ISO 3166-1 alpha-2 country codes
+(e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;US&quot;,</span> <span class="pre">&quot;CA&quot;]</span></code>).</p></li>
+<li><p><strong>lang</strong> – BCP 47 language code (default: “en-US”).</p></li>
+<li><p><strong>result_type_filter</strong> – Result types (e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;Address&quot;,</span> <span class="pre">&quot;Poi&quot;]</span></code>).</p></li>
+<li><p><strong>include_poi_categories</strong> – POI categories to include
+(e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;Cafe&quot;]</span></code>).</p></li>
+<li><p><strong>exclude_poi_categories</strong> – POI categories to exclude.</p></li>
+<li><p><strong>search_region</strong> – App-defined bounding-box hint as <code class="xref py py-class docutils literal notranslate"><span class="pre">MapRegion</span></code>.</p></li>
+<li><p><strong>user_lat</strong> – Latitude of the user’s position (must pass with user_lng).
+Used for ranking/relevance; may fall back as <code class="docutils literal notranslate"><span class="pre">searchLocation</span></code>
+when <code class="docutils literal notranslate"><span class="pre">lat</span></code>/<code class="docutils literal notranslate"><span class="pre">lng</span></code> are omitted.</p></li>
+<li><p><strong>user_lng</strong> – Longitude of the user’s position (must pass with user_lat).</p></li>
+<li><p><strong>search_region_priority</strong> – Importance of <code class="docutils literal notranslate"><span class="pre">search_region</span></code>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">SearchRegionPriority</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;required&quot;</span></code>).</p></li>
+<li><p><strong>include_address_categories</strong> – Address categories to include.</p></li>
+<li><p><strong>exclude_address_categories</strong> – Address categories to exclude.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apple_maps_api.client.AppleMapsClient.search_completion">
+<span class="sig-name descname"><span class="pre">search_completion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">completion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../models/index.html#apple_maps_api.models.AutocompleteResult" title="apple_maps_api.models.AutocompleteResult"><span class="pre">apple_maps_api.models.AutocompleteResult</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.SearchResponse" title="apple_maps_api.models.SearchResponse"><span class="pre">apple_maps_api.models.SearchResponse</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/client.html#AppleMapsClient.search_completion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.client.AppleMapsClient.search_completion" title="Link to this definition">#</a></dt>
+<dd><p>Resolve an autocomplete suggestion to full search results.</p>
+<p>Maps to GET /v1/search using the completionUrl from an AutocompleteResult.
+The completionUrl already encodes the query and opaque metadata Apple needs
+to return precise results for the suggestion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>completion</strong> – An AutocompleteResult or its completionUrl string.</p></li>
+<li><p><strong>lang</strong> – BCP 47 language code (e.g., “en-US”). Apple does not carry the
+language through the completionUrl, so callers must re-specify it here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the completion has no completionUrl.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -388,7 +591,21 @@ autocomplete(query: str, **kwargs: Unpack[_AutocompleteOptionsBase]) -&gt; apple
     <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
   </svg>
   <span>Back to top</span>
-</button><div class="navigation flex print:hidden"></div></div>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">apple_maps_api</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../exceptions/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">apple_maps_api.exceptions</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
     </div>
   </main>
 </div>

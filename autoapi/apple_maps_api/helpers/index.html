@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="blue" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple_maps_api.helpers - apple-maps-api documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple_maps_api.helpers - apple-maps-api documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="apple_maps_api.models" href="../models/index.html" /><link rel="prev" title="apple_maps_api.exceptions" href="../exceptions/index.html" />
       <link rel="canonical" href="https://iloveitaly.github.io/python-apple-maps-api/autoapi/apple_maps_api/helpers/" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
@@ -65,8 +65,15 @@ data-aria-dark="Switch to auto color mode">
   <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
-        <div class="globaltoc" data-expand-depth="0"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">API Reference</a></li>
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../client/index.html">apple_maps_api.client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exceptions/index.html">apple_maps_api.exceptions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">apple_maps_api.helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/index.html">apple_maps_api.models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../version/index.html">apple_maps_api.version</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -81,7 +88,12 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
-<li><a class="reference internal" href="#module-contents">Module Contents</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#apple_maps_api.helpers.log"><code class="docutils literal notranslate"><span class="pre">log</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.helpers.geocode_postal_code"><code class="docutils literal notranslate"><span class="pre">geocode_postal_code()</span></code></a></li>
+<li><a class="reference internal" href="#apple_maps_api.helpers.geocode_coordinates"><code class="docutils literal notranslate"><span class="pre">geocode_coordinates()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
@@ -99,8 +111,12 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">apple_maps_api.helpers</strong>
+        <a itemprop="item" href="../index.html"><span itemprop="name">apple_maps_api</span></a>
+        <span>/</span>
         <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">apple_maps_api.helpers</strong>
+        <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
       <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
@@ -116,7 +132,7 @@ data-aria-dark="Switch to auto color mode">
     <button
       type="button"
       class="js-copy px-3 py-1 inline-flex items-center gap-1"
-      data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.md.txt"
+      data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.rst.txt"
     >
       <i class="i-lucide" data-icon="copy"></i>
       <span>Copy page</span>
@@ -130,60 +146,90 @@ data-aria-dark="Switch to auto color mode">
     <div role="presentation">
       <div class="flex flex-col" role="group">
         <button class="js-copy" type="button" role="menuitem"
-          data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.md.txt">
+          data-url="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.rst.txt">
           <span class="iconify-icon">
             <i class="i-lucide" data-icon="copy"></i>
           </span>
           <span>Copy page</span>
         </button>
-        <a role="menuitem" href="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
-            <span>View as Markdown</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        <a role="menuitem" href="https://iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.rst.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.rst.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:openai"></iconify-icon>
           <span>Open in ChatGPT</span>
-        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//iloveitaly.github.io/python-apple-maps-api/_sources/autoapi/apple_maps_api/helpers/index.rst.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:claude"></iconify-icon>
           <span>Open in Claude</span>
         </a></div>
     </div>
   </div>
 </div><article class="yue" role="main">
-          <section id="apple-maps-api-helpers">
-<h1>apple_maps_api.helpers<a class="headerlink" href="#apple-maps-api-helpers" title="Link to this heading">#</a></h1>
-<p>.. py:module:: apple_maps_api.helpers</p>
-<p>.. autoapi-nested-parse::</p>
+          <section id="module-apple_maps_api.helpers">
+<span id="apple-maps-api-helpers"></span><h1>apple_maps_api.helpers<a class="headerlink" href="#module-apple_maps_api.helpers" title="Link to this heading">#</a></h1>
 <p>Helper functions for common geocoding operations.</p>
 <section id="attributes">
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
-<p>.. autoapisummary::</p>
-<p>apple_maps_api.helpers.log</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apple_maps_api.helpers.log" title="apple_maps_api.helpers.log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
-<p>.. autoapisummary::</p>
-<p>apple_maps_api.helpers.geocode_postal_code
-apple_maps_api.helpers.geocode_coordinates</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#apple_maps_api.helpers.geocode_postal_code" title="apple_maps_api.helpers.geocode_postal_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geocode_postal_code</span></code></a>(...)</p></td>
+<td><p>Geocode a postal code and extract coordinates and address information.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#apple_maps_api.helpers.geocode_coordinates" title="apple_maps_api.helpers.geocode_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geocode_coordinates</span></code></a>(...)</p></td>
+<td><p>Reverse geocode coordinates and extract address information.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
-<p>.. py:data:: log</p>
-<p>.. py:function:: geocode_postal_code(client: apple_maps_api.client.AppleMapsClient, *, postal_code: str, country: str = ‘US’) -&gt; apple_maps_api.models.GeocodeResult | None</p>
-<p>Geocode a postal code and extract coordinates and address information.</p>
-<p>Args:
-client: AppleMapsClient instance to use for geocoding
+<dl class="py data">
+<dt class="sig sig-object py" id="apple_maps_api.helpers.log">
+<span class="sig-prename descclassname"><span class="pre">apple_maps_api.helpers.</span></span><span class="sig-name descname"><span class="pre">log</span></span><a class="reference internal" href="../../../_modules/apple_maps_api/helpers.html#log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.helpers.log" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apple_maps_api.helpers.geocode_postal_code">
+<span class="sig-prename descclassname"><span class="pre">apple_maps_api.helpers.</span></span><span class="sig-name descname"><span class="pre">geocode_postal_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../client/index.html#apple_maps_api.client.AppleMapsClient" title="apple_maps_api.client.AppleMapsClient"><span class="pre">apple_maps_api.client.AppleMapsClient</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">postal_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'US'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.GeocodeResult" title="apple_maps_api.models.GeocodeResult"><span class="pre">apple_maps_api.models.GeocodeResult</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/helpers.html#geocode_postal_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.helpers.geocode_postal_code" title="Link to this definition">#</a></dt>
+<dd><p>Geocode a postal code and extract coordinates and address information.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>client: AppleMapsClient instance to use for geocoding
 postal_code: The postal code to geocode
 country: Country code (default: “US”)</p>
-<p>Returns:
-GeocodeResult with lat, lon, city, and state information.
+</dd>
+<dt>Returns:</dt><dd><p>GeocodeResult with lat, lon, city, and state information.
 Returns None if geocoding fails.</p>
-<p>.. py:function:: geocode_coordinates(client: apple_maps_api.client.AppleMapsClient, *, lat: float, lon: float) -&gt; apple_maps_api.models.GeocodeResult | None</p>
-<p>Reverse geocode coordinates and extract address information.</p>
-<p>Args:
-client: AppleMapsClient instance to use for geocoding
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apple_maps_api.helpers.geocode_coordinates">
+<span class="sig-prename descclassname"><span class="pre">apple_maps_api.helpers.</span></span><span class="sig-name descname"><span class="pre">geocode_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../client/index.html#apple_maps_api.client.AppleMapsClient" title="apple_maps_api.client.AppleMapsClient"><span class="pre">apple_maps_api.client.AppleMapsClient</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/index.html#apple_maps_api.models.GeocodeResult" title="apple_maps_api.models.GeocodeResult"><span class="pre">apple_maps_api.models.GeocodeResult</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/apple_maps_api/helpers.html#geocode_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#apple_maps_api.helpers.geocode_coordinates" title="Link to this definition">#</a></dt>
+<dd><p>Reverse geocode coordinates and extract address information.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>client: AppleMapsClient instance to use for geocoding
 lat: Latitude
 lon: Longitude</p>
-<p>Returns:
-GeocodeResult with lat, lon, zip_code, city, and state information.
+</dd>
+<dt>Returns:</dt><dd><p>GeocodeResult with lat, lon, zip_code, city, and state information.
 Returns None if geocoding fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
@@ -192,7 +238,21 @@ Returns None if geocoding fails.</p>
     <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
   </svg>
   <span>Back to top</span>
-</button><div class="navigation flex print:hidden"></div></div>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../exceptions/index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">apple_maps_api.exceptions</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../models/index.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">apple_maps_api.models</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
     </div>
   </main>
 </div>

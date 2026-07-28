@@ -1,294 +1,267 @@
 # apple_maps_api.client
 
-.. py:module:: apple_maps_api.client
-
-.. autoapi-nested-parse::
-
 Apple Maps Server API client library.
 
-API docs: https://developer.apple.com/documentation/applemapsserverapi
+API docs: [https://developer.apple.com/documentation/applemapsserverapi](https://developer.apple.com/documentation/applemapsserverapi)
 
 This library provides a Python client for the Apple Maps Server API with JWT-based
 authentication, automatic token management, and retry logic.
 
 ## Attributes
 
-.. autoapisummary::
-
-apple_maps_api.client.log
+| [`log`](#apple_maps_api.client.log)   |    |
+|---------------------------------------|----|
 
 ## Classes
 
-.. autoapisummary::
-
-apple_maps_api.client.GeocodeOptionsLatLng
-apple_maps_api.client.GeocodeOptions
-apple_maps_api.client.SearchOptionsLatLng
-apple_maps_api.client.SearchOptions
-apple_maps_api.client.AutocompleteOptionsLatLng
-apple_maps_api.client.AutocompleteOptions
-apple_maps_api.client.AppleMapsClient
+| [`GeocodeOptionsLatLng`](#apple_maps_api.client.GeocodeOptionsLatLng)           | Geocode options with required `lat` and `lng` location bias.                                                     |
+|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| [`GeocodeOptions`](#apple_maps_api.client.GeocodeOptions)                       | All optional kwargs for [`AppleMapsClient.geocode()`](#apple_maps_api.client.AppleMapsClient.geocode).           |
+| [`SearchOptionsLatLng`](#apple_maps_api.client.SearchOptionsLatLng)             | Search options with required `lat` and `lng` location bias.                                                      |
+| [`SearchOptions`](#apple_maps_api.client.SearchOptions)                         | All optional kwargs for [`AppleMapsClient.search()`](#apple_maps_api.client.AppleMapsClient.search).             |
+| [`AutocompleteOptionsLatLng`](#apple_maps_api.client.AutocompleteOptionsLatLng) | Autocomplete options with required `lat` and `lng` location bias.                                                |
+| [`AutocompleteOptions`](#apple_maps_api.client.AutocompleteOptions)             | All optional kwargs for [`AppleMapsClient.autocomplete()`](#apple_maps_api.client.AppleMapsClient.autocomplete). |
+| [`AppleMapsClient`](#apple_maps_api.client.AppleMapsClient)                     | A client for the Apple Maps Server API.                                                                          |
 
 ## Module Contents
 
-.. py:data:: log
+### apple_maps_api.client.log
 
-.. py:class:: GeocodeOptionsLatLng
+### *class* apple_maps_api.client.GeocodeOptionsLatLng
 
-Bases: :py:obj:`_GeocodeOptionsBase`
+Bases: `_GeocodeOptionsBase`
 
 Geocode options with required `lat` and `lng` location bias.
 
-.. py:attribute:: lat
-:type:  Required[float]
+#### lat *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
 
-.. py:attribute:: lng
-:type:  Required[float]
+#### lng *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
 
-.. py:class:: GeocodeOptions
+### *class* apple_maps_api.client.GeocodeOptions
 
-Bases: :py:obj:`_GeocodeOptionsBase`
+Bases: `_GeocodeOptionsBase`
 
-All optional kwargs for :meth:`AppleMapsClient.geocode`.
+All optional kwargs for [`AppleMapsClient.geocode()`](#apple_maps_api.client.AppleMapsClient.geocode).
 
-.. py:attribute:: lat
-:type:  float
+#### lat *: [float](https://docs.python.org/3/library/functions.html#float)*
 
-.. py:attribute:: lng
-:type:  float
+#### lng *: [float](https://docs.python.org/3/library/functions.html#float)*
 
-.. py:class:: SearchOptionsLatLng
+### *class* apple_maps_api.client.SearchOptionsLatLng
 
-Bases: :py:obj:`_SearchOptionsBase`
+Bases: `_SearchOptionsBase`
 
 Search options with required `lat` and `lng` location bias.
 
-.. py:attribute:: lat
-:type:  Required[float]
+#### lat *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
 
-.. py:attribute:: lng
-:type:  Required[float]
+#### lng *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
 
-.. py:class:: SearchOptions
+### *class* apple_maps_api.client.SearchOptions
 
-Bases: :py:obj:`_SearchOptionsBase`
+Bases: `_SearchOptionsBase`
 
-All optional kwargs for :meth:`AppleMapsClient.search`.
+All optional kwargs for [`AppleMapsClient.search()`](#apple_maps_api.client.AppleMapsClient.search).
 
-.. py:attribute:: lat
-:type:  float
+#### lat *: [float](https://docs.python.org/3/library/functions.html#float)*
 
-.. py:attribute:: lng
-:type:  float
+#### lng *: [float](https://docs.python.org/3/library/functions.html#float)*
 
-.. py:class:: AutocompleteOptionsLatLng
+### *class* apple_maps_api.client.AutocompleteOptionsLatLng
 
-Bases: :py:obj:`_AutocompleteOptionsBase`
+Bases: `_AutocompleteOptionsBase`
 
 Autocomplete options with required `lat` and `lng` location bias.
 
-.. py:attribute:: lat
-:type:  Required[float]
+#### lat *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
 
-.. py:attribute:: lng
-:type:  Required[float]
+#### lng *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
 
-.. py:class:: AutocompleteOptions
+### *class* apple_maps_api.client.AutocompleteOptions
 
-Bases: :py:obj:`_AutocompleteOptionsBase`
+Bases: `_AutocompleteOptionsBase`
 
-All optional kwargs for :meth:`AppleMapsClient.autocomplete`.
+All optional kwargs for [`AppleMapsClient.autocomplete()`](#apple_maps_api.client.AppleMapsClient.autocomplete).
 
-.. py:attribute:: lat
-:type:  float
+#### lat *: [float](https://docs.python.org/3/library/functions.html#float)*
 
-.. py:attribute:: lng
-:type:  float
+#### lng *: [float](https://docs.python.org/3/library/functions.html#float)*
 
-.. py:class:: AppleMapsClient(\*, team_id: str, key_id: str, private_key: str, origin: str | None = None)
+### *class* apple_maps_api.client.AppleMapsClient(, team_id: [str](https://docs.python.org/3/library/stdtypes.html#str), key_id: [str](https://docs.python.org/3/library/stdtypes.html#str), private_key: [str](https://docs.python.org/3/library/stdtypes.html#str), origin: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None)
 
 A client for the Apple Maps Server API.
 
 Handles JWT-based authentication with automatic token refresh,
 and provides methods for geocoding, reverse geocoding, search, and autocomplete.
 
-.. py:attribute:: team_id
+#### team_id
 
-.. py:attribute:: key_id
+#### key_id
 
-.. py:attribute:: origin
-:value: None
+#### origin *= None*
 
-.. py:attribute:: private_key
+#### private_key
 
-.. py:attribute:: base_url
-:value: ‘https://maps-api.apple.com’
+#### base_url *= 'https://maps-api.apple.com'*
 
-.. py:method:: from_env() -> AppleMapsClient
-:classmethod:
+#### *classmethod* from_env() → [AppleMapsClient](#apple_maps_api.client.AppleMapsClient)
 
-```none
-  Construct a client from APPLE_MAPS_* environment variables.
+Construct a client from APPLE_MAPS_\* environment variables.
 
-  Required:
-  - APPLE_MAPS_TEAM_ID
-  - APPLE_MAPS_KEY_ID
-  - APPLE_MAPS_P8_KEY
+Required:
+- APPLE_MAPS_TEAM_ID
+- APPLE_MAPS_KEY_ID
+- APPLE_MAPS_P8_KEY
 
-  Optional:
-  - APPLE_MAPS_ORIGIN
-```
+Optional:
+- APPLE_MAPS_ORIGIN
 
-.. py:method:: create_token() -> str
+#### create_token() → [str](https://docs.python.org/3/library/stdtypes.html#str)
 
-```none
-  Return a valid Maps access token for Apple Maps Server API use.
+Return a valid Maps access token for Apple Maps Server API use.
 
-  This is the *access token* (not the auth JWT) suitable for server-side
-  API calls (geocode, search, etc.). It is NOT suitable for MapKit JS.
-  Use `create_mapkit_token()` for browser-side MapKit JS initialization.
+This is the *access token* (not the auth JWT) suitable for server-side
+API calls (geocode, search, etc.). It is NOT suitable for MapKit JS.
+Use create_mapkit_token() for browser-side MapKit JS initialization.
 
-  Spec: https://developer.apple.com/documentation/applemapsserverapi/-v1-token
-```
+Spec: [https://developer.apple.com/documentation/applemapsserverapi/-v1-token](https://developer.apple.com/documentation/applemapsserverapi/-v1-token)
 
-.. py:method:: create_mapkit_token(\*, ttl_seconds: int = \_DEFAULT_JWT_TTL_SECONDS) -> str
+#### create_mapkit_token(, ttl_seconds: [int](https://docs.python.org/3/library/functions.html#int) = \_DEFAULT_JWT_TTL_SECONDS) → [str](https://docs.python.org/3/library/stdtypes.html#str)
 
-```none
-  Return a signed JWT for MapKit JS browser initialization.
+Return a signed JWT for MapKit JS browser initialization.
 
-  MapKit JS requires the raw signed JWT, not the Server API access token.
-  Pass this to the `authorizationCallback` done() function.
-  If `origin` was set on the client, the token is restricted to that domain.
+MapKit JS requires the raw signed JWT, not the Server API access token.
+Pass this to the authorizationCallback done() function.
+If origin was set on the client, the token is restricted to that domain.
 
-  :param ttl_seconds: JWT lifetime in seconds (default: 1 hour).
-      Apple does not document a maximum for Maps tokens.
+* **Parameters:**
+  **ttl_seconds** – JWT lifetime in seconds (default: 1 hour).
+  Apple does not document a maximum for Maps tokens.
 
-  Spec:
-  https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api
-  https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js
-```
+Spec:
+[https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api](https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api)
+[https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js](https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js)
 
-.. py:method:: geocode(query: str, \*\*kwargs: Unpack[GeocodeOptionsLatLng]) -> apple_maps_api.models.PlaceResults
-geocode(query: str, \*\*kwargs: Unpack[_GeocodeOptionsBase]) -> apple_maps_api.models.PlaceResults
+#### geocode(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[GeocodeOptionsLatLng](#apple_maps_api.client.GeocodeOptionsLatLng)]) → [apple_maps_api.models.PlaceResults](../models/index.md#apple_maps_api.models.PlaceResults)
 
-```none
-  Convert an address string to coordinates.
+#### geocode(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[\_GeocodeOptionsBase]) → [apple_maps_api.models.PlaceResults](../models/index.md#apple_maps_api.models.PlaceResults)
 
-  Maps to GET /v1/geocode.
+Convert an address string to coordinates.
 
-  :param query: Address to geocode (e.g., "1 Apple Park Way").
-  :param limit_to_countries: ISO 3166-1 alpha-2 country codes to limit results
-      (e.g. ``["US", "CA"]``).
-  :param lang: BCP 47 language code (default: "en-US").
-  :param lat: Latitude for app-defined search bias (must pass with lng).
-      Sent as Apple's ``searchLocation``.
-  :param lng: Longitude for app-defined search bias (must pass with lat).
-  :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
-  :param user_lat: Latitude of the user's position (must pass with user_lng).
-      Used for ranking/relevance; if ``lat``/``lng`` are omitted, some
-      endpoints may fall back to this as the search hint.
-  :param user_lng: Longitude of the user's position (must pass with user_lat).
-```
+Maps to GET /v1/geocode.
 
-.. py:method:: reverse_geocode(\*, lat: float, lng: float, lang: str | None = None) -> apple_maps_api.models.PlaceResults
+* **Parameters:**
+  * **query** – Address to geocode (e.g., “1 Apple Park Way”).
+  * **limit_to_countries** – ISO 3166-1 alpha-2 country codes to limit results
+    (e.g. `["US", "CA"]`).
+  * **lang** – BCP 47 language code (default: “en-US”).
+  * **lat** – Latitude for app-defined search bias (must pass with lng).
+    Sent as Apple’s `searchLocation`.
+  * **lng** – Longitude for app-defined search bias (must pass with lat).
+  * **search_region** – App-defined bounding-box hint as `MapRegion`.
+  * **user_lat** – Latitude of the user’s position (must pass with user_lng).
+    Used for ranking/relevance; if `lat`/`lng` are omitted, some
+    endpoints may fall back to this as the search hint.
+  * **user_lng** – Longitude of the user’s position (must pass with user_lat).
 
-```none
-  Convert coordinates to an address.
+#### reverse_geocode(, lat: [float](https://docs.python.org/3/library/functions.html#float), lng: [float](https://docs.python.org/3/library/functions.html#float), lang: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None) → [apple_maps_api.models.PlaceResults](../models/index.md#apple_maps_api.models.PlaceResults)
 
-  Maps to GET /v1/reverseGeocode.
+Convert coordinates to an address.
 
-  :param lat: Latitude of the point to reverse geocode.
-  :param lng: Longitude of the point to reverse geocode.
-  :param lang: BCP 47 language code (default: "en-US").
-```
+Maps to GET /v1/reverseGeocode.
 
-.. py:method:: search(query: str, \*\*kwargs: Unpack[SearchOptionsLatLng]) -> apple_maps_api.models.SearchResponse
-search(query: str = ‘’, \*\*kwargs: Unpack[_SearchOptionsBase]) -> apple_maps_api.models.SearchResponse
+* **Parameters:**
+  * **lat** – Latitude of the point to reverse geocode.
+  * **lng** – Longitude of the point to reverse geocode.
+  * **lang** – BCP 47 language code (default: “en-US”).
 
-```none
-  Search for places by name or category.
+#### search(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[SearchOptionsLatLng](#apple_maps_api.client.SearchOptionsLatLng)]) → [apple_maps_api.models.SearchResponse](../models/index.md#apple_maps_api.models.SearchResponse)
 
-  Maps to GET /v1/search.
+#### search(query: [str](https://docs.python.org/3/library/stdtypes.html#str) = '', \*\*kwargs: Unpack[\_SearchOptionsBase]) → [apple_maps_api.models.SearchResponse](../models/index.md#apple_maps_api.models.SearchResponse)
 
-  Location bias (optional): pass ``lat=`` and ``lng=`` together.
+Search for places by name or category.
 
-  For page 2+, pass only ``page_token`` from a prior response's
-  ``paginationInfo.nextPageToken``. Apple rejects other search params
-  (including ``q`` and ``enablePagination``) on token requests.
+Maps to GET /v1/search.
 
-  :param query: Search query (e.g., "coffee", "Apple Park"). Required
-      unless ``page_token`` is set.
-  :param lat: Latitude for app-defined search bias (must pass with lng).
-      Sent as Apple's ``searchLocation`` — "search near this map point".
-  :param lng: Longitude for app-defined search bias (must pass with lat).
-  :param categories: POI categories to include (e.g. ``["MovieTheater", "Cafe"]``).
-  :param exclude_categories: POI categories to exclude (e.g. ``["Parking"]``).
-  :param limit_to_countries: ISO 3166-1 alpha-2 country codes
-      (e.g. ``["US", "CA"]``).
-  :param lang: BCP 47 language code (default: "en-US").
-  :param result_type_filter: Result types (e.g. ``["Poi", "Address"]``).
-  :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
-  :param user_lat: Latitude of the user's position (must pass with user_lng).
-      Used for ranking/relevance; Search may fall back to it as
-      ``searchLocation`` when ``lat``/``lng`` are omitted.
-  :param user_lng: Longitude of the user's position (must pass with user_lat).
-  :param search_region_priority: Importance of ``search_region``
-      (:class:`SearchRegionPriority` or ``"default"`` / ``"required"``).
-  :param enable_pagination: Request paginated results (first page only).
-  :param page_token: Token from ``paginationInfo`` for a subsequent page.
-      When set, sent alone — do not combine with query or other filters.
-  :param include_address_categories: Address categories to include
-      (e.g. ``["AdministrativeArea"]``).
-  :param exclude_address_categories: Address categories to exclude.
-```
+Location bias (optional): pass `lat=` and `lng=` together.
 
-.. py:method:: autocomplete(query: str, \*\*kwargs: Unpack[AutocompleteOptionsLatLng]) -> apple_maps_api.models.SearchAutocompleteResponse
-autocomplete(query: str, \*\*kwargs: Unpack[_AutocompleteOptionsBase]) -> apple_maps_api.models.SearchAutocompleteResponse
+For page 2+, pass only `page_token` from a prior response’s
+`paginationInfo.nextPageToken`. Apple rejects other search params
+(including `q` and `enablePagination`) on token requests.
 
-```none
-  Autocomplete partial addresses and place names.
+* **Parameters:**
+  * **query** – Search query (e.g., “coffee”, “Apple Park”). Required
+    unless `page_token` is set.
+  * **lat** – Latitude for app-defined search bias (must pass with lng).
+    Sent as Apple’s `searchLocation` — “search near this map point”.
+  * **lng** – Longitude for app-defined search bias (must pass with lat).
+  * **categories** – POI categories to include (e.g. `["MovieTheater", "Cafe"]`).
+  * **exclude_categories** – POI categories to exclude (e.g. `["Parking"]`).
+  * **limit_to_countries** – ISO 3166-1 alpha-2 country codes
+    (e.g. `["US", "CA"]`).
+  * **lang** – BCP 47 language code (default: “en-US”).
+  * **result_type_filter** – Result types (e.g. `["Poi", "Address"]`).
+  * **search_region** – App-defined bounding-box hint as `MapRegion`.
+  * **user_lat** – Latitude of the user’s position (must pass with user_lng).
+    Used for ranking/relevance; Search may fall back to it as
+    `searchLocation` when `lat`/`lng` are omitted.
+  * **user_lng** – Longitude of the user’s position (must pass with user_lat).
+  * **search_region_priority** – Importance of `search_region`
+    (`SearchRegionPriority` or `"default"` / `"required"`).
+  * **enable_pagination** – Request paginated results (first page only).
+  * **page_token** – Token from `paginationInfo` for a subsequent page.
+    When set, sent alone — do not combine with query or other filters.
+  * **include_address_categories** – Address categories to include
+    (e.g. `["AdministrativeArea"]`).
+  * **exclude_address_categories** – Address categories to exclude.
 
-  Maps to GET /v1/searchAutocomplete.
+#### autocomplete(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[AutocompleteOptionsLatLng](#apple_maps_api.client.AutocompleteOptionsLatLng)]) → [apple_maps_api.models.SearchAutocompleteResponse](../models/index.md#apple_maps_api.models.SearchAutocompleteResponse)
 
-  Location bias (optional): pass ``lat=`` and ``lng=`` together.
+#### autocomplete(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[\_AutocompleteOptionsBase]) → [apple_maps_api.models.SearchAutocompleteResponse](../models/index.md#apple_maps_api.models.SearchAutocompleteResponse)
 
-  Result count is fixed by Apple; the API has no limit/maxResults parameter.
-  For more results, use search() (supports enable_pagination) or
-  search_completion() to expand a single autocomplete hit.
+Autocomplete partial addresses and place names.
 
-  :param query: Partial address or place name to autocomplete.
-  :param lat: Latitude for app-defined search bias (must pass with lng).
-      Sent as Apple's ``searchLocation`` — "search near this map point".
-  :param lng: Longitude for app-defined search bias (must pass with lat).
-  :param limit_to_countries: ISO 3166-1 alpha-2 country codes
-      (e.g. ``["US", "CA"]``).
-  :param lang: BCP 47 language code (default: "en-US").
-  :param result_type_filter: Result types (e.g. ``["Address", "Poi"]``).
-  :param include_poi_categories: POI categories to include
-      (e.g. ``["Cafe"]``).
-  :param exclude_poi_categories: POI categories to exclude.
-  :param search_region: App-defined bounding-box hint as :class:`MapRegion`.
-  :param user_lat: Latitude of the user's position (must pass with user_lng).
-      Used for ranking/relevance; may fall back as ``searchLocation``
-      when ``lat``/``lng`` are omitted.
-  :param user_lng: Longitude of the user's position (must pass with user_lat).
-  :param search_region_priority: Importance of ``search_region``
-      (:class:`SearchRegionPriority` or ``"default"`` / ``"required"``).
-  :param include_address_categories: Address categories to include.
-  :param exclude_address_categories: Address categories to exclude.
-```
+Maps to GET /v1/searchAutocomplete.
 
-.. py:method:: search_completion(completion: apple_maps_api.models.AutocompleteResult | str, \*, lang: str | None = None) -> apple_maps_api.models.SearchResponse
+Location bias (optional): pass `lat=` and `lng=` together.
 
-```none
-  Resolve an autocomplete suggestion to full search results.
+Result count is fixed by Apple; the API has no limit/maxResults parameter.
+For more results, use search() (supports enable_pagination) or
+search_completion() to expand a single autocomplete hit.
 
-  Maps to GET /v1/search using the completionUrl from an AutocompleteResult.
-  The completionUrl already encodes the query and opaque metadata Apple needs
-  to return precise results for the suggestion.
+* **Parameters:**
+  * **query** – Partial address or place name to autocomplete.
+  * **lat** – Latitude for app-defined search bias (must pass with lng).
+    Sent as Apple’s `searchLocation` — “search near this map point”.
+  * **lng** – Longitude for app-defined search bias (must pass with lat).
+  * **limit_to_countries** – ISO 3166-1 alpha-2 country codes
+    (e.g. `["US", "CA"]`).
+  * **lang** – BCP 47 language code (default: “en-US”).
+  * **result_type_filter** – Result types (e.g. `["Address", "Poi"]`).
+  * **include_poi_categories** – POI categories to include
+    (e.g. `["Cafe"]`).
+  * **exclude_poi_categories** – POI categories to exclude.
+  * **search_region** – App-defined bounding-box hint as `MapRegion`.
+  * **user_lat** – Latitude of the user’s position (must pass with user_lng).
+    Used for ranking/relevance; may fall back as `searchLocation`
+    when `lat`/`lng` are omitted.
+  * **user_lng** – Longitude of the user’s position (must pass with user_lat).
+  * **search_region_priority** – Importance of `search_region`
+    (`SearchRegionPriority` or `"default"` / `"required"`).
+  * **include_address_categories** – Address categories to include.
+  * **exclude_address_categories** – Address categories to exclude.
 
-  :param completion: An AutocompleteResult or its completionUrl string.
-  :param lang: BCP 47 language code (e.g., "en-US"). Apple does not carry the
-      language through the completionUrl, so callers must re-specify it here.
-  :raises ValueError: If the completion has no completionUrl.
-```
+#### search_completion(completion: [apple_maps_api.models.AutocompleteResult](../models/index.md#apple_maps_api.models.AutocompleteResult) | [str](https://docs.python.org/3/library/stdtypes.html#str), , lang: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None) → [apple_maps_api.models.SearchResponse](../models/index.md#apple_maps_api.models.SearchResponse)
+
+Resolve an autocomplete suggestion to full search results.
+
+Maps to GET /v1/search using the completionUrl from an AutocompleteResult.
+The completionUrl already encodes the query and opaque metadata Apple needs
+to return precise results for the suggestion.
+
+* **Parameters:**
+  * **completion** – An AutocompleteResult or its completionUrl string.
+  * **lang** – BCP 47 language code (e.g., “en-US”). Apple does not carry the
+    language through the completionUrl, so callers must re-specify it here.
+* **Raises:**
+  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – If the completion has no completionUrl.

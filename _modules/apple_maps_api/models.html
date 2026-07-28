@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="blue" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple_maps_api.models - apple-maps-api documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+      <link rel="canonical" href="https://iloveitaly.github.io/python-apple-maps-api/_modules/apple_maps_api/models.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=168b0b94" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://iloveitaly.github.io/python-apple-maps-api/_modules/apple_maps_api/models.html"/>
+  <meta property="og:title" content="apple_maps_api.models"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>apple-maps-api</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul><li class="link"><a href="../../autoapi/apple_maps_api/index.html">API Reference</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/iloveitaly/python-apple-maps-api" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../autoapi/apple_maps_api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../autoapi/apple_maps_api/client/index.html">apple_maps_api.client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../autoapi/apple_maps_api/exceptions/index.html">apple_maps_api.exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../autoapi/apple_maps_api/helpers/index.html">apple_maps_api.helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../autoapi/apple_maps_api/models/index.html">apple_maps_api.models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../autoapi/apple_maps_api/version/index.html">apple_maps_api.version</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">apple-maps-api</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">apple_maps_api.models</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for apple_maps_api.models</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="sd">&quot;&quot;&quot;Pydantic models for Apple Maps Server API responses.</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="sd">Model names and field names match Apple&#39;s official API documentation exactly.</span>
+</span><span data-line="4"><span class="sd">Docstrings explain what each field represents in familiar terms.</span>
+</span><span data-line="5">
+</span><span data-line="6"><span class="sd">See: https://developer.apple.com/documentation/applemapsserverapi</span>
+</span><span data-line="7"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="8">
+</span><span data-line="9"><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrEnum</span>
+</span><span data-line="10">
+</span><span data-line="11"><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span data-line="12">
+</span><span data-line="13">
+<div class="viewcode-block" id="AddressCategory">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AddressCategory">[docs]</a>
+</span><span data-line="14"><span class="k">class</span><span class="w"> </span><span class="nc">AddressCategory</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<div class="viewcode-block" id="AddressCategory.Country">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AddressCategory.Country">[docs]</a>
+</span><span data-line="15">    <span class="n">Country</span> <span class="o">=</span> <span class="s2">&quot;Country&quot;</span></div>
+
+<div class="viewcode-block" id="AddressCategory.AdministrativeArea">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AddressCategory.AdministrativeArea">[docs]</a>
+</span><span data-line="16">    <span class="n">AdministrativeArea</span> <span class="o">=</span> <span class="s2">&quot;AdministrativeArea&quot;</span></div>
+
+<div class="viewcode-block" id="AddressCategory.SubAdministrativeArea">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AddressCategory.SubAdministrativeArea">[docs]</a>
+</span><span data-line="17">    <span class="n">SubAdministrativeArea</span> <span class="o">=</span> <span class="s2">&quot;SubAdministrativeArea&quot;</span></div>
+
+<div class="viewcode-block" id="AddressCategory.Locality">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AddressCategory.Locality">[docs]</a>
+</span><span data-line="18">    <span class="n">Locality</span> <span class="o">=</span> <span class="s2">&quot;Locality&quot;</span></div>
+
+<div class="viewcode-block" id="AddressCategory.SubLocality">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AddressCategory.SubLocality">[docs]</a>
+</span><span data-line="19">    <span class="n">SubLocality</span> <span class="o">=</span> <span class="s2">&quot;SubLocality&quot;</span></div>
+
+<div class="viewcode-block" id="AddressCategory.PostalCode">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AddressCategory.PostalCode">[docs]</a>
+</span><span data-line="20">    <span class="n">PostalCode</span> <span class="o">=</span> <span class="s2">&quot;PostalCode&quot;</span></div>
+</div>
+
+</span><span data-line="21">
+</span><span data-line="22">
+<div class="viewcode-block" id="PoiCategory">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory">[docs]</a>
+</span><span data-line="23"><span class="k">class</span><span class="w"> </span><span class="nc">PoiCategory</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<div class="viewcode-block" id="PoiCategory.Airport">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Airport">[docs]</a>
+</span><span data-line="24">    <span class="n">Airport</span> <span class="o">=</span> <span class="s2">&quot;Airport&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.AirportGate">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.AirportGate">[docs]</a>
+</span><span data-line="25">    <span class="n">AirportGate</span> <span class="o">=</span> <span class="s2">&quot;AirportGate&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.AirportTerminal">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.AirportTerminal">[docs]</a>
+</span><span data-line="26">    <span class="n">AirportTerminal</span> <span class="o">=</span> <span class="s2">&quot;AirportTerminal&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.AmusementPark">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.AmusementPark">[docs]</a>
+</span><span data-line="27">    <span class="n">AmusementPark</span> <span class="o">=</span> <span class="s2">&quot;AmusementPark&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.AnimalService">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.AnimalService">[docs]</a>
+</span><span data-line="28">    <span class="n">AnimalService</span> <span class="o">=</span> <span class="s2">&quot;AnimalService&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Aquarium">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Aquarium">[docs]</a>
+</span><span data-line="29">    <span class="n">Aquarium</span> <span class="o">=</span> <span class="s2">&quot;Aquarium&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.ATM">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.ATM">[docs]</a>
+</span><span data-line="30">    <span class="n">ATM</span> <span class="o">=</span> <span class="s2">&quot;ATM&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.AutomotiveRepair">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.AutomotiveRepair">[docs]</a>
+</span><span data-line="31">    <span class="n">AutomotiveRepair</span> <span class="o">=</span> <span class="s2">&quot;AutomotiveRepair&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Bakery">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Bakery">[docs]</a>
+</span><span data-line="32">    <span class="n">Bakery</span> <span class="o">=</span> <span class="s2">&quot;Bakery&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Bank">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Bank">[docs]</a>
+</span><span data-line="33">    <span class="n">Bank</span> <span class="o">=</span> <span class="s2">&quot;Bank&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Baseball">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Baseball">[docs]</a>
+</span><span data-line="34">    <span class="n">Baseball</span> <span class="o">=</span> <span class="s2">&quot;Baseball&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Basketball">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Basketball">[docs]</a>
+</span><span data-line="35">    <span class="n">Basketball</span> <span class="o">=</span> <span class="s2">&quot;Basketball&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Beach">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Beach">[docs]</a>
+</span><span data-line="36">    <span class="n">Beach</span> <span class="o">=</span> <span class="s2">&quot;Beach&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Beauty">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Beauty">[docs]</a>
+</span><span data-line="37">    <span class="n">Beauty</span> <span class="o">=</span> <span class="s2">&quot;Beauty&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Bowling">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Bowling">[docs]</a>
+</span><span data-line="38">    <span class="n">Bowling</span> <span class="o">=</span> <span class="s2">&quot;Bowling&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Brewery">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Brewery">[docs]</a>
+</span><span data-line="39">    <span class="n">Brewery</span> <span class="o">=</span> <span class="s2">&quot;Brewery&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Cafe">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Cafe">[docs]</a>
+</span><span data-line="40">    <span class="n">Cafe</span> <span class="o">=</span> <span class="s2">&quot;Cafe&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Campground">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Campground">[docs]</a>
+</span><span data-line="41">    <span class="n">Campground</span> <span class="o">=</span> <span class="s2">&quot;Campground&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.CarRental">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.CarRental">[docs]</a>
+</span><span data-line="42">    <span class="n">CarRental</span> <span class="o">=</span> <span class="s2">&quot;CarRental&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Castle">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Castle">[docs]</a>
+</span><span data-line="43">    <span class="n">Castle</span> <span class="o">=</span> <span class="s2">&quot;Castle&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.ConventionCenter">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.ConventionCenter">[docs]</a>
+</span><span data-line="44">    <span class="n">ConventionCenter</span> <span class="o">=</span> <span class="s2">&quot;ConventionCenter&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Distillery">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Distillery">[docs]</a>
+</span><span data-line="45">    <span class="n">Distillery</span> <span class="o">=</span> <span class="s2">&quot;Distillery&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.EVCharger">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.EVCharger">[docs]</a>
+</span><span data-line="46">    <span class="n">EVCharger</span> <span class="o">=</span> <span class="s2">&quot;EVCharger&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Fairground">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Fairground">[docs]</a>
+</span><span data-line="47">    <span class="n">Fairground</span> <span class="o">=</span> <span class="s2">&quot;Fairground&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.FireStation">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.FireStation">[docs]</a>
+</span><span data-line="48">    <span class="n">FireStation</span> <span class="o">=</span> <span class="s2">&quot;FireStation&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Fishing">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Fishing">[docs]</a>
+</span><span data-line="49">    <span class="n">Fishing</span> <span class="o">=</span> <span class="s2">&quot;Fishing&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.FitnessCenter">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.FitnessCenter">[docs]</a>
+</span><span data-line="50">    <span class="n">FitnessCenter</span> <span class="o">=</span> <span class="s2">&quot;FitnessCenter&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.FoodMarket">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.FoodMarket">[docs]</a>
+</span><span data-line="51">    <span class="n">FoodMarket</span> <span class="o">=</span> <span class="s2">&quot;FoodMarket&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Fortress">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Fortress">[docs]</a>
+</span><span data-line="52">    <span class="n">Fortress</span> <span class="o">=</span> <span class="s2">&quot;Fortress&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.GasStation">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.GasStation">[docs]</a>
+</span><span data-line="53">    <span class="n">GasStation</span> <span class="o">=</span> <span class="s2">&quot;GasStation&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.GoKart">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.GoKart">[docs]</a>
+</span><span data-line="54">    <span class="n">GoKart</span> <span class="o">=</span> <span class="s2">&quot;GoKart&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Golf">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Golf">[docs]</a>
+</span><span data-line="55">    <span class="n">Golf</span> <span class="o">=</span> <span class="s2">&quot;Golf&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Hiking">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Hiking">[docs]</a>
+</span><span data-line="56">    <span class="n">Hiking</span> <span class="o">=</span> <span class="s2">&quot;Hiking&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Hospital">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Hospital">[docs]</a>
+</span><span data-line="57">    <span class="n">Hospital</span> <span class="o">=</span> <span class="s2">&quot;Hospital&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Hotel">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Hotel">[docs]</a>
+</span><span data-line="58">    <span class="n">Hotel</span> <span class="o">=</span> <span class="s2">&quot;Hotel&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Kayaking">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Kayaking">[docs]</a>
+</span><span data-line="59">    <span class="n">Kayaking</span> <span class="o">=</span> <span class="s2">&quot;Kayaking&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Landmark">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Landmark">[docs]</a>
+</span><span data-line="60">    <span class="n">Landmark</span> <span class="o">=</span> <span class="s2">&quot;Landmark&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Laundry">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Laundry">[docs]</a>
+</span><span data-line="61">    <span class="n">Laundry</span> <span class="o">=</span> <span class="s2">&quot;Laundry&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Library">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Library">[docs]</a>
+</span><span data-line="62">    <span class="n">Library</span> <span class="o">=</span> <span class="s2">&quot;Library&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Mailbox">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Mailbox">[docs]</a>
+</span><span data-line="63">    <span class="n">Mailbox</span> <span class="o">=</span> <span class="s2">&quot;Mailbox&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Marina">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Marina">[docs]</a>
+</span><span data-line="64">    <span class="n">Marina</span> <span class="o">=</span> <span class="s2">&quot;Marina&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.MiniGolf">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.MiniGolf">[docs]</a>
+</span><span data-line="65">    <span class="n">MiniGolf</span> <span class="o">=</span> <span class="s2">&quot;MiniGolf&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.MovieTheater">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.MovieTheater">[docs]</a>
+</span><span data-line="66">    <span class="n">MovieTheater</span> <span class="o">=</span> <span class="s2">&quot;MovieTheater&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Museum">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Museum">[docs]</a>
+</span><span data-line="67">    <span class="n">Museum</span> <span class="o">=</span> <span class="s2">&quot;Museum&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.MusicVenue">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.MusicVenue">[docs]</a>
+</span><span data-line="68">    <span class="n">MusicVenue</span> <span class="o">=</span> <span class="s2">&quot;MusicVenue&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.NationalMonument">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.NationalMonument">[docs]</a>
+</span><span data-line="69">    <span class="n">NationalMonument</span> <span class="o">=</span> <span class="s2">&quot;NationalMonument&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.NationalPark">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.NationalPark">[docs]</a>
+</span><span data-line="70">    <span class="n">NationalPark</span> <span class="o">=</span> <span class="s2">&quot;NationalPark&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Nightlife">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Nightlife">[docs]</a>
+</span><span data-line="71">    <span class="n">Nightlife</span> <span class="o">=</span> <span class="s2">&quot;Nightlife&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Park">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Park">[docs]</a>
+</span><span data-line="72">    <span class="n">Park</span> <span class="o">=</span> <span class="s2">&quot;Park&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Parking">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Parking">[docs]</a>
+</span><span data-line="73">    <span class="n">Parking</span> <span class="o">=</span> <span class="s2">&quot;Parking&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Pharmacy">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Pharmacy">[docs]</a>
+</span><span data-line="74">    <span class="n">Pharmacy</span> <span class="o">=</span> <span class="s2">&quot;Pharmacy&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Planetarium">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Planetarium">[docs]</a>
+</span><span data-line="75">    <span class="n">Planetarium</span> <span class="o">=</span> <span class="s2">&quot;Planetarium&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Playground">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Playground">[docs]</a>
+</span><span data-line="76">    <span class="n">Playground</span> <span class="o">=</span> <span class="s2">&quot;Playground&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Police">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Police">[docs]</a>
+</span><span data-line="77">    <span class="n">Police</span> <span class="o">=</span> <span class="s2">&quot;Police&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.PostOffice">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.PostOffice">[docs]</a>
+</span><span data-line="78">    <span class="n">PostOffice</span> <span class="o">=</span> <span class="s2">&quot;PostOffice&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.PublicTransport">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.PublicTransport">[docs]</a>
+</span><span data-line="79">    <span class="n">PublicTransport</span> <span class="o">=</span> <span class="s2">&quot;PublicTransport&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.ReligiousSite">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.ReligiousSite">[docs]</a>
+</span><span data-line="80">    <span class="n">ReligiousSite</span> <span class="o">=</span> <span class="s2">&quot;ReligiousSite&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Restaurant">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Restaurant">[docs]</a>
+</span><span data-line="81">    <span class="n">Restaurant</span> <span class="o">=</span> <span class="s2">&quot;Restaurant&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Restroom">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Restroom">[docs]</a>
+</span><span data-line="82">    <span class="n">Restroom</span> <span class="o">=</span> <span class="s2">&quot;Restroom&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.RockClimbing">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.RockClimbing">[docs]</a>
+</span><span data-line="83">    <span class="n">RockClimbing</span> <span class="o">=</span> <span class="s2">&quot;RockClimbing&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.RVPark">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.RVPark">[docs]</a>
+</span><span data-line="84">    <span class="n">RVPark</span> <span class="o">=</span> <span class="s2">&quot;RVPark&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.School">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.School">[docs]</a>
+</span><span data-line="85">    <span class="n">School</span> <span class="o">=</span> <span class="s2">&quot;School&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.SkatePark">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.SkatePark">[docs]</a>
+</span><span data-line="86">    <span class="n">SkatePark</span> <span class="o">=</span> <span class="s2">&quot;SkatePark&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Skating">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Skating">[docs]</a>
+</span><span data-line="87">    <span class="n">Skating</span> <span class="o">=</span> <span class="s2">&quot;Skating&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Skiing">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Skiing">[docs]</a>
+</span><span data-line="88">    <span class="n">Skiing</span> <span class="o">=</span> <span class="s2">&quot;Skiing&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Soccer">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Soccer">[docs]</a>
+</span><span data-line="89">    <span class="n">Soccer</span> <span class="o">=</span> <span class="s2">&quot;Soccer&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Spa">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Spa">[docs]</a>
+</span><span data-line="90">    <span class="n">Spa</span> <span class="o">=</span> <span class="s2">&quot;Spa&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Stadium">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Stadium">[docs]</a>
+</span><span data-line="91">    <span class="n">Stadium</span> <span class="o">=</span> <span class="s2">&quot;Stadium&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Store">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Store">[docs]</a>
+</span><span data-line="92">    <span class="n">Store</span> <span class="o">=</span> <span class="s2">&quot;Store&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Surfing">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Surfing">[docs]</a>
+</span><span data-line="93">    <span class="n">Surfing</span> <span class="o">=</span> <span class="s2">&quot;Surfing&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Swimming">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Swimming">[docs]</a>
+</span><span data-line="94">    <span class="n">Swimming</span> <span class="o">=</span> <span class="s2">&quot;Swimming&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Tennis">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Tennis">[docs]</a>
+</span><span data-line="95">    <span class="n">Tennis</span> <span class="o">=</span> <span class="s2">&quot;Tennis&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Theater">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Theater">[docs]</a>
+</span><span data-line="96">    <span class="n">Theater</span> <span class="o">=</span> <span class="s2">&quot;Theater&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.University">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.University">[docs]</a>
+</span><span data-line="97">    <span class="n">University</span> <span class="o">=</span> <span class="s2">&quot;University&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Volleyball">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Volleyball">[docs]</a>
+</span><span data-line="98">    <span class="n">Volleyball</span> <span class="o">=</span> <span class="s2">&quot;Volleyball&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Winery">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Winery">[docs]</a>
+</span><span data-line="99">    <span class="n">Winery</span> <span class="o">=</span> <span class="s2">&quot;Winery&quot;</span></div>
+
+<div class="viewcode-block" id="PoiCategory.Zoo">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PoiCategory.Zoo">[docs]</a>
+</span><span data-line="100">    <span class="n">Zoo</span> <span class="o">=</span> <span class="s2">&quot;Zoo&quot;</span></div>
+</div>
+
+</span><span data-line="101">
+</span><span data-line="102">
+<div class="viewcode-block" id="SearchResultType">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchResultType">[docs]</a>
+</span><span data-line="103"><span class="k">class</span><span class="w"> </span><span class="nc">SearchResultType</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+</span><span data-line="104"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Result type filter for /v1/search.&quot;&quot;&quot;</span>
+</span><span data-line="105">
+<div class="viewcode-block" id="SearchResultType.poi">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchResultType.poi">[docs]</a>
+</span><span data-line="106">    <span class="n">poi</span> <span class="o">=</span> <span class="s2">&quot;poi&quot;</span></div>
+
+<div class="viewcode-block" id="SearchResultType.address">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchResultType.address">[docs]</a>
+</span><span data-line="107">    <span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;address&quot;</span></div>
+
+<div class="viewcode-block" id="SearchResultType.physicalFeature">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchResultType.physicalFeature">[docs]</a>
+</span><span data-line="108">    <span class="n">physicalFeature</span> <span class="o">=</span> <span class="s2">&quot;physicalFeature&quot;</span></div>
+
+<div class="viewcode-block" id="SearchResultType.pointOfInterest">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchResultType.pointOfInterest">[docs]</a>
+</span><span data-line="109">    <span class="n">pointOfInterest</span> <span class="o">=</span> <span class="s2">&quot;pointOfInterest&quot;</span></div>
+</div>
+
+</span><span data-line="110">
+</span><span data-line="111">
+<div class="viewcode-block" id="SearchACResultType">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchACResultType">[docs]</a>
+</span><span data-line="112"><span class="k">class</span><span class="w"> </span><span class="nc">SearchACResultType</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+</span><span data-line="113"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Result type filter for /v1/searchAutocomplete.&quot;&quot;&quot;</span>
+</span><span data-line="114">
+<div class="viewcode-block" id="SearchACResultType.poi">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchACResultType.poi">[docs]</a>
+</span><span data-line="115">    <span class="n">poi</span> <span class="o">=</span> <span class="s2">&quot;poi&quot;</span></div>
+
+<div class="viewcode-block" id="SearchACResultType.address">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchACResultType.address">[docs]</a>
+</span><span data-line="116">    <span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;address&quot;</span></div>
+
+<div class="viewcode-block" id="SearchACResultType.physicalFeature">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchACResultType.physicalFeature">[docs]</a>
+</span><span data-line="117">    <span class="n">physicalFeature</span> <span class="o">=</span> <span class="s2">&quot;physicalFeature&quot;</span></div>
+
+<div class="viewcode-block" id="SearchACResultType.pointOfInterest">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchACResultType.pointOfInterest">[docs]</a>
+</span><span data-line="118">    <span class="n">pointOfInterest</span> <span class="o">=</span> <span class="s2">&quot;pointOfInterest&quot;</span></div>
+
+<div class="viewcode-block" id="SearchACResultType.query">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchACResultType.query">[docs]</a>
+</span><span data-line="119">    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;query&quot;</span></div>
+</div>
+
+</span><span data-line="120">
+</span><span data-line="121">
+<div class="viewcode-block" id="SearchRegionPriority">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchRegionPriority">[docs]</a>
+</span><span data-line="122"><span class="k">class</span><span class="w"> </span><span class="nc">SearchRegionPriority</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+</span><span data-line="123"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Importance of searchRegion for /v1/search and /v1/searchAutocomplete.</span>
+</span><span data-line="124">
+</span><span data-line="125"><span class="sd">    Apple possible values: default, required.</span>
+</span><span data-line="126"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="127">
+<div class="viewcode-block" id="SearchRegionPriority.default">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchRegionPriority.default">[docs]</a>
+</span><span data-line="128">    <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span></div>
+
+<div class="viewcode-block" id="SearchRegionPriority.required">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchRegionPriority.required">[docs]</a>
+</span><span data-line="129">    <span class="n">required</span> <span class="o">=</span> <span class="s2">&quot;required&quot;</span></div>
+</div>
+
+</span><span data-line="130">
+</span><span data-line="131">
+<div class="viewcode-block" id="Location">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Location">[docs]</a>
+</span><span data-line="132"><span class="k">class</span><span class="w"> </span><span class="nc">Location</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="133"><span class="w">    </span><span class="sd">&quot;&quot;&quot;A coordinate pair from Apple Maps API.</span>
+</span><span data-line="134">
+</span><span data-line="135"><span class="sd">    latitude: north-south position (e.g. 37.334)</span>
+</span><span data-line="136"><span class="sd">    longitude: east-west position (e.g. -122.009)</span>
+</span><span data-line="137"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="138">
+<div class="viewcode-block" id="Location.latitude">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Location.latitude">[docs]</a>
+</span><span data-line="139">    <span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span></div>
+
+<div class="viewcode-block" id="Location.longitude">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Location.longitude">[docs]</a>
+</span><span data-line="140">    <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span></div>
+</div>
+
+</span><span data-line="141">
+</span><span data-line="142">
+<div class="viewcode-block" id="StructuredAddress">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress">[docs]</a>
+</span><span data-line="143"><span class="k">class</span><span class="w"> </span><span class="nc">StructuredAddress</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="144"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Detailed address components of a place.</span>
+</span><span data-line="145">
+</span><span data-line="146"><span class="sd">    Apple uses different terminology than most geocoding APIs:</span>
+</span><span data-line="147"><span class="sd">    - locality = city</span>
+</span><span data-line="148"><span class="sd">    - administrativeArea = state/province name</span>
+</span><span data-line="149"><span class="sd">    - administrativeAreaCode = state/province short code (e.g. &quot;NY&quot;)</span>
+</span><span data-line="150"><span class="sd">    - subAdministrativeArea = county name</span>
+</span><span data-line="151"><span class="sd">    - postCode = postal/ZIP code</span>
+</span><span data-line="152"><span class="sd">    - fullThoroughfare = full street address (number + street, e.g. &quot;841 Broadway&quot;)</span>
+</span><span data-line="153"><span class="sd">    - thoroughfare = street name (e.g. &quot;Broadway&quot;)</span>
+</span><span data-line="154"><span class="sd">    - subThoroughfare = street/house number (e.g. &quot;841&quot;)</span>
+</span><span data-line="155"><span class="sd">    - subLocality = neighborhood or area within the city</span>
+</span><span data-line="156"><span class="sd">    - areasOfInterest = common names for the surrounding area</span>
+</span><span data-line="157"><span class="sd">    - dependentLocalities = neighborhood names</span>
+</span><span data-line="158"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="159">
+<div class="viewcode-block" id="StructuredAddress.administrativeArea">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.administrativeArea">[docs]</a>
+</span><span data-line="160">    <span class="n">administrativeArea</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.administrativeAreaCode">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.administrativeAreaCode">[docs]</a>
+</span><span data-line="161">    <span class="n">administrativeAreaCode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.subAdministrativeArea">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.subAdministrativeArea">[docs]</a>
+</span><span data-line="162">    <span class="n">subAdministrativeArea</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.areasOfInterest">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.areasOfInterest">[docs]</a>
+</span><span data-line="163">    <span class="n">areasOfInterest</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.dependentLocalities">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.dependentLocalities">[docs]</a>
+</span><span data-line="164">    <span class="n">dependentLocalities</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.fullThoroughfare">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.fullThoroughfare">[docs]</a>
+</span><span data-line="165">    <span class="n">fullThoroughfare</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.locality">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.locality">[docs]</a>
+</span><span data-line="166">    <span class="n">locality</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.postCode">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.postCode">[docs]</a>
+</span><span data-line="167">    <span class="n">postCode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.subLocality">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.subLocality">[docs]</a>
+</span><span data-line="168">    <span class="n">subLocality</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.subThoroughfare">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.subThoroughfare">[docs]</a>
+</span><span data-line="169">    <span class="n">subThoroughfare</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StructuredAddress.thoroughfare">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.StructuredAddress.thoroughfare">[docs]</a>
+</span><span data-line="170">    <span class="n">thoroughfare</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+</span><span data-line="171">
+</span><span data-line="172">
+<div class="viewcode-block" id="MapRegion">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.MapRegion">[docs]</a>
+</span><span data-line="173"><span class="k">class</span><span class="w"> </span><span class="nc">MapRegion</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="174"><span class="w">    </span><span class="sd">&quot;&quot;&quot;A rectangular bounding box on a map.</span>
+</span><span data-line="175">
+</span><span data-line="176"><span class="sd">    Expressed as south-west and north-east corners.</span>
+</span><span data-line="177"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="178">
+<div class="viewcode-block" id="MapRegion.eastLongitude">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.MapRegion.eastLongitude">[docs]</a>
+</span><span data-line="179">    <span class="n">eastLongitude</span><span class="p">:</span> <span class="nb">float</span></div>
+
+<div class="viewcode-block" id="MapRegion.northLatitude">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.MapRegion.northLatitude">[docs]</a>
+</span><span data-line="180">    <span class="n">northLatitude</span><span class="p">:</span> <span class="nb">float</span></div>
+
+<div class="viewcode-block" id="MapRegion.southLatitude">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.MapRegion.southLatitude">[docs]</a>
+</span><span data-line="181">    <span class="n">southLatitude</span><span class="p">:</span> <span class="nb">float</span></div>
+
+<div class="viewcode-block" id="MapRegion.westLongitude">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.MapRegion.westLongitude">[docs]</a>
+</span><span data-line="182">    <span class="n">westLongitude</span><span class="p">:</span> <span class="nb">float</span></div>
+</div>
+
+</span><span data-line="183">
+</span><span data-line="184">
+<div class="viewcode-block" id="Place">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place">[docs]</a>
+</span><span data-line="185"><span class="k">class</span><span class="w"> </span><span class="nc">Place</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="186"><span class="w">    </span><span class="sd">&quot;&quot;&quot;A place returned by geocode, reverseGeocode, or place lookup endpoints.</span>
+</span><span data-line="187">
+</span><span data-line="188"><span class="sd">    coordinate: lat/lng of the place</span>
+</span><span data-line="189"><span class="sd">    formattedAddressLines: human-readable address lines (e.g. [&quot;841 Broadway&quot;, &quot;New York, NY 10003&quot;])</span>
+</span><span data-line="190"><span class="sd">    structuredAddress: parsed address components</span>
+</span><span data-line="191"><span class="sd">    displayMapRegion: suggested map viewport for displaying this place</span>
+</span><span data-line="192"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="193">
+<div class="viewcode-block" id="Place.id">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place.id">[docs]</a>
+</span><span data-line="194">    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Place.name">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place.name">[docs]</a>
+</span><span data-line="195">    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Place.coordinate">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place.coordinate">[docs]</a>
+</span><span data-line="196">    <span class="n">coordinate</span><span class="p">:</span> <span class="n">Location</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Place.formattedAddressLines">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place.formattedAddressLines">[docs]</a>
+</span><span data-line="197">    <span class="n">formattedAddressLines</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Place.structuredAddress">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place.structuredAddress">[docs]</a>
+</span><span data-line="198">    <span class="n">structuredAddress</span><span class="p">:</span> <span class="n">StructuredAddress</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Place.country">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place.country">[docs]</a>
+</span><span data-line="199">    <span class="n">country</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Place.countryCode">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place.countryCode">[docs]</a>
+</span><span data-line="200">    <span class="n">countryCode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Place.displayMapRegion">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place.displayMapRegion">[docs]</a>
+</span><span data-line="201">    <span class="n">displayMapRegion</span><span class="p">:</span> <span class="n">MapRegion</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Place.alternateIds">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.Place.alternateIds">[docs]</a>
+</span><span data-line="202">    <span class="n">alternateIds</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+</span><span data-line="203">
+</span><span data-line="204">
+<div class="viewcode-block" id="SearchPlace">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchPlace">[docs]</a>
+</span><span data-line="205"><span class="k">class</span><span class="w"> </span><span class="nc">SearchPlace</span><span class="p">(</span><span class="n">Place</span><span class="p">):</span>
+</span><span data-line="206"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Extended Place returned by /v1/search with POI category info.</span>
+</span><span data-line="207">
+</span><span data-line="208"><span class="sd">    poiCategory: point-of-interest category (e.g. Restaurant, MovieTheater).</span>
+</span><span data-line="209"><span class="sd">    Unknown values from Apple fail validation so we notice and add support.</span>
+</span><span data-line="210"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="211">
+<div class="viewcode-block" id="SearchPlace.poiCategory">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchPlace.poiCategory">[docs]</a>
+</span><span data-line="212">    <span class="n">poiCategory</span><span class="p">:</span> <span class="n">PoiCategory</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+</span><span data-line="213">
+</span><span data-line="214">
+<div class="viewcode-block" id="PlaceResults">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PlaceResults">[docs]</a>
+</span><span data-line="215"><span class="k">class</span><span class="w"> </span><span class="nc">PlaceResults</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="216"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Response from /v1/geocode and /v1/reverseGeocode.</span>
+</span><span data-line="217">
+</span><span data-line="218"><span class="sd">    results: list of Place objects matching the query</span>
+</span><span data-line="219"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="220">
+<div class="viewcode-block" id="PlaceResults.results">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PlaceResults.results">[docs]</a>
+</span><span data-line="221">    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Place</span><span class="p">]</span></div>
+</div>
+
+</span><span data-line="222">
+</span><span data-line="223">
+<div class="viewcode-block" id="PaginationInfo">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PaginationInfo">[docs]</a>
+</span><span data-line="224"><span class="k">class</span><span class="w"> </span><span class="nc">PaginationInfo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="225"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Pagination metadata from /v1/search when enablePagination is true.</span>
+</span><span data-line="226">
+</span><span data-line="227"><span class="sd">    nextPageToken / prevPageToken: opaque tokens for pageToken on the next request</span>
+</span><span data-line="228"><span class="sd">    totalPageCount: total pages available</span>
+</span><span data-line="229"><span class="sd">    totalResults: total matching results</span>
+</span><span data-line="230"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="231">
+<div class="viewcode-block" id="PaginationInfo.nextPageToken">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PaginationInfo.nextPageToken">[docs]</a>
+</span><span data-line="232">    <span class="n">nextPageToken</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="PaginationInfo.prevPageToken">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PaginationInfo.prevPageToken">[docs]</a>
+</span><span data-line="233">    <span class="n">prevPageToken</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="PaginationInfo.totalPageCount">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PaginationInfo.totalPageCount">[docs]</a>
+</span><span data-line="234">    <span class="n">totalPageCount</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="PaginationInfo.totalResults">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.PaginationInfo.totalResults">[docs]</a>
+</span><span data-line="235">    <span class="n">totalResults</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+</span><span data-line="236">
+</span><span data-line="237">
+<div class="viewcode-block" id="SearchResponse">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchResponse">[docs]</a>
+</span><span data-line="238"><span class="k">class</span><span class="w"> </span><span class="nc">SearchResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="239"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Response from /v1/search.</span>
+</span><span data-line="240">
+</span><span data-line="241"><span class="sd">    results: list of SearchPlace objects with optional POI category</span>
+</span><span data-line="242"><span class="sd">    displayMapRegion: suggested map viewport encompassing all results</span>
+</span><span data-line="243"><span class="sd">    paginationInfo: present when the request set enablePagination</span>
+</span><span data-line="244"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="245">
+<div class="viewcode-block" id="SearchResponse.results">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchResponse.results">[docs]</a>
+</span><span data-line="246">    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SearchPlace</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="SearchResponse.displayMapRegion">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchResponse.displayMapRegion">[docs]</a>
+</span><span data-line="247">    <span class="n">displayMapRegion</span><span class="p">:</span> <span class="n">MapRegion</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="SearchResponse.paginationInfo">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchResponse.paginationInfo">[docs]</a>
+</span><span data-line="248">    <span class="n">paginationInfo</span><span class="p">:</span> <span class="n">PaginationInfo</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+</span><span data-line="249">
+</span><span data-line="250">
+<div class="viewcode-block" id="AutocompleteResult">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AutocompleteResult">[docs]</a>
+</span><span data-line="251"><span class="k">class</span><span class="w"> </span><span class="nc">AutocompleteResult</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="252"><span class="w">    </span><span class="sd">&quot;&quot;&quot;A single autocomplete suggestion from /v1/searchAutocomplete.</span>
+</span><span data-line="253">
+</span><span data-line="254"><span class="sd">    completionUrl: relative URL to /v1/search to fetch full details for this suggestion</span>
+</span><span data-line="255"><span class="sd">    displayLines: raw text lines Apple returns — use completionTitle / completionSubtitle instead</span>
+</span><span data-line="256"><span class="sd">    location: approximate coordinate of the suggestion</span>
+</span><span data-line="257"><span class="sd">    structuredAddress: parsed address components if available</span>
+</span><span data-line="258"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="259">
+<div class="viewcode-block" id="AutocompleteResult.completionUrl">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AutocompleteResult.completionUrl">[docs]</a>
+</span><span data-line="260">    <span class="n">completionUrl</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="AutocompleteResult.displayLines">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AutocompleteResult.displayLines">[docs]</a>
+</span><span data-line="261">    <span class="n">displayLines</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="AutocompleteResult.location">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AutocompleteResult.location">[docs]</a>
+</span><span data-line="262">    <span class="n">location</span><span class="p">:</span> <span class="n">Location</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="AutocompleteResult.structuredAddress">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AutocompleteResult.structuredAddress">[docs]</a>
+</span><span data-line="263">    <span class="n">structuredAddress</span><span class="p">:</span> <span class="n">StructuredAddress</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+</span><span data-line="264">
+</span><span data-line="265">    <span class="nd">@property</span>
+<div class="viewcode-block" id="AutocompleteResult.completionTitle">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AutocompleteResult.completionTitle">[docs]</a>
+</span><span data-line="266">    <span class="k">def</span><span class="w"> </span><span class="nf">completionTitle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="267"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Primary display text (e.g. place name or street address).&quot;&quot;&quot;</span>
+</span><span data-line="268">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">displayLines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">displayLines</span> <span class="k">else</span> <span class="kc">None</span></div>
+
+</span><span data-line="269">
+</span><span data-line="270">    <span class="nd">@property</span>
+<div class="viewcode-block" id="AutocompleteResult.completionSubtitle">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.AutocompleteResult.completionSubtitle">[docs]</a>
+</span><span data-line="271">    <span class="k">def</span><span class="w"> </span><span class="nf">completionSubtitle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="272"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Secondary display text (e.g. city, state).&quot;&quot;&quot;</span>
+</span><span data-line="273">        <span class="k">return</span> <span class="p">(</span>
+</span><span data-line="274">            <span class="bp">self</span><span class="o">.</span><span class="n">displayLines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span data-line="275">            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">displayLines</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">displayLines</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</span><span data-line="276">            <span class="k">else</span> <span class="kc">None</span>
+</span><span data-line="277">        <span class="p">)</span></div>
+</div>
+
+</span><span data-line="278">
+</span><span data-line="279">
+<div class="viewcode-block" id="SearchAutocompleteResponse">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchAutocompleteResponse">[docs]</a>
+</span><span data-line="280"><span class="k">class</span><span class="w"> </span><span class="nc">SearchAutocompleteResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="281"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Response from /v1/searchAutocomplete.</span>
+</span><span data-line="282">
+</span><span data-line="283"><span class="sd">    results: list of autocomplete suggestions</span>
+</span><span data-line="284"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="285">
+<div class="viewcode-block" id="SearchAutocompleteResponse.results">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.SearchAutocompleteResponse.results">[docs]</a>
+</span><span data-line="286">    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AutocompleteResult</span><span class="p">]</span></div>
+</div>
+
+</span><span data-line="287">
+</span><span data-line="288">
+<div class="viewcode-block" id="TokenResponse">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.TokenResponse">[docs]</a>
+</span><span data-line="289"><span class="k">class</span><span class="w"> </span><span class="nc">TokenResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="290"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Response from /v1/token.</span>
+</span><span data-line="291">
+</span><span data-line="292"><span class="sd">    accessToken: short-lived Bearer token for API requests</span>
+</span><span data-line="293"><span class="sd">    expiresInSeconds: token lifetime (typically 1800 = 30 minutes)</span>
+</span><span data-line="294"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="295">
+<div class="viewcode-block" id="TokenResponse.accessToken">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.TokenResponse.accessToken">[docs]</a>
+</span><span data-line="296">    <span class="n">accessToken</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="TokenResponse.expiresInSeconds">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.TokenResponse.expiresInSeconds">[docs]</a>
+</span><span data-line="297">    <span class="n">expiresInSeconds</span><span class="p">:</span> <span class="nb">int</span></div>
+</div>
+
+</span><span data-line="298">
+</span><span data-line="299">
+<div class="viewcode-block" id="GeocodeResult">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult">[docs]</a>
+</span><span data-line="300"><span class="k">class</span><span class="w"> </span><span class="nc">GeocodeResult</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span data-line="301"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Provider-agnostic geocode result.</span>
+</span><span data-line="302">
+</span><span data-line="303"><span class="sd">    Identical to radar-mapping-api&#39;s GeocodeResult for drop-in replacement.</span>
+</span><span data-line="304"><span class="sd">    This abstraction allows swapping Apple Maps for Radar without changing consuming code.</span>
+</span><span data-line="305"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="306">
+<div class="viewcode-block" id="GeocodeResult.lat">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult.lat">[docs]</a>
+</span><span data-line="307">    <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span></div>
+
+<div class="viewcode-block" id="GeocodeResult.lon">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult.lon">[docs]</a>
+</span><span data-line="308">    <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span></div>
+
+<div class="viewcode-block" id="GeocodeResult.address1">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult.address1">[docs]</a>
+</span><span data-line="309">    <span class="n">address1</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="GeocodeResult.address2">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult.address2">[docs]</a>
+</span><span data-line="310">    <span class="n">address2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="GeocodeResult.postal_code">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult.postal_code">[docs]</a>
+</span><span data-line="311">    <span class="n">postal_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="GeocodeResult.city">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult.city">[docs]</a>
+</span><span data-line="312">    <span class="n">city</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="GeocodeResult.state_code">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult.state_code">[docs]</a>
+</span><span data-line="313">    <span class="n">state_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="GeocodeResult.country_code">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult.country_code">[docs]</a>
+</span><span data-line="314">    <span class="n">country_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="GeocodeResult.formatted_address">
+<a class="viewcode-back" href="../../autoapi/apple_maps_api/models/index.html#apple_maps_api.models.GeocodeResult.formatted_address">[docs]</a>
+</span><span data-line="315">    <span class="n">formatted_address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span></div>
+</div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Michael Bianco</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/iloveitaly/python-apple-maps-api" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

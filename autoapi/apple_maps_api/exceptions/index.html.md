@@ -1,57 +1,50 @@
 # apple_maps_api.exceptions
 
-.. py:module:: apple_maps_api.exceptions
-
 ## Exceptions
 
-.. autoapisummary::
-
-apple_maps_api.exceptions.AppleMapsError
-apple_maps_api.exceptions.AppleMapsAuthError
-apple_maps_api.exceptions.AppleMapsRequestError
-apple_maps_api.exceptions.AppleMapsRateLimitError
-apple_maps_api.exceptions.AppleMapsServerError
+| [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)                   | Base exception for all Apple Maps API errors.                        |
+|---------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| [`AppleMapsAuthError`](#apple_maps_api.exceptions.AppleMapsAuthError)           | Raised when authentication fails (e.g., invalid JWT, expired token). |
+| [`AppleMapsRequestError`](#apple_maps_api.exceptions.AppleMapsRequestError)     | Raised when the API returns a client error (4xx besides 429).        |
+| [`AppleMapsRateLimitError`](#apple_maps_api.exceptions.AppleMapsRateLimitError) | Raised when the API returns a 429 Too Many Requests error.           |
+| [`AppleMapsServerError`](#apple_maps_api.exceptions.AppleMapsServerError)       | Raised when the API returns a 5xx server error.                      |
 
 ## Module Contents
 
-.. py:exception:: AppleMapsError
+### *exception* apple_maps_api.exceptions.AppleMapsError
 
-Bases: :py:obj:`Exception`
+Bases: [`Exception`](https://docs.python.org/3/library/exceptions.html#Exception)
 
 Base exception for all Apple Maps API errors.
 
-.. py:exception:: AppleMapsAuthError
+### *exception* apple_maps_api.exceptions.AppleMapsAuthError
 
-Bases: :py:obj:`AppleMapsError`
+Bases: [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)
 
 Raised when authentication fails (e.g., invalid JWT, expired token).
 
-.. py:exception:: AppleMapsRequestError(message, status_code=None, response=None)
+### *exception* apple_maps_api.exceptions.AppleMapsRequestError(message, status_code=None, response=None)
 
-Bases: :py:obj:`AppleMapsError`
+Bases: [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)
 
 Raised when the API returns a client error (4xx besides 429).
 
-.. py:attribute:: status_code
-:value: None
+#### status_code *= None*
 
-.. py:attribute:: response
-:value: None
+#### response *= None*
 
-.. py:exception:: AppleMapsRateLimitError(message, status_code=None, response=None)
+### *exception* apple_maps_api.exceptions.AppleMapsRateLimitError(message, status_code=None, response=None)
 
-Bases: :py:obj:`AppleMapsRequestError`
+Bases: [`AppleMapsRequestError`](#apple_maps_api.exceptions.AppleMapsRequestError)
 
 Raised when the API returns a 429 Too Many Requests error.
 
-.. py:exception:: AppleMapsServerError(message, status_code=None, response=None)
+### *exception* apple_maps_api.exceptions.AppleMapsServerError(message, status_code=None, response=None)
 
-Bases: :py:obj:`AppleMapsError`
+Bases: [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)
 
 Raised when the API returns a 5xx server error.
 
-.. py:attribute:: status_code
-:value: None
+#### status_code *= None*
 
-.. py:attribute:: response
-:value: None
+#### response *= None*
