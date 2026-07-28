@@ -52,7 +52,6 @@ llms_txt_build_parallel = False
 
 # 3. Markdown Support Configuration
 source_suffix = {
-    ".rst": "restructuredtext",
     ".md": "markdown",
 }
 
