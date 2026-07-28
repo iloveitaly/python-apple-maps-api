@@ -33,8 +33,6 @@ autoapi_keep_files = False
 exclude_patterns = [
     "apple_maps_documentation",
     "_build",
-    "Thumbs.db",
-    ".DS_Store",
 ]
 
 # Intersphinx configuration
