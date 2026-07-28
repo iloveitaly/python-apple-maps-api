@@ -15,6 +15,18 @@ docker_down:
 test:
     uv run pytest -v
 
+# Build documentation (docs deps live in the uv `docs` group, not a package extra)
+docs-build:
+    uv run --group docs sphinx-build -b html docs docs/_build/html
+
+# Serve documentation with live reload
+docs-serve:
+    uv run --group docs sphinx-autobuild docs docs/_build/html --port 8000 --watch apple_maps_api
+
+# Run canonical examples/ scripts (kept in sync with docs via literalinclude)
+examples:
+    uv run python playground/address_autocomplete.py
+
 # python linting checks
 [script]
 lint FILES=".":
@@ -158,5 +170,5 @@ github_repo_permissions_create:
 github_repo_set_metadata:
   gh repo edit \
     --description "$(yq  '.project.description' pyproject.toml)" \
-    --homepage "$(yq '.project.urls.Repository' pyproject.toml)" \
+    --homepage "$(yq '.project.urls.Documentation' pyproject.toml)" \
     --add-topic "$(yq '.project.keywords | join(",")' pyproject.toml)"
