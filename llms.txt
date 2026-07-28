@@ -15,6 +15,7 @@
 - [apple_maps_api.version](autoapi/apple_maps_api/version/index.html.md): Version handling for apple-maps-api.
 - [apple_maps_api.helpers](autoapi/apple_maps_api/helpers/index.html.md): Helper functions for common geocoding operations.
 - [apple_maps_api.client](autoapi/apple_maps_api/client/index.html.md): Apple Maps Server API client library.
+- [Setting Up MapKit JS Credentials](mapkit-js-credential-setup.html.md): Practical guide for creating the Apple Developer credentials needed by MapKit JS (web) and this libr...
 
 ---
 

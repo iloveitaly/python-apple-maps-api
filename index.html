@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="blue" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple-maps-api documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="apple_maps_api" href="autoapi/apple_maps_api/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>apple-maps-api documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Setting Up MapKit JS Credentials" href="mapkit-js-credential-setup.html" />
       <link rel="canonical" href="https://iloveitaly.github.io/python-apple-maps-api/" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
@@ -66,6 +66,7 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><ul>
+<li class="toctree-l1"><a class="reference internal" href="mapkit-js-credential-setup.html">MapKit JS Credential Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/apple_maps_api/index.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="autoapi/apple_maps_api/client/index.html">apple_maps_api.client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoapi/apple_maps_api/exceptions/index.html">apple_maps_api.exceptions</a></li>
@@ -206,7 +207,7 @@ data-aria-dark="Switch to auto color mode">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
 <section id="basic-setup">
 <h3>Basic Setup<a class="headerlink" href="#basic-setup" title="Link to this heading">#</a></h3>
-<p>You’ll need your Team ID, Key ID, and the private key from your Apple Developer account.</p>
+<p>You’ll need your Team ID, Key ID, and the private key from your Apple Developer account. Step-by-step portal setup (Maps ID, MapKit JS key, domains/localhost): <a class="reference internal" href="#docs/mapkit-js-credential-setup.md"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">docs/mapkit-js-credential-setup.md</span></code></span></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">apple_maps_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppleMapsClient</span>
 </span><span data-line="2">
 </span><span data-line="3"><span class="n">client</span> <span class="o">=</span> <span class="n">AppleMapsClient</span><span class="p">(</span>
@@ -497,10 +498,10 @@ data-aria-dark="Switch to auto color mode">
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-next">
-    <a href="autoapi/apple_maps_api/index.html">
+    <a href="mapkit-js-credential-setup.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">apple_maps_api</div>
+        <div class="title">Setting Up MapKit JS Credentials</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

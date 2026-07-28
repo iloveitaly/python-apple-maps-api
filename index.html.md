@@ -33,7 +33,7 @@ uv add apple-maps-api
 
 ### Basic Setup
 
-You’ll need your Team ID, Key ID, and the private key from your Apple Developer account.
+You’ll need your Team ID, Key ID, and the private key from your Apple Developer account. Step-by-step portal setup (Maps ID, MapKit JS key, domains/localhost): [`docs/mapkit-js-credential-setup.md`]().
 
 ```python
 from apple_maps_api import AppleMapsClient
