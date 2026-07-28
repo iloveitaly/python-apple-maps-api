@@ -1,8 +1,8 @@
-from datetime import datetime
+from datetime import UTC, datetime
 
 # 1. Basic Project Info
 project = "apple-maps-api"
-copyright = f"{datetime.now().year}, Michael Bianco"
+copyright = f"{datetime.now(UTC).year}, Michael Bianco"
 author = "Michael Bianco"
 
 # 2. Extensions
