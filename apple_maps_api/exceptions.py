@@ -1,13 +1,9 @@
 class AppleMapsError(Exception):
     """Base exception for all Apple Maps API errors."""
 
-    pass
-
 
 class AppleMapsAuthError(AppleMapsError):
     """Raised when authentication fails (e.g., invalid JWT, expired token)."""
-
-    pass
 
 
 class AppleMapsRequestError(AppleMapsError):
@@ -21,8 +17,6 @@ class AppleMapsRequestError(AppleMapsError):
 
 class AppleMapsRateLimitError(AppleMapsRequestError):
     """Raised when the API returns a 429 Too Many Requests error."""
-
-    pass
 
 
 class AppleMapsServerError(AppleMapsError):
