@@ -5,5 +5,5 @@
 :maxdepth: 2
 :hidden:
 
-API Reference <autoapi/index>
+API Reference <autoapi/apple_maps_api/index>
 ```
