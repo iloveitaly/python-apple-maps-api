@@ -20,7 +20,7 @@ docs-build:
     uv run --group docs sphinx-build -b html docs docs/_build/html
 
 # Serve documentation with live reload
-docs-serve:
+docs-dev:
     uv run --group docs sphinx-autobuild docs docs/_build/html --port 8000 --watch apple_maps_api
 
 # python linting checks
