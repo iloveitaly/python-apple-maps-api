@@ -165,3 +165,8 @@ apple_maps_key.p8
 /AGENTS.md
 /GEMINI.md
 # END AI INSTRUCTION IGNORES
+
+# Node / examples
+node_modules/
+
+.DS_Store
