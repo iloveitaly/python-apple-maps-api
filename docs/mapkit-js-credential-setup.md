@@ -2,7 +2,7 @@
 
 Practical guide for creating the Apple Developer credentials needed by MapKit JS (web) and this library's Server API client.
 
-Based on setup notes from Sharmaine (July 2026), adapted from the [Create with Swift MapKit JS tutorial](https://www.createwithswift.com/using-mapkit-js-to-embed-apple-maps-in-websites/) and Apple's current Developer portal flow.
+Based on setup notes written July 2026, adapted from the [Create with Swift MapKit JS tutorial](https://www.createwithswift.com/using-mapkit-js-to-embed-apple-maps-in-websites/) and Apple's current Developer portal flow.
 
 > **Note:** Third-party tutorials often still point at Apple's old `maps.developer.apple.com/token-maker` page. That flow has moved into the [Apple Developer](https://developer.apple.com/account) portal. Prefer the steps below over outdated token-maker screenshots.
 
