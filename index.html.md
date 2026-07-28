@@ -43,7 +43,7 @@ client = AppleMapsClient(
     key_id="YOUR_KEY_ID",
     private_key="""-----BEGIN PRIVATE KEY-----
 ...
------END PRIVATE KEY-----"""
+-----END PRIVATE KEY-----""",
 )
 ```
 
