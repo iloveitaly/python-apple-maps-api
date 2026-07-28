@@ -23,10 +23,6 @@ docs-build:
 docs-serve:
     uv run --group docs sphinx-autobuild docs docs/_build/html --port 8000 --watch apple_maps_api
 
-# Run canonical examples/ scripts (kept in sync with docs via literalinclude)
-examples:
-    uv run python playground/address_autocomplete.py
-
 # python linting checks
 [script]
 lint FILES=".":
