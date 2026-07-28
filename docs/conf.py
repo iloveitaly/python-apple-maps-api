@@ -51,6 +51,8 @@ llms_txt_build_parallel = False
 # 3. Markdown Support Configuration
 source_suffix = {
     ".md": "markdown",
+    # AutoAPI generates temporary reStructuredText sources during the build.
+    ".rst": "restructuredtext",
 }
 
 myst_enable_extensions = [
