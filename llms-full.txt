@@ -370,6 +370,60 @@ Apple Maps geocoding, reverse geocoding, search, and autocomplete APIs.
 
 # index.html.md
 
+# apple_maps_api.exceptions
+
+## Exceptions
+
+| [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)                   | Base exception for all Apple Maps API errors.                        |
+|---------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| [`AppleMapsAuthError`](#apple_maps_api.exceptions.AppleMapsAuthError)           | Raised when authentication fails (e.g., invalid JWT, expired token). |
+| [`AppleMapsRequestError`](#apple_maps_api.exceptions.AppleMapsRequestError)     | Raised when the API returns a client error (4xx besides 429).        |
+| [`AppleMapsRateLimitError`](#apple_maps_api.exceptions.AppleMapsRateLimitError) | Raised when the API returns a 429 Too Many Requests error.           |
+| [`AppleMapsServerError`](#apple_maps_api.exceptions.AppleMapsServerError)       | Raised when the API returns a 5xx server error.                      |
+
+## Module Contents
+
+### *exception* apple_maps_api.exceptions.AppleMapsError
+
+Bases: [`Exception`](https://docs.python.org/3/library/exceptions.html#Exception)
+
+Base exception for all Apple Maps API errors.
+
+### *exception* apple_maps_api.exceptions.AppleMapsAuthError
+
+Bases: [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)
+
+Raised when authentication fails (e.g., invalid JWT, expired token).
+
+### *exception* apple_maps_api.exceptions.AppleMapsRequestError(message, status_code=None, response=None)
+
+Bases: [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)
+
+Raised when the API returns a client error (4xx besides 429).
+
+#### status_code *= None*
+
+#### response *= None*
+
+### *exception* apple_maps_api.exceptions.AppleMapsRateLimitError(message, status_code=None, response=None)
+
+Bases: [`AppleMapsRequestError`](#apple_maps_api.exceptions.AppleMapsRequestError)
+
+Raised when the API returns a 429 Too Many Requests error.
+
+### *exception* apple_maps_api.exceptions.AppleMapsServerError(message, status_code=None, response=None)
+
+Bases: [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)
+
+Raised when the API returns a 5xx server error.
+
+#### status_code *= None*
+
+#### response *= None*
+
+
+# index.html.md
+
 # apple_maps_api.models
 
 Pydantic models for Apple Maps Server API responses.
@@ -856,83 +910,6 @@ This abstraction allows swapping Apple Maps for Radar without changing consuming
 
 # index.html.md
 
-# apple_maps_api.exceptions
-
-## Exceptions
-
-| [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)                   | Base exception for all Apple Maps API errors.                        |
-|---------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| [`AppleMapsAuthError`](#apple_maps_api.exceptions.AppleMapsAuthError)           | Raised when authentication fails (e.g., invalid JWT, expired token). |
-| [`AppleMapsRequestError`](#apple_maps_api.exceptions.AppleMapsRequestError)     | Raised when the API returns a client error (4xx besides 429).        |
-| [`AppleMapsRateLimitError`](#apple_maps_api.exceptions.AppleMapsRateLimitError) | Raised when the API returns a 429 Too Many Requests error.           |
-| [`AppleMapsServerError`](#apple_maps_api.exceptions.AppleMapsServerError)       | Raised when the API returns a 5xx server error.                      |
-
-## Module Contents
-
-### *exception* apple_maps_api.exceptions.AppleMapsError
-
-Bases: [`Exception`](https://docs.python.org/3/library/exceptions.html#Exception)
-
-Base exception for all Apple Maps API errors.
-
-### *exception* apple_maps_api.exceptions.AppleMapsAuthError
-
-Bases: [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)
-
-Raised when authentication fails (e.g., invalid JWT, expired token).
-
-### *exception* apple_maps_api.exceptions.AppleMapsRequestError(message, status_code=None, response=None)
-
-Bases: [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)
-
-Raised when the API returns a client error (4xx besides 429).
-
-#### status_code *= None*
-
-#### response *= None*
-
-### *exception* apple_maps_api.exceptions.AppleMapsRateLimitError(message, status_code=None, response=None)
-
-Bases: [`AppleMapsRequestError`](#apple_maps_api.exceptions.AppleMapsRequestError)
-
-Raised when the API returns a 429 Too Many Requests error.
-
-### *exception* apple_maps_api.exceptions.AppleMapsServerError(message, status_code=None, response=None)
-
-Bases: [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)
-
-Raised when the API returns a 5xx server error.
-
-#### status_code *= None*
-
-#### response *= None*
-
-
-# index.html.md
-
-# apple_maps_api.version
-
-Version handling for apple-maps-api.
-
-## Functions
-
-| [`is_local_source_checkout`](#apple_maps_api.version.is_local_source_checkout)(→ bool)   | Check if the code is running from a local source checkout.     |
-|------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| [`get_version`](#apple_maps_api.version.get_version)(→ str)                              | Get the version string, appending .dev if running from source. |
-
-## Module Contents
-
-### apple_maps_api.version.is_local_source_checkout() → [bool](https://docs.python.org/3/library/functions.html#bool)
-
-Check if the code is running from a local source checkout.
-
-### apple_maps_api.version.get_version() → [str](https://docs.python.org/3/library/stdtypes.html#str)
-
-Get the version string, appending .dev if running from source.
-
-
-# index.html.md
-
 # apple_maps_api.helpers
 
 Helper functions for common geocoding operations.
@@ -1248,6 +1225,29 @@ to return precise results for the suggestion.
     language through the completionUrl, so callers must re-specify it here.
 * **Raises:**
   [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – If the completion has no completionUrl.
+
+
+# index.html.md
+
+# apple_maps_api.version
+
+Version handling for apple-maps-api.
+
+## Functions
+
+| [`is_local_source_checkout`](#apple_maps_api.version.is_local_source_checkout)(→ bool)   | Check if the code is running from a local source checkout.     |
+|------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| [`get_version`](#apple_maps_api.version.get_version)(→ str)                              | Get the version string, appending .dev if running from source. |
+
+## Module Contents
+
+### apple_maps_api.version.is_local_source_checkout() → [bool](https://docs.python.org/3/library/functions.html#bool)
+
+Check if the code is running from a local source checkout.
+
+### apple_maps_api.version.get_version() → [str](https://docs.python.org/3/library/stdtypes.html#str)
+
+Get the version string, appending .dev if running from source.
 
 
 # mapkit-js-credential-setup.html.md
