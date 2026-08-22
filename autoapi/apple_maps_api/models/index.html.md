@@ -9,24 +9,24 @@ See: [https://developer.apple.com/documentation/applemapsserverapi](https://deve
 
 ## Classes
 
-| [`AddressCategory`](#apple_maps_api.models.AddressCategory)                       | Enum where members are also (and must be) strings                       |
-|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`PoiCategory`](#apple_maps_api.models.PoiCategory)                               | Enum where members are also (and must be) strings                       |
-| [`SearchResultType`](#apple_maps_api.models.SearchResultType)                     | Result type filter for /v1/search.                                      |
-| [`SearchACResultType`](#apple_maps_api.models.SearchACResultType)                 | Result type filter for /v1/searchAutocomplete.                          |
-| [`SearchRegionPriority`](#apple_maps_api.models.SearchRegionPriority)             | Importance of searchRegion for /v1/search and /v1/searchAutocomplete.   |
-| [`Location`](#apple_maps_api.models.Location)                                     | A coordinate pair from Apple Maps API.                                  |
-| [`StructuredAddress`](#apple_maps_api.models.StructuredAddress)                   | Detailed address components of a place.                                 |
-| [`MapRegion`](#apple_maps_api.models.MapRegion)                                   | A rectangular bounding box on a map.                                    |
-| [`Place`](#apple_maps_api.models.Place)                                           | A place returned by geocode, reverseGeocode, or place lookup endpoints. |
-| [`SearchPlace`](#apple_maps_api.models.SearchPlace)                               | Extended Place returned by /v1/search with POI category info.           |
-| [`PlaceResults`](#apple_maps_api.models.PlaceResults)                             | Response from /v1/geocode and /v1/reverseGeocode.                       |
-| [`PaginationInfo`](#apple_maps_api.models.PaginationInfo)                         | Pagination metadata from /v1/search when enablePagination is true.      |
-| [`SearchResponse`](#apple_maps_api.models.SearchResponse)                         | Response from /v1/search.                                               |
-| [`AutocompleteResult`](#apple_maps_api.models.AutocompleteResult)                 | A single autocomplete suggestion from /v1/searchAutocomplete.           |
+| [`AddressCategory`](#apple_maps_api.models.AddressCategory)            | Enum where members are also (and must be) strings                       |
+|-----------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [`PoiCategory`](#apple_maps_api.models.PoiCategory)                | Enum where members are also (and must be) strings                       |
+| [`SearchResultType`](#apple_maps_api.models.SearchResultType)           | Result type filter for /v1/search.                                      |
+| [`SearchACResultType`](#apple_maps_api.models.SearchACResultType)         | Result type filter for /v1/searchAutocomplete.                          |
+| [`SearchRegionPriority`](#apple_maps_api.models.SearchRegionPriority)       | Importance of searchRegion for /v1/search and /v1/searchAutocomplete.   |
+| [`Location`](#apple_maps_api.models.Location)                   | A coordinate pair from Apple Maps API.                                  |
+| [`StructuredAddress`](#apple_maps_api.models.StructuredAddress)          | Detailed address components of a place.                                 |
+| [`MapRegion`](#apple_maps_api.models.MapRegion)                  | A rectangular bounding box on a map.                                    |
+| [`Place`](#apple_maps_api.models.Place)                      | A place returned by geocode, reverseGeocode, or place lookup endpoints. |
+| [`SearchPlace`](#apple_maps_api.models.SearchPlace)                | Extended Place returned by /v1/search with POI category info.           |
+| [`PlaceResults`](#apple_maps_api.models.PlaceResults)               | Response from /v1/geocode and /v1/reverseGeocode.                       |
+| [`PaginationInfo`](#apple_maps_api.models.PaginationInfo)             | Pagination metadata from /v1/search when enablePagination is true.      |
+| [`SearchResponse`](#apple_maps_api.models.SearchResponse)             | Response from /v1/search.                                               |
+| [`AutocompleteResult`](#apple_maps_api.models.AutocompleteResult)         | A single autocomplete suggestion from /v1/searchAutocomplete.           |
 | [`SearchAutocompleteResponse`](#apple_maps_api.models.SearchAutocompleteResponse) | Response from /v1/searchAutocomplete.                                   |
-| [`TokenResponse`](#apple_maps_api.models.TokenResponse)                           | Response from /v1/token.                                                |
-| [`GeocodeResult`](#apple_maps_api.models.GeocodeResult)                           | Provider-agnostic geocode result.                                       |
+| [`TokenResponse`](#apple_maps_api.models.TokenResponse)              | Response from /v1/token.                                                |
+| [`GeocodeResult`](#apple_maps_api.models.GeocodeResult)              | Provider-agnostic geocode result.                                       |
 
 ## Module Contents
 

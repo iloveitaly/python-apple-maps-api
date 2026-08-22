@@ -8,14 +8,14 @@
 ## Pages
 
 - [Python Client for Apple Maps Server API](index.html.md): [![Release Notes](https://img.shields.io/github/release/iloveitaly/apple-maps-api)](https://github.c...
-- [API Reference](autoapi/index.html.md): This page contains auto-generated API reference documentation <sup>[1](#f1)</sup>.
-- [apple_maps_api](autoapi/apple_maps_api/index.html.md): apple-maps-api: A Python client for the Apple Maps Server API.
-- [apple_maps_api.exceptions](autoapi/apple_maps_api/exceptions/index.html.md): | [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)                   | Base exception f...
-- [apple_maps_api.models](autoapi/apple_maps_api/models/index.html.md): Pydantic models for Apple Maps Server API responses.
-- [apple_maps_api.helpers](autoapi/apple_maps_api/helpers/index.html.md): Helper functions for common geocoding operations.
-- [apple_maps_api.client](autoapi/apple_maps_api/client/index.html.md): Apple Maps Server API client library.
-- [apple_maps_api.version](autoapi/apple_maps_api/version/index.html.md): Version handling for apple-maps-api.
 - [Setting Up MapKit JS Credentials](mapkit-js-credential-setup.html.md): Practical guide for creating the Apple Developer credentials needed by MapKit JS (web) and this libr...
+- [apple_maps_api](autoapi/apple_maps_api/index.html.md): apple-maps-api: A Python client for the Apple Maps Server API.
+- [apple_maps_api.client](autoapi/apple_maps_api/client/index.html.md): Apple Maps Server API client library.
+- [apple_maps_api.exceptions](autoapi/apple_maps_api/exceptions/index.html.md): | [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)          | Base exception for all Ap...
+- [apple_maps_api.helpers](autoapi/apple_maps_api/helpers/index.html.md): Helper functions for common geocoding operations.
+- [apple_maps_api.models](autoapi/apple_maps_api/models/index.html.md): Pydantic models for Apple Maps Server API responses.
+- [apple_maps_api.version](autoapi/apple_maps_api/version/index.html.md): Version handling for apple-maps-api.
+- [API Reference](autoapi/index.html.md): This page contains auto-generated API reference documentation <sup>[1](#f1)</sup>.
 
 ---
 

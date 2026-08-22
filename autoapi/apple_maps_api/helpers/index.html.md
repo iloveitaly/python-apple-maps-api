@@ -5,7 +5,7 @@ Helper functions for common geocoding operations.
 ## Attributes
 
 | [`log`](#apple_maps_api.helpers.log)   |    |
-|----------------------------------------|----|
+|--------------------------------------------------------|----|
 
 ## Functions
 
@@ -17,7 +17,7 @@ Helper functions for common geocoding operations.
 
 ### apple_maps_api.helpers.log
 
-### apple_maps_api.helpers.geocode_postal_code(client: [apple_maps_api.client.AppleMapsClient](../client/index.md#apple_maps_api.client.AppleMapsClient), , postal_code: [str](https://docs.python.org/3/library/stdtypes.html#str), country: [str](https://docs.python.org/3/library/stdtypes.html#str) = 'US') → [apple_maps_api.models.GeocodeResult](../models/index.md#apple_maps_api.models.GeocodeResult) | [None](https://docs.python.org/3/library/constants.html#None)
+### apple_maps_api.helpers.geocode_postal_code(client: [apple_maps_api.client.AppleMapsClient](../client/index.html.md#apple_maps_api.client.AppleMapsClient), , postal_code: [str](https://docs.python.org/3/library/stdtypes.html#str), country: [str](https://docs.python.org/3/library/stdtypes.html#str) = 'US') → [apple_maps_api.models.GeocodeResult](../models/index.html.md#apple_maps_api.models.GeocodeResult) | [None](https://docs.python.org/3/library/constants.html#None)
 
 Geocode a postal code and extract coordinates and address information.
 
@@ -30,7 +30,7 @@ Returns:
 : GeocodeResult with lat, lon, city, and state information.
   Returns None if geocoding fails.
 
-### apple_maps_api.helpers.geocode_coordinates(client: [apple_maps_api.client.AppleMapsClient](../client/index.md#apple_maps_api.client.AppleMapsClient), , lat: [float](https://docs.python.org/3/library/functions.html#float), lon: [float](https://docs.python.org/3/library/functions.html#float)) → [apple_maps_api.models.GeocodeResult](../models/index.md#apple_maps_api.models.GeocodeResult) | [None](https://docs.python.org/3/library/constants.html#None)
+### apple_maps_api.helpers.geocode_coordinates(client: [apple_maps_api.client.AppleMapsClient](../client/index.html.md#apple_maps_api.client.AppleMapsClient), , lat: [float](https://docs.python.org/3/library/functions.html#float), lon: [float](https://docs.python.org/3/library/functions.html#float)) → [apple_maps_api.models.GeocodeResult](../models/index.html.md#apple_maps_api.models.GeocodeResult) | [None](https://docs.python.org/3/library/constants.html#None)
 
 Reverse geocode coordinates and extract address information.
 

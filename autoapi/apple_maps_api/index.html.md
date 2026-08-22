@@ -7,8 +7,8 @@ Apple Maps geocoding, reverse geocoding, search, and autocomplete APIs.
 
 ## Submodules
 
-* [apple_maps_api.client](client/index.md)
-* [apple_maps_api.exceptions](exceptions/index.md)
-* [apple_maps_api.helpers](helpers/index.md)
-* [apple_maps_api.models](models/index.md)
-* [apple_maps_api.version](version/index.md)
+* [apple_maps_api.client](client/index.html.md)
+* [apple_maps_api.exceptions](exceptions/index.html.md)
+* [apple_maps_api.helpers](helpers/index.html.md)
+* [apple_maps_api.models](models/index.html.md)
+* [apple_maps_api.version](version/index.html.md)

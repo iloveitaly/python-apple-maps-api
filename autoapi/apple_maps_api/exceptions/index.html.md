@@ -2,12 +2,12 @@
 
 ## Exceptions
 
-| [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)                   | Base exception for all Apple Maps API errors.                        |
-|---------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| [`AppleMapsAuthError`](#apple_maps_api.exceptions.AppleMapsAuthError)           | Raised when authentication fails (e.g., invalid JWT, expired token). |
-| [`AppleMapsRequestError`](#apple_maps_api.exceptions.AppleMapsRequestError)     | Raised when the API returns a client error (4xx besides 429).        |
+| [`AppleMapsError`](#apple_maps_api.exceptions.AppleMapsError)          | Base exception for all Apple Maps API errors.                        |
+|--------------------------------------------------------------------------|----------------------------------------------------------------------|
+| [`AppleMapsAuthError`](#apple_maps_api.exceptions.AppleMapsAuthError)      | Raised when authentication fails (e.g., invalid JWT, expired token). |
+| [`AppleMapsRequestError`](#apple_maps_api.exceptions.AppleMapsRequestError)   | Raised when the API returns a client error (4xx besides 429).        |
 | [`AppleMapsRateLimitError`](#apple_maps_api.exceptions.AppleMapsRateLimitError) | Raised when the API returns a 429 Too Many Requests error.           |
-| [`AppleMapsServerError`](#apple_maps_api.exceptions.AppleMapsServerError)       | Raised when the API returns a 5xx server error.                      |
+| [`AppleMapsServerError`](#apple_maps_api.exceptions.AppleMapsServerError)    | Raised when the API returns a 5xx server error.                      |
 
 ## Module Contents
 

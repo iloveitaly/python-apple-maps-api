@@ -10,18 +10,18 @@ authentication, automatic token management, and retry logic.
 ## Attributes
 
 | [`log`](#apple_maps_api.client.log)   |    |
-|---------------------------------------|----|
+|--------------------------------------------------------|----|
 
 ## Classes
 
-| [`GeocodeOptionsLatLng`](#apple_maps_api.client.GeocodeOptionsLatLng)           | Geocode options with required `lat` and `lng` location bias.                                                     |
-|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| [`GeocodeOptions`](#apple_maps_api.client.GeocodeOptions)                       | All optional kwargs for [`AppleMapsClient.geocode()`](#apple_maps_api.client.AppleMapsClient.geocode).           |
-| [`SearchOptionsLatLng`](#apple_maps_api.client.SearchOptionsLatLng)             | Search options with required `lat` and `lng` location bias.                                                      |
-| [`SearchOptions`](#apple_maps_api.client.SearchOptions)                         | All optional kwargs for [`AppleMapsClient.search()`](#apple_maps_api.client.AppleMapsClient.search).             |
-| [`AutocompleteOptionsLatLng`](#apple_maps_api.client.AutocompleteOptionsLatLng) | Autocomplete options with required `lat` and `lng` location bias.                                                |
-| [`AutocompleteOptions`](#apple_maps_api.client.AutocompleteOptions)             | All optional kwargs for [`AppleMapsClient.autocomplete()`](#apple_maps_api.client.AppleMapsClient.autocomplete). |
-| [`AppleMapsClient`](#apple_maps_api.client.AppleMapsClient)                     | A client for the Apple Maps Server API.                                                                          |
+| [`GeocodeOptionsLatLng`](#apple_maps_api.client.GeocodeOptionsLatLng)      | Geocode options with required `lat` and `lng` location bias.                                             |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| [`GeocodeOptions`](#apple_maps_api.client.GeocodeOptions)            | All optional kwargs for [`AppleMapsClient.geocode()`](#apple_maps_api.client.AppleMapsClient.geocode).      |
+| [`SearchOptionsLatLng`](#apple_maps_api.client.SearchOptionsLatLng)       | Search options with required `lat` and `lng` location bias.                                              |
+| [`SearchOptions`](#apple_maps_api.client.SearchOptions)             | All optional kwargs for [`AppleMapsClient.search()`](#apple_maps_api.client.AppleMapsClient.search).       |
+| [`AutocompleteOptionsLatLng`](#apple_maps_api.client.AutocompleteOptionsLatLng) | Autocomplete options with required `lat` and `lng` location bias.                                        |
+| [`AutocompleteOptions`](#apple_maps_api.client.AutocompleteOptions)       | All optional kwargs for [`AppleMapsClient.autocomplete()`](#apple_maps_api.client.AppleMapsClient.autocomplete). |
+| [`AppleMapsClient`](#apple_maps_api.client.AppleMapsClient)           | A client for the Apple Maps Server API.                                                                  |
 
 ## Module Contents
 
@@ -142,9 +142,9 @@ Spec:
 [https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api](https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api)
 [https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js](https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js)
 
-#### geocode(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[GeocodeOptionsLatLng](#apple_maps_api.client.GeocodeOptionsLatLng)]) → [apple_maps_api.models.PlaceResults](../models/index.md#apple_maps_api.models.PlaceResults)
+#### geocode(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[GeocodeOptionsLatLng](#apple_maps_api.client.GeocodeOptionsLatLng)]) → [apple_maps_api.models.PlaceResults](../models/index.html.md#apple_maps_api.models.PlaceResults)
 
-#### geocode(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[\_GeocodeOptionsBase]) → [apple_maps_api.models.PlaceResults](../models/index.md#apple_maps_api.models.PlaceResults)
+#### geocode(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[\_GeocodeOptionsBase]) → [apple_maps_api.models.PlaceResults](../models/index.html.md#apple_maps_api.models.PlaceResults)
 
 Convert an address string to coordinates.
 
@@ -164,7 +164,7 @@ Maps to GET /v1/geocode.
     endpoints may fall back to this as the search hint.
   * **user_lng** – Longitude of the user’s position (must pass with user_lat).
 
-#### reverse_geocode(, lat: [float](https://docs.python.org/3/library/functions.html#float), lng: [float](https://docs.python.org/3/library/functions.html#float), lang: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None) → [apple_maps_api.models.PlaceResults](../models/index.md#apple_maps_api.models.PlaceResults)
+#### reverse_geocode(, lat: [float](https://docs.python.org/3/library/functions.html#float), lng: [float](https://docs.python.org/3/library/functions.html#float), lang: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None) → [apple_maps_api.models.PlaceResults](../models/index.html.md#apple_maps_api.models.PlaceResults)
 
 Convert coordinates to an address.
 
@@ -175,9 +175,9 @@ Maps to GET /v1/reverseGeocode.
   * **lng** – Longitude of the point to reverse geocode.
   * **lang** – BCP 47 language code (default: “en-US”).
 
-#### search(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[SearchOptionsLatLng](#apple_maps_api.client.SearchOptionsLatLng)]) → [apple_maps_api.models.SearchResponse](../models/index.md#apple_maps_api.models.SearchResponse)
+#### search(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[SearchOptionsLatLng](#apple_maps_api.client.SearchOptionsLatLng)]) → [apple_maps_api.models.SearchResponse](../models/index.html.md#apple_maps_api.models.SearchResponse)
 
-#### search(query: [str](https://docs.python.org/3/library/stdtypes.html#str) = '', \*\*kwargs: Unpack[\_SearchOptionsBase]) → [apple_maps_api.models.SearchResponse](../models/index.md#apple_maps_api.models.SearchResponse)
+#### search(query: [str](https://docs.python.org/3/library/stdtypes.html#str) = '', \*\*kwargs: Unpack[\_SearchOptionsBase]) → [apple_maps_api.models.SearchResponse](../models/index.html.md#apple_maps_api.models.SearchResponse)
 
 Search for places by name or category.
 
@@ -215,9 +215,9 @@ For page 2+, pass only `page_token` from a prior response’s
     (e.g. `["AdministrativeArea"]`).
   * **exclude_address_categories** – Address categories to exclude.
 
-#### autocomplete(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[AutocompleteOptionsLatLng](#apple_maps_api.client.AutocompleteOptionsLatLng)]) → [apple_maps_api.models.SearchAutocompleteResponse](../models/index.md#apple_maps_api.models.SearchAutocompleteResponse)
+#### autocomplete(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[AutocompleteOptionsLatLng](#apple_maps_api.client.AutocompleteOptionsLatLng)]) → [apple_maps_api.models.SearchAutocompleteResponse](../models/index.html.md#apple_maps_api.models.SearchAutocompleteResponse)
 
-#### autocomplete(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[\_AutocompleteOptionsBase]) → [apple_maps_api.models.SearchAutocompleteResponse](../models/index.md#apple_maps_api.models.SearchAutocompleteResponse)
+#### autocomplete(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[\_AutocompleteOptionsBase]) → [apple_maps_api.models.SearchAutocompleteResponse](../models/index.html.md#apple_maps_api.models.SearchAutocompleteResponse)
 
 Autocomplete partial addresses and place names.
 
@@ -251,7 +251,7 @@ search_completion() to expand a single autocomplete hit.
   * **include_address_categories** – Address categories to include.
   * **exclude_address_categories** – Address categories to exclude.
 
-#### search_completion(completion: [apple_maps_api.models.AutocompleteResult](../models/index.md#apple_maps_api.models.AutocompleteResult) | [str](https://docs.python.org/3/library/stdtypes.html#str), , lang: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None) → [apple_maps_api.models.SearchResponse](../models/index.md#apple_maps_api.models.SearchResponse)
+#### search_completion(completion: [apple_maps_api.models.AutocompleteResult](../models/index.html.md#apple_maps_api.models.AutocompleteResult) | [str](https://docs.python.org/3/library/stdtypes.html#str), , lang: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None) → [apple_maps_api.models.SearchResponse](../models/index.html.md#apple_maps_api.models.SearchResponse)
 
 Resolve an autocomplete suggestion to full search results.
 
