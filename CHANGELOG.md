@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.2.1](https://github.com/iloveitaly/python-apple-maps-api/compare/v0.2.0...v0.2.1) (2026-09-04)
+
+
+### Bug Fixes
+
+* resolve ruff 0.16.0 lint failures from Dependabot bump ([#29](https://github.com/iloveitaly/python-apple-maps-api/issues/29)) ([b2160fe](https://github.com/iloveitaly/python-apple-maps-api/commit/b2160fe177ddb5d7eedc2795da08cd66a8ba5923))
+
+
+### Documentation
+
+* Add Cursor environment config and Sphinx docs architecture ([#27](https://github.com/iloveitaly/python-apple-maps-api/issues/27)) ([853dd50](https://github.com/iloveitaly/python-apple-maps-api/commit/853dd506ae292bb388c349303fe040c64b48e96d))
+* add recipe to enable GitHub pages from gh-pages branch ([410c0a5](https://github.com/iloveitaly/python-apple-maps-api/commit/410c0a565318d4f6898cbd54ffcbd963a9fd08cf))
+* **conf:** add .rst source suffix for autoapi support ([cbf091c](https://github.com/iloveitaly/python-apple-maps-api/commit/cbf091cd881c90a6394da99bfab3bd0c80ee9399))
+* **conf:** update API reference path for documentation site ([bfc51e6](https://github.com/iloveitaly/python-apple-maps-api/commit/bfc51e6e58206a05e90ca9c041552bdbc398ee0c))
+* MapKit JS credential setup guide ([#30](https://github.com/iloveitaly/python-apple-maps-api/issues/30)) ([4d7cadc](https://github.com/iloveitaly/python-apple-maps-api/commit/4d7cadc9a1a8e5087a546eba6b7aabfbd485e159))
+* update task list with completed items ([6e0db03](https://github.com/iloveitaly/python-apple-maps-api/commit/6e0db030639cb830503633321afe751f396790ad))
+
 ## [0.2.0](https://github.com/iloveitaly/python-apple-maps-api/compare/v0.1.0...v0.2.0) (2026-07-17)
 
 
