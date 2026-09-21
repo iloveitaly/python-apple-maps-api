@@ -371,9 +371,9 @@ Bases: `_GeocodeOptionsBase`
 
 Geocode options with required `lat` and `lng` location bias.
 
-#### lat *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
+#### lat *: Required[[float](https://docs.python.org/3/builtins/functions.html#float)]*
 
-#### lng *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
+#### lng *: Required[[float](https://docs.python.org/3/builtins/functions.html#float)]*
 
 ### *class* apple_maps_api.client.GeocodeOptions
 
@@ -381,9 +381,9 @@ Bases: `_GeocodeOptionsBase`
 
 All optional kwargs for [`AppleMapsClient.geocode()`](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.AppleMapsClient.geocode).
 
-#### lat *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### lat *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-#### lng *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### lng *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
 ### *class* apple_maps_api.client.SearchOptionsLatLng
 
@@ -391,9 +391,9 @@ Bases: `_SearchOptionsBase`
 
 Search options with required `lat` and `lng` location bias.
 
-#### lat *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
+#### lat *: Required[[float](https://docs.python.org/3/builtins/functions.html#float)]*
 
-#### lng *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
+#### lng *: Required[[float](https://docs.python.org/3/builtins/functions.html#float)]*
 
 ### *class* apple_maps_api.client.SearchOptions
 
@@ -401,9 +401,9 @@ Bases: `_SearchOptionsBase`
 
 All optional kwargs for [`AppleMapsClient.search()`](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.AppleMapsClient.search).
 
-#### lat *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### lat *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-#### lng *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### lng *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
 ### *class* apple_maps_api.client.AutocompleteOptionsLatLng
 
@@ -411,9 +411,9 @@ Bases: `_AutocompleteOptionsBase`
 
 Autocomplete options with required `lat` and `lng` location bias.
 
-#### lat *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
+#### lat *: Required[[float](https://docs.python.org/3/builtins/functions.html#float)]*
 
-#### lng *: Required[[float](https://docs.python.org/3/library/functions.html#float)]*
+#### lng *: Required[[float](https://docs.python.org/3/builtins/functions.html#float)]*
 
 ### *class* apple_maps_api.client.AutocompleteOptions
 
@@ -421,11 +421,11 @@ Bases: `_AutocompleteOptionsBase`
 
 All optional kwargs for [`AppleMapsClient.autocomplete()`](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.AppleMapsClient.autocomplete).
 
-#### lat *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### lat *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-#### lng *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### lng *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-### *class* apple_maps_api.client.AppleMapsClient(, team_id: [str](https://docs.python.org/3/library/stdtypes.html#str), key_id: [str](https://docs.python.org/3/library/stdtypes.html#str), private_key: [str](https://docs.python.org/3/library/stdtypes.html#str), origin: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None)
+### *class* apple_maps_api.client.AppleMapsClient(, team_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str), key_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str), private_key: [str](https://docs.python.org/3/builtins/stdtypes.html#str), origin: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None) = None)
 
 A client for the Apple Maps Server API.
 
@@ -454,7 +454,7 @@ Required:
 Optional:
 - APPLE_MAPS_ORIGIN
 
-#### create_token() → [str](https://docs.python.org/3/library/stdtypes.html#str)
+#### create_token() → [str](https://docs.python.org/3/builtins/stdtypes.html#str)
 
 Return a valid Maps access token for Apple Maps Server API use.
 
@@ -464,7 +464,7 @@ Use create_mapkit_token() for browser-side MapKit JS initialization.
 
 Spec: [https://developer.apple.com/documentation/applemapsserverapi/-v1-token](https://developer.apple.com/documentation/applemapsserverapi/-v1-token)
 
-#### create_mapkit_token(, ttl_seconds: [int](https://docs.python.org/3/library/functions.html#int) = \_DEFAULT_JWT_TTL_SECONDS) → [str](https://docs.python.org/3/library/stdtypes.html#str)
+#### create_mapkit_token(, ttl_seconds: [int](https://docs.python.org/3/builtins/functions.html#int) = \_DEFAULT_JWT_TTL_SECONDS) → [str](https://docs.python.org/3/builtins/stdtypes.html#str)
 
 Return a signed JWT for MapKit JS browser initialization.
 
@@ -480,9 +480,9 @@ Spec:
 [https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api](https://developer.apple.com/documentation/applemapsserverapi/creating-and-using-tokens-with-maps-server-api)
 [https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js](https://developer.apple.com/documentation/mapkitjs/creating-and-using-tokens-with-mapkit-js)
 
-#### geocode(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[GeocodeOptionsLatLng](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.GeocodeOptionsLatLng)]) → [apple_maps_api.models.PlaceResults](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PlaceResults)
+#### geocode(query: [str](https://docs.python.org/3/builtins/stdtypes.html#str), \*\*kwargs: Unpack[[GeocodeOptionsLatLng](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.GeocodeOptionsLatLng)]) → [apple_maps_api.models.PlaceResults](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PlaceResults)
 
-#### geocode(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[\_GeocodeOptionsBase]) → [apple_maps_api.models.PlaceResults](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PlaceResults)
+#### geocode(query: [str](https://docs.python.org/3/builtins/stdtypes.html#str), \*\*kwargs: Unpack[\_GeocodeOptionsBase]) → [apple_maps_api.models.PlaceResults](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PlaceResults)
 
 Convert an address string to coordinates.
 
@@ -502,7 +502,7 @@ Maps to GET /v1/geocode.
     endpoints may fall back to this as the search hint.
   * **user_lng** – Longitude of the user’s position (must pass with user_lat).
 
-#### reverse_geocode(, lat: [float](https://docs.python.org/3/library/functions.html#float), lng: [float](https://docs.python.org/3/library/functions.html#float), lang: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None) → [apple_maps_api.models.PlaceResults](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PlaceResults)
+#### reverse_geocode(, lat: [float](https://docs.python.org/3/builtins/functions.html#float), lng: [float](https://docs.python.org/3/builtins/functions.html#float), lang: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None) = None) → [apple_maps_api.models.PlaceResults](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PlaceResults)
 
 Convert coordinates to an address.
 
@@ -513,9 +513,9 @@ Maps to GET /v1/reverseGeocode.
   * **lng** – Longitude of the point to reverse geocode.
   * **lang** – BCP 47 language code (default: “en-US”).
 
-#### search(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[SearchOptionsLatLng](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.SearchOptionsLatLng)]) → [apple_maps_api.models.SearchResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchResponse)
+#### search(query: [str](https://docs.python.org/3/builtins/stdtypes.html#str), \*\*kwargs: Unpack[[SearchOptionsLatLng](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.SearchOptionsLatLng)]) → [apple_maps_api.models.SearchResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchResponse)
 
-#### search(query: [str](https://docs.python.org/3/library/stdtypes.html#str) = '', \*\*kwargs: Unpack[\_SearchOptionsBase]) → [apple_maps_api.models.SearchResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchResponse)
+#### search(query: [str](https://docs.python.org/3/builtins/stdtypes.html#str) = '', \*\*kwargs: Unpack[\_SearchOptionsBase]) → [apple_maps_api.models.SearchResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchResponse)
 
 Search for places by name or category.
 
@@ -553,9 +553,9 @@ For page 2+, pass only `page_token` from a prior response’s
     (e.g. `["AdministrativeArea"]`).
   * **exclude_address_categories** – Address categories to exclude.
 
-#### autocomplete(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[[AutocompleteOptionsLatLng](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.AutocompleteOptionsLatLng)]) → [apple_maps_api.models.SearchAutocompleteResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchAutocompleteResponse)
+#### autocomplete(query: [str](https://docs.python.org/3/builtins/stdtypes.html#str), \*\*kwargs: Unpack[[AutocompleteOptionsLatLng](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.AutocompleteOptionsLatLng)]) → [apple_maps_api.models.SearchAutocompleteResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchAutocompleteResponse)
 
-#### autocomplete(query: [str](https://docs.python.org/3/library/stdtypes.html#str), \*\*kwargs: Unpack[\_AutocompleteOptionsBase]) → [apple_maps_api.models.SearchAutocompleteResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchAutocompleteResponse)
+#### autocomplete(query: [str](https://docs.python.org/3/builtins/stdtypes.html#str), \*\*kwargs: Unpack[\_AutocompleteOptionsBase]) → [apple_maps_api.models.SearchAutocompleteResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchAutocompleteResponse)
 
 Autocomplete partial addresses and place names.
 
@@ -589,7 +589,7 @@ search_completion() to expand a single autocomplete hit.
   * **include_address_categories** – Address categories to include.
   * **exclude_address_categories** – Address categories to exclude.
 
-#### search_completion(completion: [apple_maps_api.models.AutocompleteResult](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.AutocompleteResult) | [str](https://docs.python.org/3/library/stdtypes.html#str), , lang: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None) = None) → [apple_maps_api.models.SearchResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchResponse)
+#### search_completion(completion: [apple_maps_api.models.AutocompleteResult](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.AutocompleteResult) | [str](https://docs.python.org/3/builtins/stdtypes.html#str), , lang: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None) = None) → [apple_maps_api.models.SearchResponse](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchResponse)
 
 Resolve an autocomplete suggestion to full search results.
 
@@ -602,7 +602,7 @@ to return precise results for the suggestion.
   * **lang** – BCP 47 language code (e.g., “en-US”). Apple does not carry the
     language through the completionUrl, so callers must re-specify it here.
 * **Raises:**
-  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – If the completion has no completionUrl.
+  [**ValueError**](https://docs.python.org/3/builtins/exceptions.html#ValueError) – If the completion has no completionUrl.
 
 
 # autoapi/apple_maps_api/exceptions/index.html.md
@@ -622,7 +622,7 @@ to return precise results for the suggestion.
 
 ### *exception* apple_maps_api.exceptions.AppleMapsError
 
-Bases: [`Exception`](https://docs.python.org/3/library/exceptions.html#Exception)
+Bases: [`Exception`](https://docs.python.org/3/builtins/exceptions.html#Exception)
 
 Base exception for all Apple Maps API errors.
 
@@ -680,7 +680,7 @@ Helper functions for common geocoding operations.
 
 ### apple_maps_api.helpers.log
 
-### apple_maps_api.helpers.geocode_postal_code(client: [apple_maps_api.client.AppleMapsClient](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.AppleMapsClient), , postal_code: [str](https://docs.python.org/3/library/stdtypes.html#str), country: [str](https://docs.python.org/3/library/stdtypes.html#str) = 'US') → [apple_maps_api.models.GeocodeResult](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.GeocodeResult) | [None](https://docs.python.org/3/library/constants.html#None)
+### apple_maps_api.helpers.geocode_postal_code(client: [apple_maps_api.client.AppleMapsClient](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.AppleMapsClient), , postal_code: [str](https://docs.python.org/3/builtins/stdtypes.html#str), country: [str](https://docs.python.org/3/builtins/stdtypes.html#str) = 'US') → [apple_maps_api.models.GeocodeResult](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.GeocodeResult) | [None](https://docs.python.org/3/builtins/constants.html#None)
 
 Geocode a postal code and extract coordinates and address information.
 
@@ -693,7 +693,7 @@ Returns:
 : GeocodeResult with lat, lon, city, and state information.
   Returns None if geocoding fails.
 
-### apple_maps_api.helpers.geocode_coordinates(client: [apple_maps_api.client.AppleMapsClient](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.AppleMapsClient), , lat: [float](https://docs.python.org/3/library/functions.html#float), lon: [float](https://docs.python.org/3/library/functions.html#float)) → [apple_maps_api.models.GeocodeResult](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.GeocodeResult) | [None](https://docs.python.org/3/library/constants.html#None)
+### apple_maps_api.helpers.geocode_coordinates(client: [apple_maps_api.client.AppleMapsClient](autoapi/apple_maps_api/client/index.html.md#apple_maps_api.client.AppleMapsClient), , lat: [float](https://docs.python.org/3/builtins/functions.html#float), lon: [float](https://docs.python.org/3/builtins/functions.html#float)) → [apple_maps_api.models.GeocodeResult](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.GeocodeResult) | [None](https://docs.python.org/3/builtins/constants.html#None)
 
 Reverse geocode coordinates and extract address information.
 
@@ -988,9 +988,9 @@ A coordinate pair from Apple Maps API.
 latitude: north-south position (e.g. 37.334)
 longitude: east-west position (e.g. -122.009)
 
-#### latitude *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### latitude *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-#### longitude *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### longitude *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
 ### *class* apple_maps_api.models.StructuredAddress(/, \*\*data: Any)
 
@@ -1011,27 +1011,27 @@ Apple uses different terminology than most geocoding APIs:
 - areasOfInterest = common names for the surrounding area
 - dependentLocalities = neighborhood names
 
-#### administrativeArea *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### administrativeArea *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### administrativeAreaCode *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### administrativeAreaCode *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### subAdministrativeArea *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### subAdministrativeArea *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### areasOfInterest *: [list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)] | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### areasOfInterest *: [list](https://docs.python.org/3/builtins/stdtypes.html#list)[[str](https://docs.python.org/3/builtins/stdtypes.html#str)] | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### dependentLocalities *: [list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)] | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### dependentLocalities *: [list](https://docs.python.org/3/builtins/stdtypes.html#list)[[str](https://docs.python.org/3/builtins/stdtypes.html#str)] | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### fullThoroughfare *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### fullThoroughfare *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### locality *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### locality *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### postCode *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### postCode *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### subLocality *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### subLocality *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### subThoroughfare *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### subThoroughfare *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### thoroughfare *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### thoroughfare *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
 ### *class* apple_maps_api.models.MapRegion(/, \*\*data: Any)
 
@@ -1041,13 +1041,13 @@ A rectangular bounding box on a map.
 
 Expressed as south-west and north-east corners.
 
-#### eastLongitude *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### eastLongitude *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-#### northLatitude *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### northLatitude *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-#### southLatitude *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### southLatitude *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-#### westLongitude *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### westLongitude *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
 ### *class* apple_maps_api.models.Place(/, \*\*data: Any)
 
@@ -1060,23 +1060,23 @@ formattedAddressLines: human-readable address lines (e.g. [“841 Broadway”, �
 structuredAddress: parsed address components
 displayMapRegion: suggested map viewport for displaying this place
 
-#### id *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### id *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### name *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### name *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### coordinate *: [Location](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.Location) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### coordinate *: [Location](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.Location) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### formattedAddressLines *: [list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)] | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### formattedAddressLines *: [list](https://docs.python.org/3/builtins/stdtypes.html#list)[[str](https://docs.python.org/3/builtins/stdtypes.html#str)] | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### structuredAddress *: [StructuredAddress](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.StructuredAddress) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### structuredAddress *: [StructuredAddress](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.StructuredAddress) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### country *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### country *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### countryCode *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### countryCode *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### displayMapRegion *: [MapRegion](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.MapRegion) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### displayMapRegion *: [MapRegion](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.MapRegion) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### alternateIds *: [list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)] | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### alternateIds *: [list](https://docs.python.org/3/builtins/stdtypes.html#list)[[str](https://docs.python.org/3/builtins/stdtypes.html#str)] | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
 ### *class* apple_maps_api.models.SearchPlace(/, \*\*data: Any)
 
@@ -1087,7 +1087,7 @@ Extended Place returned by /v1/search with POI category info.
 poiCategory: point-of-interest category (e.g. Restaurant, MovieTheater).
 Unknown values from Apple fail validation so we notice and add support.
 
-#### poiCategory *: [PoiCategory](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PoiCategory) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### poiCategory *: [PoiCategory](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PoiCategory) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
 ### *class* apple_maps_api.models.PlaceResults(/, \*\*data: Any)
 
@@ -1097,7 +1097,7 @@ Response from /v1/geocode and /v1/reverseGeocode.
 
 results: list of Place objects matching the query
 
-#### results *: [list](https://docs.python.org/3/library/stdtypes.html#list)[[Place](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.Place)]*
+#### results *: [list](https://docs.python.org/3/builtins/stdtypes.html#list)[[Place](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.Place)]*
 
 ### *class* apple_maps_api.models.PaginationInfo(/, \*\*data: Any)
 
@@ -1109,13 +1109,13 @@ nextPageToken / prevPageToken: opaque tokens for pageToken on the next request
 totalPageCount: total pages available
 totalResults: total matching results
 
-#### nextPageToken *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### nextPageToken *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### prevPageToken *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### prevPageToken *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### totalPageCount *: [int](https://docs.python.org/3/library/functions.html#int) | [float](https://docs.python.org/3/library/functions.html#float) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### totalPageCount *: [int](https://docs.python.org/3/builtins/functions.html#int) | [float](https://docs.python.org/3/builtins/functions.html#float) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### totalResults *: [int](https://docs.python.org/3/library/functions.html#int) | [float](https://docs.python.org/3/library/functions.html#float) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### totalResults *: [int](https://docs.python.org/3/builtins/functions.html#int) | [float](https://docs.python.org/3/builtins/functions.html#float) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
 ### *class* apple_maps_api.models.SearchResponse(/, \*\*data: Any)
 
@@ -1127,11 +1127,11 @@ results: list of SearchPlace objects with optional POI category
 displayMapRegion: suggested map viewport encompassing all results
 paginationInfo: present when the request set enablePagination
 
-#### results *: [list](https://docs.python.org/3/library/stdtypes.html#list)[[SearchPlace](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchPlace)]*
+#### results *: [list](https://docs.python.org/3/builtins/stdtypes.html#list)[[SearchPlace](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.SearchPlace)]*
 
-#### displayMapRegion *: [MapRegion](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.MapRegion) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### displayMapRegion *: [MapRegion](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.MapRegion) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### paginationInfo *: [PaginationInfo](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PaginationInfo) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### paginationInfo *: [PaginationInfo](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.PaginationInfo) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
 ### *class* apple_maps_api.models.AutocompleteResult(/, \*\*data: Any)
 
@@ -1144,19 +1144,19 @@ displayLines: raw text lines Apple returns — use completionTitle / completionS
 location: approximate coordinate of the suggestion
 structuredAddress: parsed address components if available
 
-#### completionUrl *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### completionUrl *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### displayLines *: [list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)] | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### displayLines *: [list](https://docs.python.org/3/builtins/stdtypes.html#list)[[str](https://docs.python.org/3/builtins/stdtypes.html#str)] | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### location *: [Location](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.Location) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### location *: [Location](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.Location) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### structuredAddress *: [StructuredAddress](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.StructuredAddress) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### structuredAddress *: [StructuredAddress](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.StructuredAddress) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### *property* completionTitle *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)*
+#### *property* completionTitle *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)*
 
 Primary display text (e.g. place name or street address).
 
-#### *property* completionSubtitle *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)*
+#### *property* completionSubtitle *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)*
 
 Secondary display text (e.g. city, state).
 
@@ -1168,7 +1168,7 @@ Response from /v1/searchAutocomplete.
 
 results: list of autocomplete suggestions
 
-#### results *: [list](https://docs.python.org/3/library/stdtypes.html#list)[[AutocompleteResult](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.AutocompleteResult)]*
+#### results *: [list](https://docs.python.org/3/builtins/stdtypes.html#list)[[AutocompleteResult](autoapi/apple_maps_api/models/index.html.md#apple_maps_api.models.AutocompleteResult)]*
 
 ### *class* apple_maps_api.models.TokenResponse(/, \*\*data: Any)
 
@@ -1179,9 +1179,9 @@ Response from /v1/token.
 accessToken: short-lived Bearer token for API requests
 expiresInSeconds: token lifetime (typically 1800 = 30 minutes)
 
-#### accessToken *: [str](https://docs.python.org/3/library/stdtypes.html#str)*
+#### accessToken *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
 
-#### expiresInSeconds *: [int](https://docs.python.org/3/library/functions.html#int)*
+#### expiresInSeconds *: [int](https://docs.python.org/3/builtins/functions.html#int)*
 
 ### *class* apple_maps_api.models.GeocodeResult(/, \*\*data: Any)
 
@@ -1192,23 +1192,23 @@ Provider-agnostic geocode result.
 Identical to radar-mapping-api’s GeocodeResult for drop-in replacement.
 This abstraction allows swapping Apple Maps for Radar without changing consuming code.
 
-#### lat *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### lat *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-#### lon *: [float](https://docs.python.org/3/library/functions.html#float)*
+#### lon *: [float](https://docs.python.org/3/builtins/functions.html#float)*
 
-#### address1 *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### address1 *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### address2 *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### address2 *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### postal_code *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)*
+#### postal_code *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)*
 
-#### city *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)*
+#### city *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)*
 
-#### state_code *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)*
+#### state_code *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)*
 
-#### country_code *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+#### country_code *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)* *= None*
 
-#### formatted_address *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)*
+#### formatted_address *: [str](https://docs.python.org/3/builtins/stdtypes.html#str) | [None](https://docs.python.org/3/builtins/constants.html#None)*
 
 
 # autoapi/apple_maps_api/version/index.html.md
@@ -1225,11 +1225,11 @@ Version handling for apple-maps-api.
 
 ## Module Contents
 
-### apple_maps_api.version.is_local_source_checkout() → [bool](https://docs.python.org/3/library/functions.html#bool)
+### apple_maps_api.version.is_local_source_checkout() → [bool](https://docs.python.org/3/builtins/functions.html#bool)
 
 Check if the code is running from a local source checkout.
 
-### apple_maps_api.version.get_version() → [str](https://docs.python.org/3/library/stdtypes.html#str)
+### apple_maps_api.version.get_version() → [str](https://docs.python.org/3/builtins/stdtypes.html#str)
 
 Get the version string, appending .dev if running from source.
 

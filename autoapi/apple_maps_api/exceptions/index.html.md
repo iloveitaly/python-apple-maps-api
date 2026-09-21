@@ -13,7 +13,7 @@
 
 ### *exception* apple_maps_api.exceptions.AppleMapsError
 
-Bases: [`Exception`](https://docs.python.org/3/library/exceptions.html#Exception)
+Bases: [`Exception`](https://docs.python.org/3/builtins/exceptions.html#Exception)
 
 Base exception for all Apple Maps API errors.
 
