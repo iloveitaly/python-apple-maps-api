@@ -1,0 +1,19 @@
+# apple-maps-api
+
+> apple-maps-api: A modern Python client for the Apple Maps Server API with automatic JWT management, Pydantic models, and type-safe geocoding/search helpers.
+
+
+2026, Michael Bianco
+
+## Pages in this subsection
+
+- [apple_maps_api](index.html.md): apple-maps-api: A Python client for the Apple Maps Server API.
+- [apple_maps_api.client](client/index.html.md): Apple Maps Server API client library.
+- [apple_maps_api.exceptions](exceptions/index.html.md): | &#96;AppleMapsError&#96;          | Base exception for all Apple Maps API errors.                        |
+- [apple_maps_api.helpers](helpers/index.html.md): Helper functions for common geocoding operations.
+- [apple_maps_api.models](models/index.html.md): Pydantic models for Apple Maps Server API responses.
+- [apple_maps_api.version](version/index.html.md): Version handling for apple-maps-api.
+
+## Optional
+
+- [Top-level llms.txt](../../llms.txt): Complete documentation index.
