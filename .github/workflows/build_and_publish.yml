@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: jdx/mise-action@v4
+      - uses: jdx/mise-action@v5
       - uses: iloveitaly/github-action-direnv-load-and-mask@master
       - run: uv sync
       - run: just lint
@@ -43,7 +43,7 @@ jobs:
       APPLE_MAPS_P8_KEY: ${{ secrets.APPLE_MAPS_P8_KEY }}
     steps:
       - uses: actions/checkout@v7
-      - uses: jdx/mise-action@v4
+      - uses: jdx/mise-action@v5
       - run: mise use python@${{ matrix.python-version }}
       - uses: iloveitaly/github-action-direnv-load-and-mask@master
       - run: uv sync
@@ -79,7 +79,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
-      - uses: jdx/mise-action@v4
+      - uses: jdx/mise-action@v5
       - uses: iloveitaly/github-action-direnv-load-and-mask@master
       - run: uv sync
       - run: uv build
