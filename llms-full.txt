@@ -672,9 +672,9 @@ Helper functions for common geocoding operations.
 
 ## Functions
 
-| [`geocode_postal_code`](autoapi/apple_maps_api/helpers/index.html.md#apple_maps_api.helpers.geocode_postal_code)(...)   | Geocode a postal code and extract coordinates and address information.   |
-|-----------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| [`geocode_coordinates`](autoapi/apple_maps_api/helpers/index.html.md#apple_maps_api.helpers.geocode_coordinates)(...)   | Reverse geocode coordinates and extract address information.             |
+| [`geocode_postal_code`](autoapi/apple_maps_api/helpers/index.html.md#apple_maps_api.helpers.geocode_postal_code)(client, \*, postal_code[, country]) → apple_maps_api.models.GeocodeResult | None   | Geocode a postal code and extract coordinates and address information.   |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| [`geocode_coordinates`](autoapi/apple_maps_api/helpers/index.html.md#apple_maps_api.helpers.geocode_coordinates)(client, \*, lat, lon) → apple_maps_api.models.GeocodeResult | None                 | Reverse geocode coordinates and extract address information.             |
 
 ## Module Contents
 
@@ -1219,9 +1219,9 @@ Version handling for apple-maps-api.
 
 ## Functions
 
-| [`is_local_source_checkout`](autoapi/apple_maps_api/version/index.html.md#apple_maps_api.version.is_local_source_checkout)(→ bool)   | Check if the code is running from a local source checkout.     |
-|-------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| [`get_version`](autoapi/apple_maps_api/version/index.html.md#apple_maps_api.version.get_version)(→ str)                 | Get the version string, appending .dev if running from source. |
+| [`is_local_source_checkout`](autoapi/apple_maps_api/version/index.html.md#apple_maps_api.version.is_local_source_checkout)() → bool   | Check if the code is running from a local source checkout.     |
+|--------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| [`get_version`](autoapi/apple_maps_api/version/index.html.md#apple_maps_api.version.get_version)() → str                 | Get the version string, appending .dev if running from source. |
 
 ## Module Contents
 

@@ -9,9 +9,9 @@ Helper functions for common geocoding operations.
 
 ## Functions
 
-| [`geocode_postal_code`](#apple_maps_api.helpers.geocode_postal_code)(...)   | Geocode a postal code and extract coordinates and address information.   |
-|-----------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| [`geocode_coordinates`](#apple_maps_api.helpers.geocode_coordinates)(...)   | Reverse geocode coordinates and extract address information.             |
+| [`geocode_postal_code`](#apple_maps_api.helpers.geocode_postal_code)(client, \*, postal_code[, country]) → apple_maps_api.models.GeocodeResult | None   | Geocode a postal code and extract coordinates and address information.   |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| [`geocode_coordinates`](#apple_maps_api.helpers.geocode_coordinates)(client, \*, lat, lon) → apple_maps_api.models.GeocodeResult | None                 | Reverse geocode coordinates and extract address information.             |
 
 ## Module Contents
 
