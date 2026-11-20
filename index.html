@@ -318,7 +318,7 @@ data-aria-dark="Switch to auto color mode">
 <p>Multi-value filters (countries, categories, result types, …) accept a list; a single string still works.</p>
 </section>
 <section id="importance-of-lat-lng-hinting-for-result-relevance">
-<h3>Importance of Lat/Lng Hinting for Result Relevance<a class="headerlink" href="#importance-of-lat-lng-hinting-for-result-relevance" title="Link to this heading">#</a></h3>
+<span id="importance-of-latlng-hinting-for-result-relevance"></span><h3>Importance of Lat/Lng Hinting for Result Relevance<a class="headerlink" href="#importance-of-lat-lng-hinting-for-result-relevance" title="Link to this heading">#</a></h3>
 <p>Always pass <code class="docutils literal notranslate"><span class="pre">lat</span></code>/<code class="docutils literal notranslate"><span class="pre">lng</span></code>. Autocomplete ranking is heavily biased by location — without it you get scattered results across the country for common street names. For server-side autocomplete, resolve the user’s approximate location from their IP:</p>
 <ol class="arabic simple">
 <li><p>Get the client public IP with <a class="reference external" href="https://github.com/iloveitaly/fastapi-ipware">fastapi-ipware</a></p></li>
@@ -422,7 +422,7 @@ data-aria-dark="Switch to auto color mode">
 </div>
 </section>
 <section id="raw-reverse-geocode-response-full-structuredaddress">
-<h3>Raw <code class="docutils literal notranslate"><span class="pre">reverse_geocode</span></code> response — full <code class="docutils literal notranslate"><span class="pre">structuredAddress</span></code><a class="headerlink" href="#raw-reverse-geocode-response-full-structuredaddress" title="Link to this heading">#</a></h3>
+<span id="raw-reverse_geocode-response--full-structuredaddress"></span><h3>Raw <code class="docutils literal notranslate"><span class="pre">reverse_geocode</span></code> response — full <code class="docutils literal notranslate"><span class="pre">structuredAddress</span></code><a class="headerlink" href="#raw-reverse-geocode-response-full-structuredaddress" title="Link to this heading">#</a></h3>
 <p>Apple Park, Cupertino CA (<code class="docutils literal notranslate"><span class="pre">37.3346,</span> <span class="pre">-122.0090</span></code>):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">place</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">reverse_geocode</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">37.3346</span><span class="p">,</span> <span class="n">lng</span><span class="o">=-</span><span class="mf">122.0090</span><span class="p">)</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span data-line="2"><span class="c1"># place.name                                      =&gt; &quot;Apple Park&quot;</span>
